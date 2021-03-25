@@ -1,0 +1,27 @@
+{
+  "name": "pruf-js",
+  "version": "0.1.0",
+  "description": "An interface to the pruf network for JavaScript developers",
+  "main": "pruf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesBsmyth/pruf_js.git"
+  },
+  "keywords": [
+    "blockchain",
+    "nft",
+    "pruf"
+  ],
+  "author": "jamesbsmyth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jamesBsmyth/pruf_js/issues"
+  },
+  "homepage": "https://github.com/jamesBsmyth/pruf_js#readme",
+  "dependencies": {
+    "bs58": "^4.0.1"
+  }
+}
