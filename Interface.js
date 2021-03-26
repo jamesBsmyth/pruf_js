@@ -33,7 +33,7 @@ async function assembleInterface(contracts) {
         ],
 
         txns: [
-            ["verifyRightsHolder", contracts.STOR.methods.blockchainVerifyRightsHolder],
+            ["verifyRightsHash", contracts.STOR.methods.blockchainVerifyRightsHolder],
             ["transferAsset", contracts.A_TKN.methods.safeTransferFrom],
             ["setAssetURI", contracts.A_TKN.methods.setURI],
             ["discardAsset", contracts.A_TKN.methods.discard],
@@ -50,7 +50,7 @@ async function assembleInterface(contracts) {
             ["initEscrow", contracts.ECR_NC.methods.setEscrow],
             ["terminateEscrow", contracts.ECR_NC.methods.endEscrow],
             ["modifyAssetRightHolder", contracts.NP_NC.methods._changeRgt],
-            ["decrementAssetCounter", contracts.NP_NC.methods._decCounter],
+            ["decrementLifeCycleBy", contracts.NP_NC.methods._decCounter],
             ["exportAsset", contracts.NP_NC.methods._exportNC],
             ["modifyAssetSoftData", contracts.NP_NC.methods._modIpfs1],
             ["modifyAssetStatus", contracts.NP_NC.methods._modStatus],
@@ -60,7 +60,7 @@ async function assembleInterface(contracts) {
             ["unSetForSale", contracts.PURCHASE.methods._clearPrice],
             ["setForSale", contracts.PURCHASE.methods._setPrice],
             ["buyAsset", contracts.PURCHASE.methods.purchaseWithPRUF],
-            ["recycle", contracts.RCLR.methods.recycle],
+            ["recycleAsset", contracts.RCLR.methods.recycle],
             ["setColdWallet", contracts.UTIL_TKN.methods.setColdWallet],
             ["unSetColdWallet", contracts.UTIL_TKN.methods.unSetColdWallet],
             ["transferPruf", contracts.UTIL_TKN.methods.transferFrom],
@@ -72,6 +72,7 @@ async function assembleInterface(contracts) {
         ],
 
         utils: [
+            //generateIndex, generateRightsHash
             ["isValidId", async (id) => {
                 try {
                     if (!id) throw "TokenID is undefined"
