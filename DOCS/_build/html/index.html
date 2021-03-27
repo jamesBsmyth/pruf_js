@@ -32,7 +32,8 @@
             
   <div class="section" id="pruf-js">
 <h1><strong>pruf-js</strong><a class="headerlink" href="#pruf-js" title="Permalink to this headline">¶</a></h1>
-<p>Interface for the pruf network written in javascript</p>
+<p>!! THE DOCUMENTATION IN THIS PAGE IS INDEV. DO NOT USE IT AS A REFERENCE JUST YET. !!</p>
+<p>Interface for the PRüF network written in javascript</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -42,7 +43,7 @@
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">i</span> <span class="pre">--s</span> <span class="pre">pruf-js</span></code></p>
 <p><em>note: pruf-js requires an instance of web3.js to function.</em></p>
-<p><em>To learn more about web3.js, go here:</em></p>
+<p><em>To learn more about web3.js, click here:</em></p>
 <p><a class="reference external" href="https://web3js.readthedocs.io">https://web3js.readthedocs.io</a></p>
 </div></blockquote>
 <div class="section" id="example-initialization">
@@ -55,7 +56,7 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js Initialization code</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js initialization code</span>
 
 <span class="kd">const</span> <span class="nx">Web3</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;web3&#39;</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">PRUF</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;pruf-js&#39;</span><span class="p">);</span>
@@ -106,7 +107,7 @@
 <li><p>extData</p>
 <ul class="simple">
 <li><p>String|Bytes32</p></li>
-<li><p>Holder-mutable key used to link asset to off-chain storage</p></li>
+<li><p>Mutable key used to link asset to off-chain storage</p></li>
 </ul>
 </li>
 </ol>
@@ -369,10 +370,10 @@
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="inscribeasset">
-<h2>inscribeAsset<a class="headerlink" href="#inscribeasset" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="engraveasset">
+<h2>engraveAsset<a class="headerlink" href="#engraveasset" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.inscribeAsset(assetIndex,</span> <span class="pre">inscription)</span></code></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.engraveAsset(assetIndex,</span> <span class="pre">inscription)</span></code></p>
 <p>Permanently inscribes an asset with an off-chain storage reference key</p>
 </div></blockquote>
 <div class="section" id="id9">
@@ -410,7 +411,7 @@
 <span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">_assetIndex</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
 <span class="kd">let</span> <span class="nx">_inscription</span> <span class="o">=</span> <span class="s2">&quot;0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd&quot;</span>
 
-<span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">inscribeAsset</span><span class="p">(</span>
+<span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">engraveAsset</span><span class="p">(</span>
 <span class="nx">_assetIndex</span><span class="p">,</span>
 <span class="nx">_inscription</span>
 <span class="p">)</span>
@@ -477,10 +478,10 @@
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="modifyassetrightshash">
-<h2>modifyAssetRightsHash<a class="headerlink" href="#modifyassetrightshash" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modifyrightshash">
+<h2>modifyRightsHash<a class="headerlink" href="#modifyrightshash" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.modifyAssetRightHolder(assetIndex,</span> <span class="pre">newRightsHash)</span></code></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.modifyRightsHash(assetIndex,</span> <span class="pre">newRightsHash)</span></code></p>
 <p>Changes the rightshash of the asset to reflect new data.</p>
 </div></blockquote>
 <div class="section" id="id13">
@@ -518,7 +519,7 @@
 <span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">_assetIndex</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
 <span class="kd">let</span> <span class="nx">_newHash</span> <span class="o">=</span> <span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">generateRightsHash</span><span class="p">(</span><span class="nx">_assetIndex</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;userInfo1&quot;</span><span class="p">,</span> <span class="s2">&quot;userInfo2&quot;</span><span class="p">,</span> <span class="s2">&quot;userInfo3&quot;</span><span class="p">,</span> <span class="s2">&quot;userInfo4&quot;</span><span class="p">]);</span>
 
-<span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">modifyAssetRightsHash</span><span class="p">(</span>
+<span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">modifyRightsHash</span><span class="p">(</span>
 <span class="nx">_assetIndex</span><span class="p">,</span>
 <span class="nx">_newHash</span>
 <span class="p">)</span>
@@ -777,7 +778,11 @@
 <h2>Developer support<a class="headerlink" href="#developer-support" title="Permalink to this headline">¶</a></h2>
 <p>If you are having issues, please let us know.
 Contact us at: <a class="reference external" href="mailto:support&#37;&#52;&#48;pruf&#46;io">support<span>&#64;</span>pruf<span>&#46;</span>io</a></p>
-<p>Or on Telegram t.me/pruftalk</p>
+<p>Or on Telegram: t.me/pruftalk</p>
+</div>
+<div class="section" id="project-resources">
+<h2>Project Resources<a class="headerlink" href="#project-resources" title="Permalink to this headline">¶</a></h2>
+<p>Website: <a class="reference external" href="https://pruf.io">https://pruf.io</a></p>
 </div>
 <div class="section" id="license">
 <h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>

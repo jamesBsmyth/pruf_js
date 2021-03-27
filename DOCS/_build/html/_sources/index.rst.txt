@@ -5,7 +5,10 @@
 
 **pruf-js**
 ===================================
-Interface for the pruf network written in javascript
+
+!! THE DOCUMENTATION IN THIS PAGE IS INDEV. DO NOT USE IT AS A REFERENCE JUST YET. !!
+
+Interface for the PRüF network written in javascript
 
 .. toctree::
    :maxdepth: 2
@@ -20,7 +23,7 @@ Install using node package manager:
 
    *note: pruf-js requires an instance of web3.js to function.*
 
-   *To learn more about web3.js, go here:* 
+   *To learn more about web3.js, click here:* 
    
    https://web3js.readthedocs.io
 
@@ -31,7 +34,7 @@ Example Initialization
 .. code-block:: javascript 
    :linenos:
 
-   //Example pruf-js Initialization code
+   //Example pruf-js initialization code
 
    const Web3 = require('web3');
    const PRUF = require('pruf-js');
@@ -82,7 +85,7 @@ Parameters
    5. extData
    
       * String|Bytes32
-      * Holder-mutable key used to link asset to off-chain storage
+      * Mutable key used to link asset to off-chain storage
   
 Example usage
 """"""""""""""
@@ -266,10 +269,10 @@ Example usage
       });  
       
       
-inscribeAsset
+engraveAsset
 -----------------
    
-   ``pruf.do.inscribeAsset(assetIndex, inscription)``
+   ``pruf.do.engraveAsset(assetIndex, inscription)``
    
    Permanently inscribes an asset with an off-chain storage reference key
    
@@ -296,7 +299,7 @@ Example usage
       let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _inscription = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd"
 
-      pruf.do.inscribeAsset(
+      pruf.do.engraveAsset(
       _assetIndex,
       _inscription
       )
@@ -344,10 +347,10 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
-modifyAssetRightsHash
+modifyRightsHash
 ----------------------
    
-   ``pruf.do.modifyAssetRightHolder(assetIndex, newRightsHash)``
+   ``pruf.do.modifyRightsHash(assetIndex, newRightsHash)``
    
    Changes the rightshash of the asset to reflect new data.
    
@@ -374,7 +377,7 @@ Example usage
       let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _newHash = pruf.utils.generateRightsHash(_assetIndex, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
 
-      pruf.do.modifyAssetRightsHash(
+      pruf.do.modifyRightsHash(
       _assetIndex,
       _newHash
       )
@@ -582,9 +585,12 @@ Developer support
 If you are having issues, please let us know.
 Contact us at: support@pruf.io
 
-Or on Telegram t.me/pruftalk
+Or on Telegram: t.me/pruftalk
 
+Project Resources
+------------------
 
+Website: https://pruf.io
 
 License
 --------
