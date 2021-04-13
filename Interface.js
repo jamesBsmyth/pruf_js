@@ -4,7 +4,7 @@ async function assembleInterface(contracts) {
     const interfaceFunctions = {
         calls: [
             ["nodePricing", contracts.AC_MGR.methods.currentACpricingInfo],
-            ["nodeData", contracts.AC_MGR.methods.getAC_data],
+            ["nodeData", contracts.AC_MGR.methods.getExtAC_data],
             ["nodeName", contracts.AC_MGR.methods.getAC_name],
             ["nodeExtendedData", contracts.AC_MGR.methods.getExtAC_data],
             ["nodeExtendedData_NoStruct", contracts.AC_MGR.methods.getExtAC_data_nostruct],
@@ -39,7 +39,8 @@ async function assembleInterface(contracts) {
             ["discardAsset", contracts.A_TKN.methods.discard],
             ["engraveAsset", contracts.APP_NC.methods.addIpfs2Note],
             ["importAsset", contracts.APP_NC.methods.importAsset],
-            ["mintAsset", contracts.APP_NC.methods.newRecordWithDescription],
+            ["mintAsset", contracts.APP_NC.methods.newRecordWithNote],
+            ["mintAssetBare", contracts.APP_NC.methods.newRecord],
             ["initEscrow", contracts.ECR_NC.methods.setEscrow],
             ["terminateEscrow", contracts.ECR_NC.methods.endEscrow],
             ["modifyRightsHash", contracts.NP_NC.methods._changeRgt],
@@ -50,8 +51,8 @@ async function assembleInterface(contracts) {
             ["markAssetLostOrStolen", contracts.NP_NC.methods._setLostOrStolen],
             ["redeemPipAsset", contracts.PIP.methods.claimPipAsset],
             ["mintPip", contracts.PIP.methods.mintPipAsset],
-            ["unSetForSale", contracts.PURCHASE.methods._clearPrice],
             ["setForSale", contracts.PURCHASE.methods._setPrice],
+            ["unSetForSale", contracts.PURCHASE.methods._clearPrice],
             ["buyAsset", contracts.PURCHASE.methods.purchaseWithPRUF],
             ["recycleAsset", contracts.RCLR.methods.recycle],
             ["setColdWallet", contracts.UTIL_TKN.methods.setColdWallet],
