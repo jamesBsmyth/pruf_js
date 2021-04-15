@@ -75,7 +75,7 @@ Parameters
    3. nodeId
       
       * String|Uint32
-      * ID used to reference a node, in this case classifies the asset by type or producer
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
    
    4. LifeCycleLimit
       
@@ -601,7 +601,7 @@ Parameters
 
    4. rightsHash
 
-      * String|bytes32
+      * String|Bytes32
       * Hash built from individual inputs which is used to verify asset ownership
 
    5. LifeCycleLimit
@@ -650,7 +650,7 @@ Parameters
 
    2. authCodeHash
 
-      * String|bytes32
+      * String|Bytes32
       * Hashed code to be compared against a submission for minting
   
    3. nodeId
@@ -797,7 +797,7 @@ recycleAsset:
    
    ``pruf.do.recycleAsset(assetIndex, rightsHash, nodeId)``
    
-   Posts an asset for sale at given price.
+   Recycles a discarded asset token into the calling address.
    
 Parameters
 """""""""""
@@ -809,7 +809,7 @@ Parameters
 
    2. rightsHash
 
-      * String|bytes32
+      * String|Bytes32
       * Hash built from individual inputs which is used to verify asset ownership
   
    3. nodeId
@@ -843,7 +843,7 @@ setColdWallet:
    
    ``pruf.do.setColdWallet()``
    
-   Sets message sender to a cold wallet.
+   Sets calling address to a cold wallet.
    
 Parameters
 """""""""""
@@ -867,7 +867,7 @@ unSetColdWallet:
    
    ``pruf.do.unSetColdWallet()``
    
-   Sets message sender to a hot wallet.
+   Sets calling address to a hot wallet.
    
 Parameters
 """""""""""
@@ -891,19 +891,19 @@ transferPruf:
    
    ``pruf.do.transferPruf(from, to, amount)``
    
-   Posts an asset for sale at given price.
+   Sends a specified Amount of PRUF from one wallet to another.
    
 Parameters
 """""""""""
 
    1. from
 
-      * String|address
-      * Address from which to send of tokens
+      * String|Address
+      * Address from which to send tokens
 
    2. to
 
-      * String|address
+      * String|Address
       * Address to receive sent tokens
   
    3. amount
@@ -928,6 +928,379 @@ Example usage
          _amount
       )
       .send({ from: props.addr })
+      .on("receipt"()=>{
+         console.log(receipt.transactionHash);
+      });
+
+transferNode:
+--------------------
+   
+   ``pruf.do.transferNode(from, to, nodeId)``
+   
+   Sends a specified node token from one wallet to another.
+   
+Parameters
+"""""""""""
+
+   1. from
+
+      * String|Address
+      * Address from which to send node
+
+   2. to
+
+      * String|Address
+      * Address to receive sent node
+  
+   3. nodeId
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
+
+     
+Example usage
+""""""""""""""
+   
+   .. code-block:: javascript 
+      :linenos:
+
+      let _from = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049";
+      let _to = "0x9094CaDBF4d35ce5FeD92eb758909fB38F7fecb1";
+      let _nodeId = "10";
+
+      pruf.do.transferNode(
+         _from, 
+         _to,
+         _nodeId
+      )
+      .send({ from: props.addr })
+      .on("receipt"()=>{
+         console.log(receipt.transactionHash);
+      });
+
+setOperationCost:
+--------------------
+   
+   ``pruf.do.setOperationCost(nodeId, operationIndex, newCost, beneficiaryAddress)``
+   
+   Sets the cost users will incur to complete node operation at index.
+   
+Parameters
+"""""""""""
+
+   1. nodeId
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
+
+   2. operationIndex
+
+      * String|Uint16
+      * index of the cost to be set. Standardized cost indexes are a WIP
+  
+   3. newCost
+
+      * String|Uint256
+      * The cost which will be set for the specified operation index in wei
+
+   4. beneficiaryAddress
+
+      * String|Address
+      * The address to which the cost for the specified operation index will pay out
+
+     
+Example usage
+""""""""""""""
+   
+   .. code-block:: javascript 
+      :linenos:
+      let _nodeId = "10";
+      let _operationIndex = "1";
+      let _newCost = "100000000000000000000"; //100 whole tokens
+      let _beneficiaryAddress = "0x9094CaDBF4d35ce5FeD92eb758909fB38F7fecb1";
+
+      pruf.do.setOperationCost(
+         _nodeId, 
+         _operationIndex,
+         _newCost,
+         _beneficiaryAddress
+      )
+      .send({ from: props.addr })
+      .on("receipt"()=>{
+         console.log(receipt.transactionHash);
+      });
+
+purchaseNode:
+--------------------
+   
+   ``pruf.do.purchaseNode(name, rootNode, custodyType, extendedConfig)``
+   
+   Purchases a node and mints it to the caller.
+   
+Parameters
+"""""""""""
+
+   1. name
+
+      * String
+      * Name which will be associated with the node and assets minted under it
+
+   2. rootNode
+
+      * String|Uint32
+      * A root node ID. Caller should choose a root node which best classifies the mission for the node being created
+  
+   3. custodyType
+
+      * String|Uint8
+      * Custody type which effects node operation permissions.
+
+   4. extendedConfig
+
+      * String|Bytes32
+      * Mutable field used for reference to off-chain node configuration
+
+     
+Example usage
+""""""""""""""
+   
+   .. code-block:: javascript 
+      :linenos:
+      let _name = "Museum of Chicago";
+      let _rootNode = "2";
+      let _custodyType = "1"; // Custodial
+      let _extendedConfig = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd";
+
+      pruf.do.purchaseNode(
+         _name, 
+         _rootNode,
+         _custodyType,
+         _extendedConfig
+      )
+      .send({ from: props.addr })
+      .on("receipt"()=>{
+         console.log(receipt.transactionHash);
+      });
+
+modifyExtendedConfig:
+--------------------
+   
+   ``pruf.do.modifyExtendedConfig(nodeId, newExtendedConfig)``
+   
+   Modifies the extended configuration reference key of a specified node.
+   
+Parameters
+"""""""""""
+
+   1. nodeId
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
+
+   2. newExtendedConfig
+
+      * String|Bytes32
+      * Mutable field used for reference to off-chain node configuration
+
+     
+Example usage
+""""""""""""""
+   
+   .. code-block:: javascript 
+      :linenos:
+      let _nodeId = "10";
+      let _newExtendedConfig = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd";
+
+      pruf.do.modifyExtendedConfig(
+         _nodeId, 
+         _newExtendedConfig
+      )
+      .send({ from: props.addr })
+      .on("receipt"()=>{
+         console.log(receipt.transactionHash);
+      });
+
+authorizeUser:
+--------------------
+   
+   ``pruf.do.authorizeUser(nodeId, authAddressHash, userType)``
+   
+   Authorizes a user for operations on a node.
+   
+Parameters
+"""""""""""
+
+   1. nodeId
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
+
+   2. authAddressHash
+
+      * String|Bytes32
+      * A sha3 hash of the target address used as a key to authorize operations on the specified node.
+  
+   3. userType
+
+      * String|Uint8
+      * Type of authorization to apply to target address.
+
+     
+Example usage
+""""""""""""""
+   
+   .. code-block:: javascript 
+      :linenos:
+      let _nodeId = "10";
+      let _authAddressHash = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd";
+      let _userType = "1"; // Custodial
+
+      pruf.do.authorizeUser(
+         _nodeId, 
+         _authAddressHash,
+         _userType
+      )
+      .send({ from: props.addr })
+      .on("receipt"()=>{
+         console.log(receipt.transactionHash);
+      });
+
+modifyNodeName:
+--------------------
+   
+   ``pruf.do.modifyNodeName(nodeId, newName)``
+   
+   Modifies the name of a specified node.
+   
+Parameters
+"""""""""""
+
+   1. nodeId
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
+
+   2. newName
+
+      * String
+      * New name string attatched to the node.
+
+     
+Example usage
+""""""""""""""
+   
+   .. code-block:: javascript 
+      :linenos:
+      let _nodeId = "10";
+      let _newName = "Hans' Curating Service"; // Custodial
+
+      pruf.do.modifyNodeName(
+         _nodeId, 
+         _newName
+      )
+      .send({ from: props.addr })
+      .on("receipt"()=>{
+         console.log(receipt.transactionHash);
+      });
+
+finalizeNode:
+--------------------
+   
+   ``pruf.do.finalizeNode(nodeId, managementType, storageProvider, referenceAddress)``
+   
+   Permanently sets on-chain configuration for the specified node. (Node cannot be used until this operation is complete)
+   
+Parameters
+"""""""""""
+
+   1. nodeId
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
+
+   2. managementType
+
+      * String|Uint8
+      * Management style which effects permission distribution rules on the network.
+
+   3. storageProvider
+
+      * String|Uint8
+      * Database on which asset extended data will be stored. Standard for provider indexes is a WIP.
+
+   4. referenceAddress
+
+      * String|Address
+      * Address to reference the origin of a node. Used mainly for WRAP operations from existing NFT contracts.
+
+
+Example usage
+""""""""""""""
+   
+   .. code-block:: javascript 
+      :linenos:
+      let _nodeId = "10";
+      let _managementType = "1"; // Private
+      let _storageProvider = "2" // Currently refers to Arweave
+      let _referenceAddress = "0x9094CaDBF4d35ce5FeD92eb758909fB38F7fecb1" //
+
+      pruf.do.finalizeNode(
+         _nodeId, 
+         _managementType,
+         _storageProvider,
+         _referenceAddress
+      )
+      .send({ from: props.addr })
+      .on("receipt"()=>{
+         console.log(receipt.transactionHash);
+      });
+
+getId: (!!TEST NETWORK ONLY!!)
+--------------------
+   
+   ``pruf.do.getId()``
+   
+   Mints an ID token for use on the testNet.
+
+Parameters
+"""""""""""
+
+   1. none
+
+
+Example usage
+""""""""""""""
+   
+   .. code-block:: javascript 
+      :linenos:
+
+      pruf.do.getId()
+      .send({ from: props.addr })
+      .on("receipt"()=>{
+         console.log(receipt.transactionHash);
+      });
+
+getPruf: (!!TEST NETWORK ONLY!!)
+--------------------
+   
+   ``pruf.do.getPruf()``
+   
+   Mints testNet pruf at 100k testNet PRUF per 1 test Ether sent.
+
+Parameters
+"""""""""""
+
+   1. none.
+
+
+Example usage
+""""""""""""""
+   
+   .. code-block:: javascript 
+      :linenos:
+
+      pruf.do.getPruf()
+      .send({ from: props.addr value: 1000000000000000000})
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });

@@ -95,7 +95,7 @@
 <li><p>nodeId</p>
 <ul class="simple">
 <li><p>String|Uint32</p></li>
-<li><p>ID used to reference a node, in this case classifies the asset by type or producer</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
 </ul>
 </li>
 <li><p>LifeCycleLimit</p>
@@ -822,7 +822,7 @@
 </li>
 <li><p>rightsHash</p>
 <ul class="simple">
-<li><p>String|bytes32</p></li>
+<li><p>String|Bytes32</p></li>
 <li><p>Hash built from individual inputs which is used to verify asset ownership</p></li>
 </ul>
 </li>
@@ -893,7 +893,7 @@
 </li>
 <li><p>authCodeHash</p>
 <ul class="simple">
-<li><p>String|bytes32</p></li>
+<li><p>String|Bytes32</p></li>
 <li><p>Hashed code to be compared against a submission for minting</p></li>
 </ul>
 </li>
@@ -1105,7 +1105,7 @@
 <h2>recycleAsset:<a class="headerlink" href="#recycleasset" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.recycleAsset(assetIndex,</span> <span class="pre">rightsHash,</span> <span class="pre">nodeId)</span></code></p>
-<p>Posts an asset for sale at given price.</p>
+<p>Recycles a discarded asset token into the calling address.</p>
 </div></blockquote>
 <div class="section" id="id35">
 <h3>Parameters<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
@@ -1119,7 +1119,7 @@
 </li>
 <li><p>rightsHash</p>
 <ul class="simple">
-<li><p>String|bytes32</p></li>
+<li><p>String|Bytes32</p></li>
 <li><p>Hash built from individual inputs which is used to verify asset ownership</p></li>
 </ul>
 </li>
@@ -1169,7 +1169,7 @@
 <h2>setColdWallet:<a class="headerlink" href="#setcoldwallet" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.setColdWallet()</span></code></p>
-<p>Sets message sender to a cold wallet.</p>
+<p>Sets calling address to a cold wallet.</p>
 </div></blockquote>
 <div class="section" id="id37">
 <h3>Parameters<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
@@ -1200,7 +1200,7 @@
 <h2>unSetColdWallet:<a class="headerlink" href="#unsetcoldwallet" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.unSetColdWallet()</span></code></p>
-<p>Sets message sender to a hot wallet.</p>
+<p>Sets calling address to a hot wallet.</p>
 </div></blockquote>
 <div class="section" id="id39">
 <h3>Parameters<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
@@ -1231,7 +1231,7 @@
 <h2>transferPruf:<a class="headerlink" href="#transferpruf" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.transferPruf(from,</span> <span class="pre">to,</span> <span class="pre">amount)</span></code></p>
-<p>Posts an asset for sale at given price.</p>
+<p>Sends a specified Amount of PRUF from one wallet to another.</p>
 </div></blockquote>
 <div class="section" id="id41">
 <h3>Parameters<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
@@ -1239,13 +1239,13 @@
 <div><ol class="arabic simple">
 <li><p>from</p>
 <ul class="simple">
-<li><p>String|address</p></li>
-<li><p>Address from which to send of tokens</p></li>
+<li><p>String|Address</p></li>
+<li><p>Address from which to send tokens</p></li>
 </ul>
 </li>
 <li><p>to</p>
 <ul class="simple">
-<li><p>String|address</p></li>
+<li><p>String|Address</p></li>
 <li><p>Address to receive sent tokens</p></li>
 </ul>
 </li>
@@ -1291,6 +1291,360 @@
 </div></blockquote>
 </div>
 </div>
+<div class="section" id="transfernode">
+<h2>transferNode:<a class="headerlink" href="#transfernode" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.transferNode(from,</span> <span class="pre">to,</span> <span class="pre">nodeId)</span></code></p>
+<p>Sends a specified node token from one wallet to another.</p>
+</div></blockquote>
+<div class="section" id="id43">
+<h3>Parameters<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>from</p>
+<ul class="simple">
+<li><p>String|Address</p></li>
+<li><p>Address from which to send node</p></li>
+</ul>
+</li>
+<li><p>to</p>
+<ul class="simple">
+<li><p>String|Address</p></li>
+<li><p>Address to receive sent node</p></li>
+</ul>
+</li>
+<li><p>nodeId</p>
+<ul class="simple">
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id44">
+<h3>Example usage<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">_from</span> <span class="o">=</span> <span class="s2">&quot;0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049&quot;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">_to</span> <span class="o">=</span> <span class="s2">&quot;0x9094CaDBF4d35ce5FeD92eb758909fB38F7fecb1&quot;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">_nodeId</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span><span class="p">;</span>
+
+<span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">transferNode</span><span class="p">(</span>
+   <span class="nx">_from</span><span class="p">,</span>
+   <span class="nx">_to</span><span class="p">,</span>
+   <span class="nx">_nodeId</span>
+<span class="p">)</span>
+<span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="nx">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="setoperationcost">
+<h2>setOperationCost:<a class="headerlink" href="#setoperationcost" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.setOperationCost(nodeId,</span> <span class="pre">operationIndex,</span> <span class="pre">newCost,</span> <span class="pre">beneficiaryAddress)</span></code></p>
+<p>Sets the cost users will incur to complete node operation at index.</p>
+</div></blockquote>
+<div class="section" id="id45">
+<h3>Parameters<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>nodeId</p>
+<ul class="simple">
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
+</ul>
+</li>
+<li><p>operationIndex</p>
+<ul class="simple">
+<li><p>String|Uint16</p></li>
+<li><p>index of the cost to be set. Standardized cost indexes are a WIP</p></li>
+</ul>
+</li>
+<li><p>newCost</p>
+<ul class="simple">
+<li><p>String|Uint256</p></li>
+<li><p>The cost which will be set for the specified operation index in wei</p></li>
+</ul>
+</li>
+<li><p>beneficiaryAddress</p>
+<ul class="simple">
+<li><p>String|Address</p></li>
+<li><p>The address to which the cost for the specified operation index will pay out</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id46">
+<h3>Example usage<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="purchasenode">
+<h2>purchaseNode:<a class="headerlink" href="#purchasenode" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.purchaseNode(name,</span> <span class="pre">rootNode,</span> <span class="pre">custodyType,</span> <span class="pre">extendedConfig)</span></code></p>
+<p>Purchases a node and mints it to the caller.</p>
+</div></blockquote>
+<div class="section" id="id47">
+<h3>Parameters<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>name</p>
+<ul class="simple">
+<li><p>String</p></li>
+<li><p>Name which will be associated with the node and assets minted under it</p></li>
+</ul>
+</li>
+<li><p>rootNode</p>
+<ul class="simple">
+<li><p>String|Uint32</p></li>
+<li><p>A root node ID. Caller should choose a root node which best classifies the mission for the node being created</p></li>
+</ul>
+</li>
+<li><p>custodyType</p>
+<ul class="simple">
+<li><p>String|Uint8</p></li>
+<li><p>Custody type which effects node operation permissions.</p></li>
+</ul>
+</li>
+<li><p>extendedConfig</p>
+<ul class="simple">
+<li><p>String|Bytes32</p></li>
+<li><p>Mutable field used for reference to off-chain node configuration</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id48">
+<h3>Example usage<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="modifyextendedconfig">
+<h2>modifyExtendedConfig:<a class="headerlink" href="#modifyextendedconfig" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.modifyExtendedConfig(nodeId,</span> <span class="pre">newExtendedConfig)</span></code></p>
+<p>Modifies the extended configuration reference key of a specified node.</p>
+</div></blockquote>
+<div class="section" id="id49">
+<h3>Parameters<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>nodeId</p>
+<ul class="simple">
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
+</ul>
+</li>
+<li><p>newExtendedConfig</p>
+<ul class="simple">
+<li><p>String|Bytes32</p></li>
+<li><p>Mutable field used for reference to off-chain node configuration</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id50">
+<h3>Example usage<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="authorizeuser">
+<h2>authorizeUser:<a class="headerlink" href="#authorizeuser" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.authorizeUser(nodeId,</span> <span class="pre">authAddressHash,</span> <span class="pre">userType)</span></code></p>
+<p>Authorizes a user for operations on a node.</p>
+</div></blockquote>
+<div class="section" id="id51">
+<h3>Parameters<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>nodeId</p>
+<ul class="simple">
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
+</ul>
+</li>
+<li><p>authAddressHash</p>
+<ul class="simple">
+<li><p>String|Bytes32</p></li>
+<li><p>A sha3 hash of the target address used as a key to authorize operations on the specified node.</p></li>
+</ul>
+</li>
+<li><p>userType</p>
+<ul class="simple">
+<li><p>String|Uint8</p></li>
+<li><p>Type of authorization to apply to target address.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id52">
+<h3>Example usage<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="modifynodename">
+<h2>modifyNodeName:<a class="headerlink" href="#modifynodename" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.modifyNodeName(nodeId,</span> <span class="pre">newName)</span></code></p>
+<p>Modifies the name of a specified node.</p>
+</div></blockquote>
+<div class="section" id="id53">
+<h3>Parameters<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>nodeId</p>
+<ul class="simple">
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
+</ul>
+</li>
+<li><p>newName</p>
+<ul class="simple">
+<li><p>String</p></li>
+<li><p>New name string attatched to the node.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id54">
+<h3>Example usage<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="finalizenode">
+<h2>finalizeNode:<a class="headerlink" href="#finalizenode" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.finalizeNode(nodeId,</span> <span class="pre">managementType,</span> <span class="pre">storageProvider,</span> <span class="pre">referenceAddress)</span></code></p>
+<p>Permanently sets on-chain configuration for the specified node. (Node cannot be used until this operation is complete)</p>
+</div></blockquote>
+<div class="section" id="id55">
+<h3>Parameters<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>nodeId</p>
+<ul class="simple">
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
+</ul>
+</li>
+<li><p>managementType</p>
+<ul class="simple">
+<li><p>String|Uint8</p></li>
+<li><p>Management style which effects permission distribution rules on the network.</p></li>
+</ul>
+</li>
+<li><p>storageProvider</p>
+<ul class="simple">
+<li><p>String|Uint8</p></li>
+<li><p>Database on which asset extended data will be stored. Standard for provider indexes is a WIP.</p></li>
+</ul>
+</li>
+<li><p>referenceAddress</p>
+<ul class="simple">
+<li><p>String|Address</p></li>
+<li><p>Address to reference the origin of a node. Used mainly for WRAP operations from existing NFT contracts.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id56">
+<h3>Example usage<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="getid-test-network-only">
+<h2>getId: (!!TEST NETWORK ONLY!!)<a class="headerlink" href="#getid-test-network-only" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.getId()</span></code></p>
+<p>Mints an ID token for use on the testNet.</p>
+</div></blockquote>
+<div class="section" id="id57">
+<h3>Parameters<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>none</p></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id58">
+<h3>Example usage<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">getId</span><span class="p">()</span>
+<span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="nx">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="getpruf-test-network-only">
+<h2>getPruf: (!!TEST NETWORK ONLY!!)<a class="headerlink" href="#getpruf-test-network-only" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.getPruf()</span></code></p>
+<p>Mints testNet pruf at 100k testNet PRUF per 1 test Ether sent.</p>
+</div></blockquote>
+<div class="section" id="id59">
+<h3>Parameters<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>none.</p></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id60">
+<h3>Example usage<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">getPruf</span><span class="p">()</span>
+<span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="nx">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="nx">value</span><span class="o">:</span> <span class="mf">1000000000000000000</span><span class="p">})</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
 </div>
 <div class="section" id="get">
 <h1>.get<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h1>
@@ -1299,8 +1653,8 @@
 <h2>getThing:<a class="headerlink" href="#getthing" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pruf.get.getThing(params)</span></code></p>
 <p>Brief Intro.</p>
-<div class="section" id="id43">
-<h3>Parameters<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id61">
+<h3>Parameters<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>param1</p>
@@ -1325,8 +1679,8 @@
 </ol>
 </div></blockquote>
 </div>
-<div class="section" id="id44">
-<h3>Example usage<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id62">
+<h3>Example usage<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example code</span>
 </pre></div>
 </td></tr></table></div>
@@ -1340,8 +1694,8 @@
 <h2>util:<a class="headerlink" href="#util" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pruf.utils.util(params)</span></code></p>
 <p>Brief Intro.</p>
-<div class="section" id="id45">
-<h3>Parameters<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id63">
+<h3>Parameters<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>param1</p>
@@ -1353,8 +1707,8 @@
 </ol>
 </div></blockquote>
 </div>
-<div class="section" id="id46">
-<h3>Returns<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id64">
+<h3>Returns<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Value1</p>
@@ -1366,8 +1720,8 @@
 </ol>
 </div></blockquote>
 </div>
-<div class="section" id="id47">
-<h3>Example usage<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id65">
+<h3>Example usage<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example code</span>
 </pre></div>
 </td></tr></table></div>
