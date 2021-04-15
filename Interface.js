@@ -65,10 +65,10 @@ async function assembleInterface(contracts) {
         ["transferNode", contracts.AC_TKN.methods.safeTransferFrom],
         ["setOperationCost", contracts.AC_MGR.methods.ACTH_setCosts],
         ["purchaseNode", contracts.AC_MGR.methods.purchaseACnode],
-        ["modifyNodeExtData", contracts.AC_MGR.methods.updateACipfs],
-        ["addUser", contracts.AC_MGR.methods.addUser],
+        ["modifyExtendedConfig", contracts.AC_MGR.methods.updateACipfs],
+        ["authorizeUser", contracts.AC_MGR.methods.addUser],
         ["modifyNodeName", contracts.AC_MGR.methods.updateACname],
-        ["modifyNodeRefAddr", contracts.AC_MGR.methods.updateACreferenceAddress],
+        ["finalizeNode", contracts.AC_MGR.methods.updateACImmutable],
 
         //PARTY -- TEST RELEASE ONLY
         ["getId", contracts.PARTY.methods.GET_ID],

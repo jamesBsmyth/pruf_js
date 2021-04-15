@@ -21,7 +21,7 @@ Install using node package manager:
 
    ``npm i --s pruf-js``
 
-   *note: pruf-js requires an instance of web3.js to function.*
+   *note: pruf-js requires an instance of web3.js to initialize.*
 
    *To learn more about web3.js, click here:* 
    
@@ -87,6 +87,7 @@ Parameters
       * String|Bytes32
       * Mutable key used to link asset to off-chain storage
   
+
 Example usage
 """"""""""""""
 
@@ -111,6 +112,7 @@ Example usage
    .on("receipt"()=>{
       console.log(receipt.transactionHash);
    });
+
 
 verifyRightsHash:
 -----------------
@@ -177,6 +179,7 @@ Parameters
       * String|Bytes32
       * Unique value which refers to an asset
      
+
 Example usage
 """"""""""""""
    
@@ -196,6 +199,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
 
 setAssetURI:
 -----------------
@@ -235,6 +239,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
 
 discardAsset:
 -----------------
@@ -306,7 +311,8 @@ Example usage
       .send({ from: props.addr })
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
-      })
+      });
+
          
 importAsset:
 -----------------
@@ -347,6 +353,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 modifyRightsHash:
 ----------------------
    
@@ -385,6 +392,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
 
 decrementLifeCycle:
 -------------------
@@ -425,6 +433,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 exportAsset:
 -----------------
    
@@ -456,6 +465,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
 
 modifyAssetExtData:
 --------------------
@@ -496,6 +506,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 modifyAssetStatus:
 --------------------
    
@@ -535,6 +546,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 markAssetLostOrStolen:
 -----------------------
    
@@ -573,6 +585,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
       
 redeemPipAsset:
 --------------------
@@ -633,6 +646,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 mintPip:
 --------------------
    
@@ -677,6 +691,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
 
 setForSale:
 --------------------
@@ -730,6 +745,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 unSetForSale:
 --------------------
    
@@ -761,6 +777,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 buyAsset:
 --------------------
    
@@ -791,6 +808,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
 
 recycleAsset:
 --------------------
@@ -838,6 +856,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 setColdWallet:
 --------------------
    
@@ -848,7 +867,7 @@ setColdWallet:
 Parameters
 """""""""""
 
-   1. None
+   1. none
      
 Example usage
 """"""""""""""
@@ -862,6 +881,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 unSetColdWallet:
 --------------------
    
@@ -872,7 +892,7 @@ unSetColdWallet:
 Parameters
 """""""""""
 
-   1. None
+   1. none
      
 Example usage
 """"""""""""""
@@ -885,6 +905,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
 
 transferPruf:
 --------------------
@@ -932,6 +953,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 transferNode:
 --------------------
    
@@ -977,6 +999,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
 
 setOperationCost:
 --------------------
@@ -1030,6 +1053,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 purchaseNode:
 --------------------
    
@@ -1082,8 +1106,9 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 modifyExtendedConfig:
---------------------
+----------------------
    
    ``pruf.do.modifyExtendedConfig(nodeId, newExtendedConfig)``
    
@@ -1165,6 +1190,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 modifyNodeName:
 --------------------
    
@@ -1202,6 +1228,7 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
 
 finalizeNode:
 --------------------
@@ -1255,8 +1282,9 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 getId: (!!TEST NETWORK ONLY!!)
---------------------
+--------------------------------
    
    ``pruf.do.getId()``
    
@@ -1280,8 +1308,9 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
 getPruf: (!!TEST NETWORK ONLY!!)
---------------------
+---------------------------------
    
    ``pruf.do.getPruf()``
    

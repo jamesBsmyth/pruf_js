@@ -42,7 +42,7 @@
 <p>Install using node package manager:</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">i</span> <span class="pre">--s</span> <span class="pre">pruf-js</span></code></p>
-<p><em>note: pruf-js requires an instance of web3.js to function.</em></p>
+<p><em>note: pruf-js requires an instance of web3.js to initialize.</em></p>
 <p><em>To learn more about web3.js, click here:</em></p>
 <p><a class="reference external" href="https://web3js.readthedocs.io">https://web3js.readthedocs.io</a></p>
 </div></blockquote>
@@ -418,7 +418,7 @@
 <span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="nx">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
 <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
-<span class="p">})</span>
+<span class="p">});</span>
 </pre></div>
 </td></tr></table></div>
 </div></blockquote>
@@ -1175,7 +1175,7 @@
 <h3>Parameters<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>None</p></li>
+<li><p>none</p></li>
 </ol>
 </div></blockquote>
 </div>
@@ -1206,7 +1206,7 @@
 <h3>Parameters<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>None</p></li>
+<li><p>none</p></li>
 </ol>
 </div></blockquote>
 </div>
