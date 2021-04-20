@@ -1,5 +1,6 @@
 
 // Class which constructs a full suite of functions that interact with the PRüF network. 
+import bs58 from "bs58";
 
 class PRUF {
     constructor(web3Provider) {
@@ -954,7 +955,7 @@ class PRUF {
             }
         ];
         //............................................................................................................................................
-    
+
         const _APP = [
             {
                 "anonymous": false,
@@ -1531,9 +1532,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _NP = [
             {
                 "anonymous": false,
@@ -2098,9 +2099,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _ECR = [
             {
                 "anonymous": false,
@@ -2595,9 +2596,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _AC_MGR = [
             {
                 "inputs": [],
@@ -3697,9 +3698,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _AC_TKN = [
             {
                 "inputs": [],
@@ -4529,9 +4530,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _A_TKN = [
             {
                 "inputs": [],
@@ -5520,9 +5521,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _PIP = [
             {
                 "anonymous": false,
@@ -6017,9 +6018,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _APP_NC = [
             {
                 "anonymous": false,
@@ -6590,9 +6591,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _NP_NC = [
             {
                 "anonymous": false,
@@ -7150,9 +7151,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _RCLR = [
             {
                 "anonymous": false,
@@ -7632,9 +7633,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _ECR_NC = [
             {
                 "anonymous": false,
@@ -8101,9 +8102,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _VERIFY = [
             {
                 "anonymous": false,
@@ -8750,9 +8751,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _ECR_MGR = [
             {
                 "anonymous": false,
@@ -9529,9 +9530,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _ID_TKN = [
             {
                 "inputs": [],
@@ -10539,9 +10540,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _UTIL_TKN = [
             {
                 "inputs": [],
@@ -11454,9 +11455,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _PARTY = [
             {
                 "inputs": [],
@@ -12028,9 +12029,9 @@ class PRUF {
                 "type": "receive"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _PURCHASE = [
             {
                 "anonymous": false,
@@ -12510,9 +12511,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _WRAP = [
             {
                 "anonymous": false,
@@ -12984,9 +12985,9 @@ class PRUF {
                 "type": "function"
             }
         ];
-    
+
         //............................................................................................................................................
-    
+
         const _DECORATE = [
             {
                 "anonymous": false,
@@ -13634,274 +13635,706 @@ class PRUF {
                 "type": "function"
             }
         ];
-        
+
         //............................................................................................................................................
 
-        const  resolveContracts = async (_web3) => {
-          
+        const resolveContracts = async (_web3) => {
+
             const STOR_Address = "0x53Fe23cC52C68307928797436aB081D48C09B340";
             const PARTY_Address = "0xacb584F434615327acf372607C41EeA57EB277aa";
-          
+
             const STOR = new _web3.eth.Contract(_STOR, STOR_Address);
             const PARTY = new _web3.eth.Contract(_PARTY, PARTY_Address);
-          
-            let contracts = {STOR: STOR, PARTY: PARTY};
-          
+
+            let _contracts = { STOR: STOR, PARTY: PARTY };
+
             await STOR.methods
-              .resolveContractAddress("NP")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.NP = new _web3.eth.Contract(_NP, _result);
-                }
-              }
-              ).then(async () => {
-                await STOR.methods
-                  .resolveContractAddress("NP_NC")
-                  .call(function (_error, _result) {
-                    if (_error) {
-                      console.log(_error);
+                .resolveContractAddress("NP")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
                     } else {
-                      //console.log(_result);
-                      contracts.NP_NC = new _web3.eth.Contract(_NP_NC, _result);
+                        //console.log(result);
+                        _contracts.NP = new _web3.eth.Contract(_NP, result);
                     }
-                  }
-                  );
-              });
-          
+                }
+                ).then(async () => {
+                    await STOR.methods
+                        .resolveContractAddress("NP_NC")
+                        .call(function (error, result) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                //console.log(result);
+                                _contracts.NP_NC = new _web3.eth.Contract(_NP_NC, result);
+                            }
+                        }
+                        );
+                });
+
             await STOR.methods
-              .resolveContractAddress("APP")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.APP = new _web3.eth.Contract(_APP, _result);
+                .resolveContractAddress("APP")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.APP = new _web3.eth.Contract(_APP, result);
+                    }
                 }
-              }
-              );
-          
-              await STOR.methods
-              .resolveContractAddress("PURCHASE")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.PURCHASE = new _web3.eth.Contract(_PURCHASE, _result);
-                }
-              }
-              );
-          
-              await STOR.methods
-              .resolveContractAddress("WRAP")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.WRAP = new _web3.eth.Contract(_WRAP, _result);
-                }
-              }
-              );
-          
-              await STOR.methods
-              .resolveContractAddress("DECORATE")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.DECORATE = new _web3.eth.Contract(_DECORATE, _result);
-                }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("APP_NC")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.APP_NC = new _web3.eth.Contract(_APP_NC, _result);
+                .resolveContractAddress("PURCHASE")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.PURCHASE = new _web3.eth.Contract(_PURCHASE, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("AC_MGR")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result)
-                  contracts.AC_MGR = new _web3.eth.Contract(_AC_MGR, _result);
+                .resolveContractAddress("WRAP")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.WRAP = new _web3.eth.Contract(_WRAP, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("AC_TKN")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.AC_TKN = new _web3.eth.Contract(_AC_TKN, _result);
+                .resolveContractAddress("DECORATE")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.DECORATE = new _web3.eth.Contract(_DECORATE, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("ECR")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.ECR = new _web3.eth.Contract(_ECR, _result);
+                .resolveContractAddress("APP_NC")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.APP_NC = new _web3.eth.Contract(_APP_NC, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("ECR_NC")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.ECR_NC = new _web3.eth.Contract(_ECR_NC, _result);
+                .resolveContractAddress("AC_MGR")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result)
+                        _contracts.AC_MGR = new _web3.eth.Contract(_AC_MGR, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("ECR_MGR")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.ECR_MGR = new _web3.eth.Contract(_ECR_MGR, _result);
+                .resolveContractAddress("AC_TKN")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.AC_TKN = new _web3.eth.Contract(_AC_TKN, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("A_TKN")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.A_TKN = new _web3.eth.Contract(_A_TKN, _result);
+                .resolveContractAddress("ECR")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.ECR = new _web3.eth.Contract(_ECR, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("RCLR")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.RCLR = new _web3.eth.Contract(_RCLR, _result);
+                .resolveContractAddress("ECR_NC")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.ECR_NC = new _web3.eth.Contract(_ECR_NC, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("ID_TKN")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.ID_TKN = new _web3.eth.Contract(_ID_TKN, _result);
+                .resolveContractAddress("ECR_MGR")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.ECR_MGR = new _web3.eth.Contract(_ECR_MGR, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("UTIL_TKN")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.UTIL_TKN = new _web3.eth.Contract(_UTIL_TKN, _result);
+                .resolveContractAddress("A_TKN")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.A_TKN = new _web3.eth.Contract(_A_TKN, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("PIP")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.PIP = new _web3.eth.Contract(_PIP, _result);
+                .resolveContractAddress("RCLR")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.RCLR = new _web3.eth.Contract(_RCLR, result);
+                    }
                 }
-              }
-              );
-          
+                );
+
             await STOR.methods
-              .resolveContractAddress("VERIFY")
-              .call(function (_error, _result) {
-                if (_error) {
-                  console.log(_error);
-                } else {
-                  //console.log(_result);
-                  contracts.VERIFY = new _web3.eth.Contract(_VERIFY, _result);
+                .resolveContractAddress("ID_TKN")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.ID_TKN = new _web3.eth.Contract(_ID_TKN, result);
+                    }
                 }
-              }
-              );
-              
-            return contracts
+                );
+
+            await STOR.methods
+                .resolveContractAddress("UTIL_TKN")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.UTIL_TKN = new _web3.eth.Contract(_UTIL_TKN, result);
+                    }
+                }
+                );
+
+            await STOR.methods
+                .resolveContractAddress("PIP")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.PIP = new _web3.eth.Contract(_PIP, result);
+                    }
+                }
+                );
+
+            await STOR.methods
+                .resolveContractAddress("VERIFY")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.VERIFY = new _web3.eth.Contract(_VERIFY, result);
+                    }
+                }
+                );
+
+            return _contracts
         }
 
-        const assembleInterface = async (_contracts) => {
-            const  bs58 = require("bs58");
+        const assembleInterface = async (contracts) => {
             if (!contracts) return console.log("%c PRUF_ERR: Failed to init", "color: orange, font-weight: bold")
             //@dev add decorate functions, custodialApp, verify, wrap
-        
+
+            const hashAlgo = web3Provider.utils.soliditySha3;
+
             const calls = [
-                ["nodePricing", contracts.AC_MGR.methods.currentACpricingInfo],
-                ["nodeData", contracts.AC_MGR.methods.getExtAC_data],
-                ["nodeName", contracts.AC_MGR.methods.getAC_name],
-                ["nodeExtendedData", contracts.AC_MGR.methods.getExtAC_data],
-                ["operationCost", contracts.AC_MGR.methods.getServiceCosts],
-                ["userType", contracts.AC_MGR.methods.getUserType],
-                ["nodeId", contracts.AC_MGR.methods.resolveAssetClass],
-                ["isSameRoot", contracts.AC_MGR.methods.isSameRootAC],
-                ["escrowData", contracts.ECR_MGR.methods.retrieveEscrowDataHeavy],
-                ["escrowOwner", contracts.ECR_MGR.methods.retrieveEscrowOwner],
-                ["isRightsHolder", contracts.STOR.methods._verifyRightsHolder],
-                ["assetPriceData", contracts.STOR.methods.getPriceData],
-                ["assetRecord", contracts.STOR.methods.retrieveShortRecord],
-                ["heldAssetAtIndex", contracts.A_TKN.methods.tokenOfOwnerByIndex],
-                ["assetAtIndex", contracts.A_TKN.methods.tokenByIndex],
-                ["assetExists", contracts.A_TKN.methods.tokenExists],
-                ["assetBalance", contracts.A_TKN.methods.balanceOf],
-                ["numberOfAssets", contracts.A_TKN.methods.totalSupply],
-                ["ownerOfAsset", contracts.A_TKN.methods.ownerOf],
-                ["prufBalance", contracts.UTIL_TKN.methods.balanceOf],
-                ["isColdWallet", contracts.UTIL_TKN.methods.isColdWallet],
-                ["howMuchPrufExists", contracts.UTIL_TKN.methods.totalSupply],
-                ["nodeBalance", contracts.AC_TKN.methods.balanceOf],
-                ["nodeExists", contracts.AC_TKN.methods.tokenExists],
-                ["heldNodeAtIndex", contracts.AC_TKN.methods.tokenOfOwnerByIndex],
-                ["nodeAtIndex", contracts.AC_TKN.methods.tokenByIndex],
-                ["numberOfNodes", contracts.AC_TKN.methods.totalSupply],
-                ["ownerOfNode", contracts.AC_TKN.methods.ownerOf],
+                ["assetRecordExists", async (assetId) => {
+
+                    if (!assetId) return
+                    let bool = false;
+
+                    await contracts.STOR.retrieveShortRecord(assetId)
+                        .call((error, result) => {
+                            if (!errorresult["2"] !== "0") {
+                                return bool = true
+                            }
+                        })
+
+                    return bool
+                }],
+                ["nodeNameAvailable", async (name) => {
+
+                    let bool;
+
+                    await contracts.AC_MGR.methods
+                        .resolveAssetClass(name)
+                        .call((error, result) => {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                if (Number(result) > 0) {
+                                    return bool = false;
+                                } else {
+                                    return bool = true;
+                                }
+                            }
+                        });
+
+                    return bool
+                }],
+                ["nodePricing", async () => {
+
+                    let priceData
+
+                    await contracts.AC_MGR.methods.currentACpricingInfo()
+                        .call((error, result) => {
+                            if (!error) {
+                                return priceData = result
+                            }
+                        })
+
+                    return priceData
+                }],
+                ["nodeData", async (nodeId) => {
+                    if (!nodeId) return
+
+                    let nodeData = "Not Found";
+
+                    await contracts.AC_MGR.methods.getExtAC_data(nodeId)
+                        .call((error, result) => {
+                            if (!error) {
+                                return nodeData = {
+                                    name: result.name,
+                                    root: result.assetClassRoot,
+                                    custodyType: result.custodyType,
+                                    managementType: result.managementType,
+                                    discount: result.discount,
+                                    referenceAddress: result.referenceAddress,
+                                    extData: result["IPFS"],
+                                    storageProvider: result.storageProvider,
+                                    switches: result.switches,
+                                }
+                            }
+                        })
+
+                    return nodeData
+                }],
+                ["nodeName", async (nodeId) => {
+
+                    if (!nodeId) return
+
+                    let name = "Not Found"
+
+                    await contracts.AC_MGR.methods.getAC_name(nodeId)
+                        .call((error, result) => {
+                            if (!error) {
+                                return name = result
+                            }
+                        })
+
+                    return name;
+                }],
+                ["operationCost", async (nodeId, operationIndex) => {
+                    if (!nodeId || !operationIndex) return
+
+                    let costInfo = "Not Found"
+
+                    await contracts.AC_MGR.methods.getServiceCosts(nodeId, operationIndex)
+                        .call((error, result) => {
+                            if (!error) {
+                                return costInfo = {
+                                    total: web3Provider.utils.fromWei(result.rootPrice) + web3Provider.utils.fromWei(result.ACTHprice),
+                                    acth: web3Provider.utils.fromWei(result.ACTHprice),
+                                    root: web3Provider.utils.fromWei(result.rootPrice),
+                                }
+                            }
+                        })
+
+                    return costInfo;
+                }],
+                ["userType", async (nodeId, userHash) => {
+                    if (!nodeId || !userHash) return
+
+                    let typeId = "Not Found"
+
+                    await contracts.AC_MGR.methods.getUserType(nodeId, userHash)
+                        .call((error, result) => {
+                            if (!error) {
+                                return typeId = result;
+                            }
+                        })
+
+                    return typeId
+                }],
+                ["nodeId", async (name) => {
+                    if (!name) return
+
+                    let nodeId = "Not Found"
+
+                    await contracts.AC_MGR.methods.resolveAssetClass(name)
+                        .call((error, result) => {
+                            if (!error) {
+                                return nodeId = result
+                            }
+                        })
+
+                    return nodeId
+                }],
+                ["isSameRoot", async (nodeId1, nodeId2) => {
+                    if (!nodeId1 || nodeId2) return
+
+                    let bool = false;
+
+                    await contracts.AC_MGR.methods.isSameRootAC(nodeId1, nodeId2)
+                        .call((error, result) => {
+                            if (!error && result === "170") {
+                                return bool = true
+                            }
+                        })
+
+                    return bool
+                }],
+                ["escrowData", async (assetId) => {
+                    if (!assetId) return
+
+                    let escrowData = "Not Found"
+
+                    await contracts.ECR_MGR.methods.retrieveEscrowData(assetId)
+                        .call((error, result) => {
+                            if (!error) {
+                                return escrowData = result
+                            }
+                        })
+
+                    return escrowData
+
+                }],
+                ["escrowOwner", async (assetId) => {
+                    if (!assetId) return
+
+                    let ownerHash = "Not Found"
+
+                    await contracts.ECR_MGR.methods.retrieveEscrowOwner(assetId)
+                        .call((error, result) => {
+                            if (!error) {
+                                return ownerHash = result
+                            }
+                        })
+
+                    return ownerHash
+                }],
+                ["isRightsHolder", async (assetId, rightsHash) => {
+                    if (!assetId || !rightsHash) return
+
+                    let bool = false
+
+                    await contracts.STOR.methods._verifyRightsHolder(assetId, rightsHash)
+                        .call((error, result) => {
+                            if (!error && result === "170") {
+                                return bool = true
+                            }
+                        })
+
+                    return bool
+                }],
+                ["assetPriceData", async (assetId) => {
+                    if (!assetId) return
+
+                    let priceData = "Not Found"
+
+                    await contracts.STOR.methods.getPriceData(assetId)
+                        .call((error, result) => {
+                            if (!error) {
+                                return priceData = {
+                                    price: web3Provider.utils.fromWei(result["0"]),
+                                    currency: result["1"],
+                                }
+                            }
+                        })
+
+                    return priceData
+
+                }],
+                ["assetRecord", async (assetId) => {
+                    if (!assetId) return
+
+                    let record = "Not found"
+
+                    await contracts.STOR.methods.retrieveShortRecord(assetId)
+                        .call((error, result) => {
+                            if (!error) {
+                                record = {
+                                    id: assetId,
+                                    statusNum: result["0"],
+                                    forceModCount: result["1"],
+                                    nodeId: result["2"],
+                                    countPair: [result["3"], result["4"]],
+                                    mutableDataA: result["5"],
+                                    mutableDataB: result["6"],
+                                    engravingA: result["7"],
+                                    engravingB: result["8"],
+                                    numberOfTransfers: result["9"],
+                                }
+                            }
+                        })
+
+                    return record
+                }],
+                ["heldAssetAtIndex", async (address, index) => {
+                    if (!index || !address) return
+
+                    let assetId = "Not Found"
+                    
+                    await contracts.A_TKN.methods.tokenOfOwnerByIndex(address, index)
+                    .call((error, result) => {
+                        if (!error) {
+                            assetId = web3Provider.utils.numberToHex(result);
+                            while (assetId.length < 66) {
+                                assetId = assetId.substring(0, 2) + "0" + assetId.substring(2, assetId.length);
+                            }
+                        }
+                    })
+
+                    return assetId
+                }],
+                ["assetAtIndex", async (index) => {
+                    if (!index) return
+                    
+                    let assetId = "Not Found"
+                    
+                    await contracts.A_TKN.methods.tokenByIndex(index)
+                    .call((error, result) => {
+                        if(!error) {
+                            assetId = web3Provider.utils.numberToHex(result);
+                            while (assetId.length < 66) {
+                                assetId = assetId.substring(0, 2) + "0" + assetId.substring(2, assetId.length);
+                            }
+                        }
+                    })
+
+                    return assetId
+                }],
+                ["assetTokenExists", async (index) => {
+                    if (!index) return 
+
+                    let bool = false
+
+                    await contracts.A_TKN.methods.tokenExists(index)
+                    .call((error, result) => {
+                        if (!error && result === "170") {
+                            return bool = true
+                        }
+                    })
+
+                    return bool
+                }],
+                ["assetBalance", async (address) => {
+                    if(!address) return
+
+                    let assetBalance = "Not Found"
+
+                    await contracts.A_TKN.methods.balanceOf(address)
+                    .call((error, result) => {
+                        if (!error) {
+                            return assetBalance = result
+                        }
+                    })
+
+                    return assetBalance
+                }],
+                ["howManyAssets", async () => {
+                    
+                    let totalAssetSupply = "Not Found"
+
+                    await contracts.A_TKN.methods.totalSupply()
+                    .call((error, result) => {
+                        if (!error) {
+                            return totalAssetSupply = result
+                        }
+                    })
+
+                    return totalAssetSupply
+                }],
+                ["ownerOfAsset", async (assetId) => {
+                    if (!assetId) return 
+
+                    let ownerOfAsset = "Not Found"
+
+                    await contracts.A_TKN.methods.ownerOf(assetId)
+                    .call((error, result) => {
+                        if (!error) {
+                            return ownerOfAsset = result
+                        }
+                    })
+
+                    return ownerOfAsset
+                }],
+                ["prufBalance", async (address) => {
+                    if(!address) return
+                    
+                    let prufBalance = "Not Found"
+                    
+                    await contracts.UTIL_TKN.methods.balanceOf(address)
+                    .call((error, result) => {
+                        if (!error) {
+                            return prufBalance = web3Provider.utils.fromWei(result)  
+                        }
+                    })
+
+                    return prufBalance
+                }],
+                ["isColdWallet", async (address) => {
+                    if(!address) return
+                    
+                    let bool
+                    
+                    await contracts.UTIL_TKN.methods.isColdWallet(address)
+                    .call((error, result) => {
+                        if(!error && result === "170") {
+                            return bool = true
+                        }
+                    })
+
+                    return bool
+                }],
+                ["howManyPruf", async () => {
+                    
+                    let totalPrufSupply = "Now Found"
+                    
+                    await contracts.UTIL_TKN.methods.totalSupply()
+                    .call((error, result) => {
+                        if (!error) {
+                            return totalPrufSupply = result
+                        }
+                    })
+
+                    return totalPrufSupply
+                }],
+                ["nodeBalance", async (address) => {
+                    if (!address) return
+                    
+                    let nodeBalance = "Not Found"
+                    
+                    await contracts.AC_TKN.methods.balanceOf(address)
+                    .call((error, result) => {
+                        if (!error) {
+                            return nodeBalance = result
+                        }
+                    })
+
+                    return nodeBalance
+                }],
+                ["nodeExists", async (nodeId) => {
+                    if(!nodeId) return
+                    
+                    let bool = false
+                    
+                    await contracts.AC_TKN.methods.tokenExists(nodeId)
+                    .call((error, result) => {
+                        if (!error && result === "170") {
+                            return bool = true
+                        }
+                    })
+
+                    return bool
+                }],
+                ["heldNodeAtIndex", async (address, index) => {
+                    if(!index  || !address) return
+
+                    let nodeId = "Not Found"
+                    
+                    await contracts.AC_TKN.methods.tokenOfOwnerByIndex(address, index)
+                    .call((error, result) => {
+                        if (!error) {
+                            return nodeId = result
+                        }
+                    })
+
+                    return nodeId
+                }],
+                ["nodeAtIndex", async (index) => {
+                    if(!index) return
+                    
+                    let nodeId = "Not Found"
+                    
+                    await contracts.AC_TKN.methods.tokenByIndex(index)
+                    .call((error, result) => {
+                        if (!error) {
+                            return nodeId = result
+                        }
+                    })
+
+                    return nodeId
+                }],
+                ["howManyNodes", async () => {
+                    
+                    let totalNodeSupply = "Not Found"
+                    
+                    await contracts.AC_TKN.methods.totalSupply()
+                    .call((error, result) => {
+                        if (!error) {
+                            return totalNodeSupply = result
+                        }
+                    })
+
+                    return totalNodeSupply
+                }],
+                ["ownerOfNode", async (nodeId) => {
+                    if (!nodeId) return    
+                    
+                    let ownerOfNode = "Not Found"
+
+                    await contracts.AC_TKN.methods.ownerOf(nodeId)
+                    .call((error, result) => {
+                        if (!error) {
+                            return ownerOfNode = result
+                        }
+                    })
+
+                    return ownerOfNode
+                }],
+                ["holdsId", async (address) => {
+                    if (!address) return
+                    
+                    let bool = false
+                    
+                    await contracts.ID_TKN.methods.balanceOf(address)
+                    .call((error, result) => {
+                        if (!error && result === "1") {
+                            return bool = true
+                        }
+                    })
+
+                    return bool
+                }],
             ]
-        
+
             const txns = [
                 ["verifyRightsHash", contracts.STOR.methods.blockchainVerifyRightsHolder],
                 ["transferAsset", contracts.A_TKN.methods.safeTransferFrom],
@@ -13928,7 +14361,7 @@ class PRUF {
                 ["setColdWallet", contracts.UTIL_TKN.methods.setColdWallet],
                 ["unSetColdWallet", contracts.UTIL_TKN.methods.unSetColdWallet],
                 ["transferPruf", contracts.UTIL_TKN.methods.transferFrom],
-        
+
                 ["transferNode", contracts.AC_TKN.methods.safeTransferFrom],
                 ["setOperationCost", contracts.AC_MGR.methods.ACTH_setCosts],
                 ["purchaseNode", contracts.AC_MGR.methods.purchaseACnode],
@@ -13936,13 +14369,13 @@ class PRUF {
                 ["authorizeUser", contracts.AC_MGR.methods.addUser],
                 ["modifyNodeName", contracts.AC_MGR.methods.updateACname],
                 ["finalizeNode", contracts.AC_MGR.methods.updateACImmutable],
-        
+
                 //PARTY -- TEST RELEASE ONLY
                 ["getId", contracts.PARTY.methods.GET_ID],
                 ["getPruf", contracts.PARTY.methods.BUY_PRUF],
                 //
             ]
-        
+
             const utils = [
                 //generateIndex, generateRightsHash
                 ["isValidId", async (id) => {
@@ -13952,29 +14385,32 @@ class PRUF {
                         else if (id.toLowerCase().substring(0, 2) !== "0x") throw "tokenID must begin with '0x'"
                         else if (id.length !== 66) throw "tokenID must be 66 characters long"
                         else return true;
-        
+
                     }
-        
+
                     catch (err) {
                         console.error("PRUF_ERR:", err)
                         return false
                     }
-        
+
                 }],
                 ["ipfsFromB32", async (bytes32Hex) => {
+                    if (!bytes32Hex) return
                     const hashHex = "1220" + bytes32Hex.slice(2);
                     const hashBytes = Buffer.from(hashHex, "hex");
                     const hashStr = bs58.encode(hashBytes);
                     return hashStr;
                 }],
                 ["ipfsToB32", async (hash) => {
+                    if (!hash) return
                     let str = "0x" + bs58.decode(hash).slice(2).toString("hex");
                     return str;
                 }],
                 ["stringifyStatus", async (_status) => {
+                    if (!_status) return
                     let tempStat = "Not Recognized";
                     let statusId = String(_status)
-        
+
                     switch (statusId) {
                         case ("0"): tempStat = "No Status Set"; break
                         case ("1"): tempStat = "Transferable"; break
@@ -13998,43 +14434,99 @@ class PRUF {
                         case ("70"): tempStat = "Ready for Import"; break
                         default: console.error('PRUF_ERR: Status id "', statusId, '"not recognized.'); break
                     }
-        
+
                     return (tempStat)
                 }],
+
+                ["convertEscrowTime", async (rawTime, to) => {
+                    if (!rawTime || !to) return
+                    let time;
+                    switch (to) {
+                        case ("seconds"): time = rawTime; break
+                        case ("minutes"): time = rawTime * 60; break
+                        case ("hours"): time = rawTime * 3600; break
+                        case ("days"): time = rawTime * 86400; break
+                        case ("weeks"): time = rawTime * 604800; break
+                    }
+                    return time;
+                }],
+
+                ["tenThousandHashesOf", async (job) => {
+                    if (!job) return
+                    let tempHash = job
+
+                    for (let i = 0; i < 10000; i++) {
+                        tempHash = hashAlgo(tempHash)
+                    }
+
+                    return tempHash
+                }],
+
+                ["generateAssetID", async ({ type, make, model, serial }) => {
+                    if (!make || !model || !series || !serial) return console.error("PRUF_ERR: ID must contain all fields")
+
+                    let id = await hashAlgo(
+                        String(type).replace(/\s/g, ""),
+                        String(make).replace(/\s/g, ""),
+                        String(model).replace(/\s/g, ""),
+                        String(serial).replace(/\s/g, "")
+                    );
+
+                    return id
+
+                }],
+
+                ["generateSecureRgt", async (assetId, { first, middle, last, id, password }) => {
+                    let rgtRaw = await hashAlgo(
+                        String(first).replace(/\s/g, ""),
+                        String(middle).replace(/\s/g, ""),
+                        String(last).replace(/\s/g, ""),
+                        String(id).replace(/\s/g, ""),
+                        String(password).replace(/\s/g, "")
+                    );
+
+                    let rgt = await hashAlgo(assetId, rgtRaw)
+
+                    for (let i = 0; i < 10000; i++) {
+                        rgt = hashAlgo(rgt)
+                    }
+
+                    return rgt
+                }],
             ]
-        
+
             let callObj = {}, txObj = {}, utilObj = {};
-        
+
             const parseFunctions = async () => {
-        
+
                 for (const call of calls) {
                     //console.log(call)
                     callObj[call[0]] = call[1]
                 }
-        
+
                 for (const tx of txns) {
                     //console.log(txns)
                     txObj[tx[0]] = tx[1]
                 }
-        
+
                 for (const util of utils) {
                     //console.log(utils)
                     utilObj[util[0]] = util[1]
                 }
-        
+
             }
-        
-        
+
+
             await parseFunctions()
-                
-            
-            return { calls: callObj, methods: txObj, utils: utilObj };
+
+
+            return { get: callObj, do: txObj, utils: utilObj };
         }
 
         //this.provider = web3Provider;
 
         if (!web3Provider) throw "Web3 returned undefined. Get web3 before initializing PRUF"
-        
+
         else {
             try {
                 web3Provider.eth.net.getNetworkType().then((e) => {
@@ -14048,9 +14540,9 @@ class PRUF {
                                     try {
                                         assembleInterface(f).then((g) => {
                                             if (!g) throw "Interface returned undefined"
-                                            this.get = g.calls
+                                            this.get = g.get
                                             this.utils = g.utils
-                                            this.do = g.methods
+                                            this.do = g.do
                                         })
                                     }
                                     catch (err) {
