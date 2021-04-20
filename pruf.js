@@ -13890,7 +13890,7 @@ class PRUF {
                 }],
                 ["nodeNameAvailable", async (name) => {
 
-                    let bool;
+                    let bool = false;
 
                     await contracts.AC_MGR.methods
                         .resolveAssetClass(name)
@@ -13898,9 +13898,7 @@ class PRUF {
                             if (error) {
                                 console.log(error);
                             } else {
-                                if (Number(result) > 0) {
-                                    return bool = false;
-                                } else {
+                                if (Number(result) < 1) {
                                     return bool = true;
                                 }
                             }
@@ -13915,7 +13913,10 @@ class PRUF {
                     await contracts.AC_MGR.methods.currentACpricingInfo()
                         .call((error, result) => {
                             if (!error) {
-                                return priceData = result
+                                return priceData = {
+                                    currentNodeIndex: result["0"],
+                                    currentNodePrice: web3Provider.utils.fromWei(String(result["1"])),
+                                }
                             }
                         })
 
@@ -13930,6 +13931,7 @@ class PRUF {
                         .call((error, result) => {
                             if (!error) {
                                 return nodeData = {
+                                    id: nodeId,
                                     name: result.name,
                                     root: result.assetClassRoot,
                                     custodyType: result.custodyType,
@@ -13970,20 +13972,21 @@ class PRUF {
                             if (!error) {
                                 return costInfo = {
                                     total: web3Provider.utils.fromWei(result.rootPrice) + web3Provider.utils.fromWei(result.ACTHprice),
-                                    acth: web3Provider.utils.fromWei(result.ACTHprice),
+                                    node: web3Provider.utils.fromWei(result.ACTHprice),
                                     root: web3Provider.utils.fromWei(result.rootPrice),
+                                    beneficiary: result.ACTHaddress
                                 }
                             }
                         })
 
                     return costInfo;
                 }],
-                ["userType", async (nodeId, userHash) => {
-                    if (!nodeId || !userHash) return
+                ["userType", async (nodeId, address) => {
+                    if (!nodeId || !address) return
 
                     let typeId = "Not Found"
 
-                    await contracts.AC_MGR.methods.getUserType(nodeId, userHash)
+                    await contracts.AC_MGR.methods.getUserType(nodeId, web3Provider.utils.soliditySha3(address))
                         .call((error, result) => {
                             if (!error) {
                                 return typeId = result;
@@ -14089,7 +14092,7 @@ class PRUF {
                     await contracts.STOR.methods.retrieveShortRecord(assetId)
                         .call((error, result) => {
                             if (!error) {
-                                record = {
+                                return record = {
                                     id: assetId,
                                     statusNum: result["0"],
                                     forceModCount: result["1"],
@@ -14103,7 +14106,6 @@ class PRUF {
                                 }
                             }
                         })
-
                     return record
                 }],
                 ["heldAssetAtIndex", async (address, index) => {
@@ -14115,8 +14117,8 @@ class PRUF {
                     .call((error, result) => {
                         if (!error) {
                             assetId = web3Provider.utils.numberToHex(result);
-                            while (assetId.length < 66) {
-                                assetId = assetId.substring(0, 2) + "0" + assetId.substring(2, assetId.length);
+                            if (assetId.length < 66) {
+                                assetId = assetId.substring(0, 2) + String(10^(66-assetId.length)).substring(1) + assetId.substring(2, assetId.length);
                             }
                         }
                     })
@@ -14132,8 +14134,8 @@ class PRUF {
                     .call((error, result) => {
                         if(!error) {
                             assetId = web3Provider.utils.numberToHex(result);
-                            while (assetId.length < 66) {
-                                assetId = assetId.substring(0, 2) + "0" + assetId.substring(2, assetId.length);
+                            if(assetId.length < 66){
+                                assetId = assetId.substring(0, 2) + String(10^(66-assetId.length)).substring(1) + assetId.substring(2, assetId.length);
                             }
                         }
                     })
@@ -14361,7 +14363,6 @@ class PRUF {
                 ["setColdWallet", contracts.UTIL_TKN.methods.setColdWallet],
                 ["unSetColdWallet", contracts.UTIL_TKN.methods.unSetColdWallet],
                 ["transferPruf", contracts.UTIL_TKN.methods.transferFrom],
-
                 ["transferNode", contracts.AC_TKN.methods.safeTransferFrom],
                 ["setOperationCost", contracts.AC_MGR.methods.ACTH_setCosts],
                 ["purchaseNode", contracts.AC_MGR.methods.purchaseACnode],
