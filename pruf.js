@@ -13934,11 +13934,11 @@ class PRUF {
                                     root: result.assetClassRoot,
                                     custodyType: result.custodyType,
                                     managementType: result.managementType,
+                                    storageProvider: result.storageProvider,
                                     discount: result.discount,
                                     referenceAddress: result.referenceAddress,
-                                    extData: result["IPFS"],
-                                    storageProvider: result.storageProvider,
                                     switches: result.switches,
+                                    extData: result["IPFS"],
                                 }
                             }
                         })
@@ -13978,12 +13978,12 @@ class PRUF {
 
                     return costInfo;
                 }],
-                ["userType", async (nodeId, userHash) => {
+                ["userType", async (userHash, nodeId) => {
                     if (!nodeId || !userHash) return
 
                     let typeId = "Not Found"
 
-                    await contracts.AC_MGR.methods.getUserType(nodeId, userHash)
+                    await contracts.AC_MGR.methods.getUserType(userHash, nodeId)
                         .call((error, result) => {
                             if (!error) {
                                 return typeId = result;

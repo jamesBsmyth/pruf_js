@@ -55,14 +55,14 @@ Example Initialization
 mintAsset:
 ----------
 
-``pruf.do.mintAsset(assetIndex, rightsHash, nodeId, LifeCycleLimit, extData)``
+``pruf.do.mintAsset(assetId, rightsHash, nodeId, LifeCycleLimit, extData)``
 
 Mints an asset using the pruf protocol.
 
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
    
       * String|Bytes32
       * Hash built from individual inputs which is used to identify the asset on the network
@@ -94,15 +94,17 @@ Example usage
 .. code-block:: javascript 
    :linenos:
 
-   let _assetIndex = pruf.utils.generateIndex("input1", "input2", "input3", "input4");
-   let _rightsHash = pruf.utils.generateRightsHash(_assetIndex, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
+   //Example pruf-js code
+
+   let _assetId = pruf.utils.generateIndex("input1", "input2", "input3", "input4");
+   let _rightsHash = pruf.utils.generateRightsHash(_assetId, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
    let _nodeId = "10";
    let _lifeCycleLimit = "100000"
    let _extData = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd"
 
    pruf.do.mintAsset
    (
-      _assetIndex,
+      _assetId,
       _rightHolderHash,
       _nodeId,
       _lifeCycleLimit,
@@ -117,14 +119,14 @@ Example usage
 verifyRightsHash:
 -----------------
    
-   ``pruf.do.verifyRightsHash(assetIndex, rightsHash)``
+   ``pruf.do.verifyRightsHash(assetId, rightsHash)``
    
    Creates transaction which compares a submitted rightsHash to the rightsHash stored in asset record.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
    
       * String|Bytes32
       * Unique value which refers to an asset
@@ -140,12 +142,14 @@ Example usage
    
    .. code-block:: javascript 
       :linenos:
+
+      //Example pruf-js code
    
-      let assetIndex = pruf.utils.generateIndex("input1", "input2", "input3", "input4")
-      let rightsHash = pruf.utils.generateRightsHash(assetIndex, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
+      let assetId = pruf.utils.generateIndex("input1", "input2", "input3", "input4")
+      let rightsHash = pruf.utils.generateRightsHash(assetId, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
    
       pruf.do.verifyRightsHash(
-      _assetIndex, 
+      _assetId, 
       _rightsHash
       )
       .send({ from: props.addr })
@@ -157,7 +161,7 @@ Example usage
 transferAsset:
 -----------------
    
-   ``pruf.do.transferAsset(from, to, assetIndex)``
+   ``pruf.do.transferAsset(from, to, assetId)``
    
    Transfers an asset from one address to another.
    
@@ -174,7 +178,7 @@ Parameters
       * String|Address
       * Wallet public key to which user intends to send the asset
    
-   3. assetIndex
+   3. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -186,14 +190,16 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
+      //Example pruf-js code
+   
       let _from = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049";
       let _to = "0x9094CaDBF4d35ce5FeD92eb758909fB38F7fecb1";
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
 
       pruf.do.transferAsset(
       _from,
       _to,
-      _assetIndex
+      _assetId
       )
       .send({ from: props.addr })
       .on("receipt"()=>{
@@ -204,14 +210,14 @@ Example usage
 setAssetURI:
 -----------------
    
-   ``pruf.do.setAssetURI(assetIndex, newURI)``
+   ``pruf.do.setAssetURI(assetId, newURI)``
    
    Changes the asset token URI to specified value.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -228,11 +234,13 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      //Example pruf-js code
+
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _newURI = "Here is a new URI"
 
       pruf.do.setAssetURI(
-      _assetIndex,
+      _assetId,
       _newURI
       )
       .send({ from: props.addr })
@@ -244,14 +252,14 @@ Example usage
 discardAsset:
 -----------------
    
-   ``pruf.do.discardAsset(assetIndex)``
+   ``pruf.do.discardAsset(assetId)``
    
    Discards an asset
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -263,10 +271,12 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
 
       pruf.do.discardAsset(
-      _assetIndex,
+      _assetId,
       )
       .send({ from: props.addr })
       .on("receipt"()=>{
@@ -277,14 +287,14 @@ Example usage
 engraveAsset:
 -----------------
    
-   ``pruf.do.engraveAsset(assetIndex, inscription)``
+   ``pruf.do.engraveAsset(assetId, inscription)``
    
    Permanently inscribes an asset with an off-chain storage reference key
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -301,11 +311,13 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _inscription = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd"
 
       pruf.do.engraveAsset(
-      _assetIndex,
+      _assetId,
       _inscription
       )
       .send({ from: props.addr })
@@ -317,14 +329,14 @@ Example usage
 importAsset:
 -----------------
    
-   ``pruf.do.importAsset(assetIndex, newURI)``
+   ``pruf.do.importAsset(assetId, newURI)``
    
    Imports a currently exported asset into a new node of the same root.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -341,11 +353,13 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _newNode = "10"
 
       pruf.do.importAsset(
-      _assetIndex,
+      _assetId,
       _newNode
       )
       .send({ from: props.addr })
@@ -357,14 +371,14 @@ Example usage
 modifyRightsHash:
 ----------------------
    
-   ``pruf.do.modifyRightsHash(assetIndex, newRightsHash)``
+   ``pruf.do.modifyRightsHash(assetId, newRightsHash)``
    
    Changes the rightshash of the asset to reflect new data.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -381,11 +395,13 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
-      let _newHash = pruf.utils.generateRightsHash(_assetIndex, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      let _newHash = pruf.utils.generateRightsHash(_assetId, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
 
       pruf.do.modifyRightsHash(
-      _assetIndex,
+      _assetId,
       _newHash
       )
       .send({ from: props.addr })
@@ -397,14 +413,14 @@ Example usage
 decrementLifeCycle:
 -------------------
    
-   ``pruf.do.decrementLifeCycle(assetIndex, amount)``
+   ``pruf.do.decrementLifeCycle(assetId, amount)``
    
    Decrements the LifeCycle of an asset by a specified amount.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -421,11 +437,13 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _amount = "25";
 
       pruf.do.decrementLifeCycle(
-      _assetIndex,
+      _assetId,
       _amount
       )
       .send({ from: props.addr })
@@ -437,14 +455,14 @@ Example usage
 exportAsset:
 -----------------
    
-   ``pruf.do.exportAsset(assetIndex)``
+   ``pruf.do.exportAsset(assetId)``
    
    Exports an asset for import into another node.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -456,10 +474,12 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
 
       pruf.do.exportAsset(
-      _assetIndex,
+      _assetId,
       )
       .send({ from: props.addr })
       .on("receipt"()=>{
@@ -470,14 +490,14 @@ Example usage
 modifyAssetExtData:
 --------------------
    
-   ``pruf.do.modifyAssetExtData(assetIndex, newExtData)``
+   ``pruf.do.modifyAssetExtData(assetId, newExtData)``
    
    Changes an asset's mutable off-chain data key.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -494,11 +514,13 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _newExtData = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd";
 
       pruf.do.modifyAssetExtData(
-         _assetIndex,
+         _assetId,
          _newExtData
       )
       .send({ from: props.addr })
@@ -510,14 +532,14 @@ Example usage
 modifyAssetStatus:
 --------------------
    
-   ``pruf.do.modifyAssetStatus(assetIndex, newStatus)``
+   ``pruf.do.modifyAssetStatus(assetId, newStatus)``
    
    Changes an asset's active status.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -534,11 +556,13 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _newStatus = "51"; //'51' is the transferable status
 
       pruf.do.modifyAssetExtData(
-         _assetIndex,
+         _assetId,
          _newStatus
       )
       .send({ from: props.addr })
@@ -550,14 +574,14 @@ Example usage
 markAssetLostOrStolen:
 -----------------------
    
-   ``pruf.do.markAssetLostOrStolen(assetIndex, newStatus)``
+   ``pruf.do.markAssetLostOrStolen(assetId, newStatus)``
    
    Changes an asset's active status to lost or stolen.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -574,11 +598,13 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _newStatus = "53"; //'53' is the lost status
 
       pruf.do.markAssetLostOrStolen(
-         _assetIndex,
+         _assetId,
          _newStatus
       )
       .send({ from: props.addr })
@@ -590,14 +616,14 @@ Example usage
 redeemPipAsset:
 --------------------
    
-   ``pruf.do.redeemPipAsset(assetIndex, authCode, nodeId, rightsHash, LifeCycleLimit)``
+   ``pruf.do.redeemPipAsset(assetId, authCode, nodeId, rightsHash, LifeCycleLimit)``
    
    Redeems a PIP asset.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -628,14 +654,16 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
       let _authCode = "0x2ce8d04a9c35987429af538825cd2438cc5c5bb5dc427955f84daaa3ea105016";
       let _nodeId = "10";
-      let _rightsHash = pruf.utils.generateRightsHash(_assetIndex, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
+      let _rightsHash = pruf.utils.generateRightsHash(_assetId, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
       let _lifeCycleLimit = "100000";
 
       pruf.do.redeemPipAsset(
-         _assetIndex, 
+         _assetId, 
          _authCode, 
          _nodeId, 
          _rightsHash, 
@@ -650,14 +678,14 @@ Example usage
 mintPip:
 --------------------
    
-   ``pruf.do.mintPip(assetIndex, authCodeHash, nodeId)``
+   ``pruf.do.mintPip(assetId, authCodeHash, nodeId)``
    
    Redeems a PIP asset.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -678,12 +706,14 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
       let _authCode = "0x2ce8d04a9c35987429af538825cd2438cc5c5bb5dc427955f84daaa3ea105016";
       let _nodeId = "10";
 
       pruf.do.mintPip(
-         _assetIndex, 
+         _assetId, 
          _authCode, 
          _nodeId, 
       )
@@ -696,14 +726,14 @@ Example usage
 setForSale:
 --------------------
    
-   ``pruf.do.setForSale(assetIndex, price, currency, setTransferable)``
+   ``pruf.do.setForSale(assetId, price, currency, setTransferable)``
    
    Posts an asset for sale at given price.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -729,13 +759,15 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
       let _price = "100000000000000000000";
       let _currency = "2";
       let _setTransferable = "170"
 
       pruf.do.setForSale(
-         _assetIndex, 
+         _assetId, 
          _price, 
          _currency, 
          _setTransferable
@@ -749,14 +781,14 @@ Example usage
 unSetForSale:
 --------------------
    
-   ``pruf.do.unSetForSale(assetIndex)``
+   ``pruf.do.unSetForSale(assetId)``
    
    Removes sale price of an asset.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -767,10 +799,12 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
 
       pruf.do.unSetForSale(
-         _assetIndex, 
+         _assetId, 
       )
       .send({ from: props.addr })
       .on("receipt"()=>{
@@ -781,14 +815,14 @@ Example usage
 buyAsset:
 --------------------
    
-   ``pruf.do.buyAsset(assetIndex)``
+   ``pruf.do.buyAsset(assetId)``
    
    Purchases an asset which has been listed for sale.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -799,10 +833,12 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
 
       pruf.do.buyAsset(
-         _assetIndex, 
+         _assetId, 
       )
       .send({ from: props.addr })
       .on("receipt"()=>{
@@ -813,14 +849,14 @@ Example usage
 recycleAsset:
 --------------------
    
-   ``pruf.do.recycleAsset(assetIndex, rightsHash, nodeId)``
+   ``pruf.do.recycleAsset(assetId, rightsHash, nodeId)``
    
    Recycles a discarded asset token into the calling address.
    
 Parameters
 """""""""""
 
-   1. assetIndex
+   1. assetId
 
       * String|Bytes32
       * Unique value which refers to an asset
@@ -842,12 +878,14 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
-      let _assetIndex = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
-      let _rightsHash = pruf.utils.generateRightsHash(_assetIndex, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
+      //Example pruf-js code
+   
+      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
+      let _rightsHash = pruf.utils.generateRightsHash(_assetId, ["userInfo1", "userInfo2", "userInfo3", "userInfo4"]);
       let _nodeId = "10";
 
       pruf.do.recycleAsset(
-         _assetIndex, 
+         _assetId, 
          _rightsHash, 
          _nodeId
       )
@@ -875,6 +913,8 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
+      //Example pruf-js code
+   
       pruf.do.setColdWallet()
       .send({ from: props.addr })
       .on("receipt"()=>{
@@ -900,6 +940,8 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
+      //Example pruf-js code
+   
       pruf.do.unSetColdWallet()
       .send({ from: props.addr })
       .on("receipt"()=>{
@@ -939,6 +981,8 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
+      //Example pruf-js code
+   
       let _from = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049";
       let _to = "0x9094CaDBF4d35ce5FeD92eb758909fB38F7fecb1";
       let _amount = "100000000000000000000";
@@ -986,6 +1030,8 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
+      //Example pruf-js code
+   
       let _from = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049";
       let _to = "0x9094CaDBF4d35ce5FeD92eb758909fB38F7fecb1";
       let _nodeId = "10";
@@ -1037,6 +1083,9 @@ Example usage
    
    .. code-block:: javascript 
       :linenos:
+
+      //Example pruf-js code
+   
       let _nodeId = "10";
       let _operationIndex = "1";
       let _newCost = "100000000000000000000"; //100 whole tokens
@@ -1090,6 +1139,9 @@ Example usage
    
    .. code-block:: javascript 
       :linenos:
+
+      //Example pruf-js code
+   
       let _name = "Museum of Chicago";
       let _rootNode = "2";
       let _custodyType = "1"; // Custodial
@@ -1133,6 +1185,9 @@ Example usage
    
    .. code-block:: javascript 
       :linenos:
+
+      //Example pruf-js code
+   
       let _nodeId = "10";
       let _newExtendedConfig = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd";
 
@@ -1176,6 +1231,9 @@ Example usage
    
    .. code-block:: javascript 
       :linenos:
+
+      //Example pruf-js code
+   
       let _nodeId = "10";
       let _authAddressHash = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd";
       let _userType = "1"; // Custodial
@@ -1217,6 +1275,9 @@ Example usage
    
    .. code-block:: javascript 
       :linenos:
+
+      //Example pruf-js code
+   
       let _nodeId = "10";
       let _newName = "Hans' Curating Service"; // Custodial
 
@@ -1266,6 +1327,9 @@ Example usage
    
    .. code-block:: javascript 
       :linenos:
+
+      //Example pruf-js code
+   
       let _nodeId = "10";
       let _managementType = "1"; // Private
       let _storageProvider = "2" // Currently refers to Arweave
@@ -1302,6 +1366,8 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
+      //Example pruf-js code
+   
       pruf.do.getId()
       .send({ from: props.addr })
       .on("receipt"()=>{
@@ -1328,6 +1394,8 @@ Example usage
    .. code-block:: javascript 
       :linenos:
 
+      //Example pruf-js code
+   
       pruf.do.getPruf()
       .send({ from: props.addr value: 1000000000000000000})
       .on("receipt"()=>{
@@ -1340,26 +1408,23 @@ Example usage
 
 -------------------------------------------------------------------------------------------------
 
-getThing:
+assetRecordExists:
 ----------
 
-``pruf.get.getThing(params)``
+``pruf.get.assetRecordExists(assetId)``
 
-Brief Intro.
+Returns bool for asset existance at ID.
 
 Parameters
 """""""""""
-   1. param1
-   
-      * type
-      * Explanation  
+1. assetId - Bytes32
+* Hash built from individual inputs which is used to identify the asset on the network
 
 Returns
 """""""""""
-   1. Value1
+   1. Boolean
    
-      * type
-      * Explanation
+      * If returned value is true, the asset exists. If false, asset does not exist.
 
   
 Example usage
@@ -1368,11 +1433,370 @@ Example usage
 .. code-block:: javascript 
    :linenos:
 
-   //Example code
+   //Example pruf-js code
+
+   let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
+
+   pruf.get.assetRecordExists(
+      _assetId,
+   )
+   .then(e => {
+      console.log(e)
+      //Expected output true/false
+   }
+
+
+   
+nodeNameAvailable:
+----------
+
+``pruf.get.nodeNameAvailable(name)``
+
+Returns bool for node existance at name.
+
+Parameters
+"""""""""""
+1. name - String
+* Unique name for nodes used throughout the network
+
+Returns
+"""""""""""
+   1. Boolean
+   
+      * If returned value is true, the node name is available. If false, the name is already in use, therefore unavailable.
+
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _name = "Rolex";
+
+   pruf.get.nodeNameAvailable(
+      _name,
+   )
+   .then(e => {
+      console.log(e)
+      //Expected output true/false
+   }
 
 
 
+nodePricing:
+----------
 
+``pruf.get.nodePricing()``
+
+Returns object containing all current node pricing data.
+
+Parameters
+"""""""""""
+None
+
+Returns
+"""""""""""
+   1. Object
+      
+      * currentNodeIndex - uint256
+         * Current index position of nodes. Next node to be minted will be index (currentNodeIndex + 1).
+      * currentNodePrice - uint256
+         * Current Node price in PRUF (zero decimals).
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   pruf.get.nodePricing()
+   .then(e => {
+      console.log(e)
+      //Expected output {currentNodeIndex, currentNodePrice}
+   }
+
+
+
+nodeData:
+----------
+
+``pruf.get.nodeData(nodeId)``
+
+Returns object containing for all current node data.
+
+Parameters
+"""""""""""
+   1. nodeId - uint32
+   
+      * Index of desired node
+
+Returns
+"""""""""""
+   1. Object
+      
+      * name - string
+         * Current name of nodes.
+      * root - uint32
+         * Current root node of node.
+      * custodyType - uint8
+         * Current custody type of node.
+      * managementType - uint8
+         * Current management type of node.
+      * storageProvider - uint8
+         * Current storage provider of node.
+      * discount - uint32
+         * Current discount of node.
+      * referenceAddress - address
+         * Current reference address of node.
+      * switches - uint8
+         * Current switch data of node.
+      * extData - bytes32
+         * Current attatched extended data of node.
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   pruf.get.nodeData(
+   _nodeId
+   )
+   .then(e => {
+      console.log(e)
+      //Expected output {name, 
+      //                 root, 
+      //                 custodyType, 
+      //                 managementType, 
+      //                 storageProvider, 
+      //                 discount, 
+      //                 referenceAddress, 
+      //                 switches, 
+      //                 extData}
+   }
+
+
+  
+nodeName:
+----------
+
+``pruf.get.nodeName(nodeId)``
+
+Returns name attatched to nodeId.
+
+Parameters
+"""""""""""
+1. nodeId - uint32
+   
+   * Unique ID associated with a node
+
+Returns
+"""""""""""
+   String
+      
+      * Name attatched to desired node.
+
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _nodeId = "1000003";
+
+   pruf.get.nodeName(
+      _nodeId,
+   )
+   .then(e => {
+      console.log(e)
+      //Expected output: node name
+   }
+
+
+
+  
+operationCost:
+----------
+
+``pruf.get.operationCost(nodeId, operationIndex)``
+
+Returns all pricing info for a defined operation.
+
+Parameters
+"""""""""""
+1. nodeId - uint32
+   
+   * Unique ID associated with a node
+
+2. operationIndex - uint16
+
+   * Specified operation index
+
+Returns
+"""""""""""
+   Object
+      
+      * total
+         * Total cost(s) added together (node + root)
+      * node
+         * Cost of operation set by node holder
+      * root
+         * Cost of operation set by root node holder
+
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _nodeId = "1000003";
+   let _operationIndex = "1";
+
+   pruf.get.operationCost(
+      _nodeId,
+      _operationIndex
+   )
+   .then(e => {
+      console.log(e)
+      //Expected output {total, node, root}
+   }
+
+
+  
+userType:
+----------
+
+``pruf.get.userType(userHash, nodeId)``
+
+Returns user type for hashed address at a specified node.
+
+Parameters
+"""""""""""
+1. userHash - bytes32
+   
+   * web3.utils.soliditySha3(address of desired user)
+
+2. nodeId - uint32
+
+   * Unique ID associated with a node
+
+Returns
+"""""""""""
+   uint8
+      
+      * User type for requested address for specified node.
+
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _userHash = web3.utils.soliditySha3(0xa49811140e1d6f653dec28037be0924c811c4538)
+   let _nodeId = "1000003";
+
+   pruf.get.userType(
+      _userHash,
+      _nodeId,
+   )
+   .then(e => {
+      console.log(e)
+      //Expected output: uint8
+   }
+
+
+  
+nodeId:
+----------
+
+``pruf.get.nodeId(name)``
+
+Returns nodeId reletive to name provided.
+
+Parameters
+"""""""""""
+1. name - string
+   
+   * Name of node
+
+Returns
+"""""""""""
+   uint32
+      
+      * NodeId attatched to given node name.
+
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _name = "Rolex";
+
+   pruf.get.nodeId(_name)
+   .then(e => {
+      console.log(e)
+      //Expected output: uint32
+   }
+
+
+  
+isSameRoot:
+----------
+
+``pruf.get.isSameRoot(name)``
+
+Returns whether two nodes have the same root node.
+
+Parameters
+"""""""""""
+1. name - string
+   
+   * Name of node
+
+Returns
+"""""""""""
+   uint32
+      
+      * NodeId attatched to given node name.
+
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _name = "Rolex";
+
+   pruf.get.isSameRoot(_name)
+   .then(e => {
+      console.log(e)
+      //Expected output: uint32
+   }
+
+   
 .utils
 ============
 
@@ -1406,7 +1830,8 @@ Example usage
 .. code-block:: javascript 
    :linenos:
 
-   //Example code
+   //Example pruf-js code
+
 
 -------------------------------------------------------------------------------------------------
 
