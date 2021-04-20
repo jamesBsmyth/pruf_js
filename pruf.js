@@ -13974,7 +13974,8 @@ class PRUF {
                                     total: web3Provider.utils.fromWei(result.rootPrice) + web3Provider.utils.fromWei(result.ACTHprice),
                                     node: web3Provider.utils.fromWei(result.ACTHprice),
                                     root: web3Provider.utils.fromWei(result.rootPrice),
-                                    beneficiary: result.ACTHaddress
+                                    beneficiary: result.ACTHaddress,
+                                    rootBeneficiary: result.rootAddress
                                 }
                             }
                         })
