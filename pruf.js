@@ -13879,9 +13879,10 @@ class PRUF {
                     if (!assetId) return
                     let bool = false;
 
-                    await contracts.STOR.retrieveShortRecord(assetId)
+                    await contracts.STOR.methods
+                    .retrieveShortRecord(assetId)
                         .call((error, result) => {
-                            if (!errorresult["2"] !== "0") {
+                            if (!error && result["2"] !== "0") {
                                 return bool = true
                             }
                         })
@@ -13942,7 +13943,7 @@ class PRUF {
                                     switches: result.switches,
                                     extData: result["IPFS"],
                                 }
-                            }
+                            }   else return nodeData = {};
                         })
 
                     return nodeData
@@ -13965,7 +13966,7 @@ class PRUF {
                 ["operationCost", async (nodeId, operationIndex) => {
                     if (!nodeId || !operationIndex) return
 
-                    let costInfo = "Not Found"
+                    let costInfo = {}
 
                     await contracts.AC_MGR.methods.getServiceCosts(nodeId, operationIndex)
                         .call((error, result) => {
@@ -13975,7 +13976,7 @@ class PRUF {
                                     node: web3Provider.utils.fromWei(result.ACTHprice),
                                     root: web3Provider.utils.fromWei(result.rootPrice),
                                     beneficiary: result.ACTHaddress
-                                }
+                                } 
                             }
                         })
 
@@ -14026,7 +14027,7 @@ class PRUF {
                 ["escrowData", async (assetId) => {
                     if (!assetId) return
 
-                    let escrowData = "Not Found"
+                    let escrowData = {}
 
                     await contracts.ECR_MGR.methods.retrieveEscrowData(assetId)
                         .call((error, result) => {
@@ -14087,7 +14088,7 @@ class PRUF {
                 ["assetRecord", async (assetId) => {
                     if (!assetId) return
 
-                    let record = "Not found"
+                    let record = {}
 
                     await contracts.STOR.methods.retrieveShortRecord(assetId)
                         .call((error, result) => {
