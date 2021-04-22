@@ -13975,8 +13975,9 @@ class PRUF {
                                     total: web3Provider.utils.fromWei(result.rootPrice) + web3Provider.utils.fromWei(result.ACTHprice),
                                     node: web3Provider.utils.fromWei(result.ACTHprice),
                                     root: web3Provider.utils.fromWei(result.rootPrice),
-                                    beneficiary: result.ACTHaddress
-                                } 
+                                    beneficiary: result.ACTHaddress,
+                                    rootBeneficiary: result.rootAddress
+                                }
                             }
                         })
 
@@ -14032,7 +14033,11 @@ class PRUF {
                     await contracts.ECR_MGR.methods.retrieveEscrowData(assetId)
                         .call((error, result) => {
                             if (!error) {
-                                return escrowData = result
+                                return escrowData = {
+                                    escrowContractHash: result.controllingContractNameHash,
+                                    escrowOwnerHash: result.escrowOwnerAddressHash,
+                                    timelock: result.timelock
+                                }
                             }
                         })
 

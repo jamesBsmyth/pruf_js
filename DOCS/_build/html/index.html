@@ -1945,8 +1945,16 @@
 <p>Returns bool for asset existance at ID.</p>
 <div class="section" id="id61">
 <h3>Parameters<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
-<p>1. assetId - Bytes32
-* Hash built from individual inputs which is used to identify the asset on the network</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String|Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
 </div>
 <div class="section" id="returns">
 <h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
@@ -1954,6 +1962,7 @@
 <div><ol class="arabic simple">
 <li><p>Boolean</p>
 <ul class="simple">
+<li><p>True/False</p></li>
 <li><p>If returned value is true, the asset exists. If false, asset does not exist.</p></li>
 </ul>
 </li>
@@ -1993,8 +2002,16 @@
 <p>Returns bool for node existance at name.</p>
 <div class="section" id="id63">
 <h3>Parameters<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
-<p>1. name - String
-* Unique name for nodes used throughout the network</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>name</p>
+<ul class="simple">
+<li><p>String</p></li>
+<li><p>Name which will be associated with the node and assets minted under it</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
 </div>
 <div class="section" id="id64">
 <h3>Returns<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
@@ -2002,6 +2019,7 @@
 <div><ol class="arabic simple">
 <li><p>Boolean</p>
 <ul class="simple">
+<li><p>True/False</p></li>
 <li><p>If returned value is true, the node name is available. If false, the name is already in use, therefore unavailable.</p></li>
 </ul>
 </li>
@@ -2041,7 +2059,9 @@
 <p>Returns object containing all current node pricing data.</p>
 <div class="section" id="id66">
 <h3>Parameters<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
 </div>
 <div class="section" id="id67">
 <h3>Returns<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
@@ -2050,14 +2070,16 @@
 <li><p>Object</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>currentNodeIndex - uint256</dt><dd><ul>
+<dt>currentNodeIndex</dt><dd><ul>
+<li><p>Uint256</p></li>
 <li><p>Current index position of nodes. Next node to be minted will be index (currentNodeIndex + 1).</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>currentNodePrice - uint256</dt><dd><ul>
+<dt>currentNodePrice</dt><dd><ul>
+<li><p>Uint256</p></li>
 <li><p>Current Node price in PRUF (zero decimals).</p></li>
 </ul>
 </dd>
@@ -2095,9 +2117,10 @@
 <h3>Parameters<a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>nodeId - uint32</p>
+<li><p>nodeId</p>
 <ul class="simple">
-<li><p>Index of desired node</p></li>
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
 </ul>
 </li>
 </ol>
@@ -2110,63 +2133,72 @@
 <li><p>Object</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>name - string</dt><dd><ul>
-<li><p>Current name of nodes.</p></li>
+<dt>name</dt><dd><ul>
+<li><p>String</p></li>
+<li><p>Current name of node.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>root - uint32</dt><dd><ul>
+<dt>root</dt><dd><ul>
+<li><p>Uint32</p></li>
 <li><p>Current root node of node.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>custodyType - uint8</dt><dd><ul>
+<dt>custodyType</dt><dd><ul>
+<li><p>Uint8</p></li>
 <li><p>Current custody type of node.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>managementType - uint8</dt><dd><ul>
+<dt>managementType</dt><dd><ul>
+<li><p>Uint8</p></li>
 <li><p>Current management type of node.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>storageProvider - uint8</dt><dd><ul>
+<dt>storageProvider</dt><dd><ul>
+<li><p>Uint8</p></li>
 <li><p>Current storage provider of node.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>discount - uint32</dt><dd><ul>
+<dt>discount</dt><dd><ul>
+<li><p>Uint32</p></li>
 <li><p>Current discount of node.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>referenceAddress - address</dt><dd><ul>
+<dt>referenceAddress</dt><dd><ul>
+<li><p>Address</p></li>
 <li><p>Current reference address of node.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>switches - uint8</dt><dd><ul>
+<dt>switches</dt><dd><ul>
+<li><p>Uint8</p></li>
 <li><p>Current switch data of node.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>extData - bytes32</dt><dd><ul>
+<dt>extData</dt><dd><ul>
+<li><p>Bytes32</p></li>
 <li><p>Current attatched extended data of node.</p></li>
 </ul>
 </dd>
@@ -2193,13 +2225,9 @@
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
 
-<span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">nodeData</span><span class="p">(</span>
-<span class="nx">_nodeId</span>
-<span class="p">)</span>
+<span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">nodeData</span><span class="p">(</span><span class="nx">_nodeId</span><span class="p">)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
    <span class="c1">//Expected output {name,</span>
@@ -2222,47 +2250,47 @@
 <p>Returns name attatched to nodeId.</p>
 <div class="section" id="id72">
 <h3>Parameters<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li><p>nodeId - uint32</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>nodeId</p>
 <ul class="simple">
-<li><p>Unique ID associated with a node</p></li>
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
 </ul>
 </li>
 </ol>
+</div></blockquote>
 </div>
 <div class="section" id="id73">
 <h3>Returns<a class="headerlink" href="#id73" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>String</p>
-<blockquote>
-<div><ul class="simple">
+<div><ol class="arabic simple">
+<li><p>String</p>
+<ul class="simple">
 <li><p>Name attatched to desired node.</p></li>
 </ul>
-</div></blockquote>
+</li>
+</ol>
 </div></blockquote>
 </div>
 <div class="section" id="id74">
 <h3>Example usage<a class="headerlink" href="#id74" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
 
 <span class="kd">let</span> <span class="nx">_nodeId</span> <span class="o">=</span> <span class="s2">&quot;1000003&quot;</span><span class="p">;</span>
 
-<span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">(</span>
-   <span class="nx">_nodeId</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">(</span><span class="nx">_nodeId</span><span class="p">,)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-   <span class="c1">//Expected output: node name</span>
+   <span class="c1">//Expected output: String</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -2274,27 +2302,32 @@
 <p>Returns all pricing info for a defined operation.</p>
 <div class="section" id="id75">
 <h3>Parameters<a class="headerlink" href="#id75" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li><p>nodeId - uint32</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>nodeId</p>
 <ul class="simple">
-<li><p>Unique ID associated with a node</p></li>
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
 </ul>
 </li>
-<li><p>operationIndex - uint16</p>
+<li><p>operationIndex</p>
 <ul class="simple">
-<li><p>Specified operation index</p></li>
+<li><p>String|Uint16</p></li>
+<li><p>Index used to catergorize operation costs throughout the PRUF network.</p></li>
 </ul>
 </li>
 </ol>
+</div></blockquote>
 </div>
 <div class="section" id="id76">
 <h3>Returns<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>Object</p>
-<blockquote>
-<div><ul class="simple">
+<div><ol class="arabic simple">
+<li><p>Object</p>
+<ul class="simple">
 <li><dl class="simple">
 <dt>total</dt><dd><ul>
+<li><p>Uint</p></li>
 <li><p>Total cost(s) added together (node + root)</p></li>
 </ul>
 </dd>
@@ -2302,20 +2335,39 @@
 </li>
 <li><dl class="simple">
 <dt>node</dt><dd><ul>
-<li><p>Cost of operation set by node holder</p></li>
+<li><p>Uint256</p></li>
+<li><p>Cost of operation set by node holder.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>root</dt><dd><ul>
-<li><p>Cost of operation set by root node holder</p></li>
+<li><p>Uint256</p></li>
+<li><p>Cost of operation set by root node holder.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>beneficiary</dt><dd><ul>
+<li><p>Address</p></li>
+<li><p>Beneficiary address set by node holder to recieve node rewards.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>rootBeneficiary</dt><dd><ul>
+<li><p>Address</p></li>
+<li><p>Beneficiary address set by root node holder to recieve root node rewards.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-</div></blockquote>
+</li>
+</ol>
 </div></blockquote>
 </div>
 <div class="section" id="id77">
@@ -2343,7 +2395,7 @@
 <span class="p">)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-   <span class="c1">//Expected output {total, node, root}</span>
+   <span class="c1">//Expected output {total, node, root, beneficiary, rootBeneficiary}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -2351,32 +2403,39 @@
 </div>
 <div class="section" id="usertype">
 <h2>userType:<a class="headerlink" href="#usertype" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pruf.get.userType(userHash,</span> <span class="pre">nodeId)</span></code></p>
-<p>Returns user type for hashed address at a specified node.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.userType(address,</span> <span class="pre">nodeId)</span></code></p>
+<p>Returns user type for address at a specified node.</p>
 <div class="section" id="id78">
 <h3>Parameters<a class="headerlink" href="#id78" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li><p>userHash - bytes32</p>
-<ul class="simple">
-<li><p>web3.utils.soliditySha3(address of desired user)</p></li>
+<blockquote>
+<div><ol class="arabic">
+<li><p>address</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>String|Address</p></li>
+<li><p>Address of node authorized user</p></li>
 </ul>
+</div></blockquote>
 </li>
-<li><p>nodeId - uint32</p>
+<li><p>nodeId</p>
 <ul class="simple">
-<li><p>Unique ID associated with a node</p></li>
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
 </ul>
 </li>
 </ol>
+</div></blockquote>
 </div>
 <div class="section" id="id79">
 <h3>Returns<a class="headerlink" href="#id79" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>uint8</p>
-<blockquote>
-<div><ul class="simple">
+<div><ol class="arabic simple">
+<li><p>Uint8</p>
+<ul class="simple">
 <li><p>User type for requested address for specified node.</p></li>
 </ul>
-</div></blockquote>
+</li>
+</ol>
 </div></blockquote>
 </div>
 <div class="section" id="id80">
@@ -2395,16 +2454,16 @@
 <span class="normal">12</span>
 <span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
 
-<span class="kd">let</span> <span class="nx">_userHash</span> <span class="o">=</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">soliditySha3</span><span class="p">(</span><span class="mh">0xa49811140e1d6f653dec28037be0924c811c4538</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nx">_address</span> <span class="o">=</span> <span class="s2">&quot;0xa49811140e1d6f653dec28037be0924c811c4538&quot;</span>
 <span class="kd">let</span> <span class="nx">_nodeId</span> <span class="o">=</span> <span class="s2">&quot;1000003&quot;</span><span class="p">;</span>
 
 <span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">userType</span><span class="p">(</span>
-   <span class="nx">_userHash</span><span class="p">,</span>
+   <span class="nx">address</span><span class="p">,</span>
    <span class="nx">_nodeId</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-   <span class="c1">//Expected output: uint8</span>
+   <span class="c1">//Expected output: Uint8</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -2416,23 +2475,27 @@
 <p>Returns nodeId reletive to name provided.</p>
 <div class="section" id="id81">
 <h3>Parameters<a class="headerlink" href="#id81" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li><p>name - string</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>name</p>
 <ul class="simple">
+<li><p>String</p></li>
 <li><p>Name of node</p></li>
 </ul>
 </li>
 </ol>
+</div></blockquote>
 </div>
 <div class="section" id="id82">
 <h3>Returns<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>uint32</p>
-<blockquote>
-<div><ul class="simple">
+<div><ol class="arabic simple">
+<li><p>Uint32</p>
+<ul class="simple">
 <li><p>NodeId attatched to given node name.</p></li>
 </ul>
-</div></blockquote>
+</li>
+</ol>
 </div></blockquote>
 </div>
 <div class="section" id="id83">
@@ -2452,7 +2515,7 @@
 <span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">nodeId</span><span class="p">(</span><span class="nx">_name</span><span class="p">)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-   <span class="c1">//Expected output: uint32</span>
+   <span class="c1">//Expected output: Uint32</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -2460,47 +2523,60 @@
 </div>
 <div class="section" id="issameroot">
 <h2>isSameRoot:<a class="headerlink" href="#issameroot" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pruf.get.isSameRoot(name)</span></code></p>
-<p>Returns whether two nodes have the same root node.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.isSameRoot(nodeId1,</span> <span class="pre">nodeId2)</span></code></p>
+<p>Returns whether two nodes are connected to the same root node.</p>
 <div class="section" id="id84">
 <h3>Parameters<a class="headerlink" href="#id84" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li><p>name - string</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>nodeId1</p>
 <ul class="simple">
-<li><p>Name of node</p></li>
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
+</ul>
+</li>
+<li><p>nodeId2</p>
+<ul class="simple">
+<li><p>String|Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
 </ul>
 </li>
 </ol>
+</div></blockquote>
 </div>
 <div class="section" id="id85">
 <h3>Returns<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>uint32</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>NodeId attatched to given node name.</p></li>
+<div><ol class="arabic simple">
+<li><p>Boolean</p>
+<ul class="simple">
+<li><p>True/False</p></li>
+<li><p>If true, both nodes have the same root node. If false, the nodes have different root nodes.</p></li>
 </ul>
-</div></blockquote>
+</li>
+</ol>
 </div></blockquote>
 </div>
 <div class="section" id="id86">
 <h3>Example usage<a class="headerlink" href="#id86" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
 
-<span class="kd">let</span> <span class="nx">_name</span> <span class="o">=</span> <span class="s2">&quot;Rolex&quot;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">_nodeId1</span> <span class="o">=</span> <span class="s2">&quot;1000003&quot;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">_nodeId2</span> <span class="o">=</span> <span class="s2">&quot;1000004&quot;</span><span class="p">;</span>
 
-<span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">isSameRoot</span><span class="p">(</span><span class="nx">_name</span><span class="p">)</span>
+<span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">isSameRoot</span><span class="p">(</span><span class="nx">nodeId1</span><span class="p">,</span> <span class="nx">nodeId2</span><span class="p">)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-   <span class="c1">//Expected output: uint32</span>
+   <span class="c1">//Expected output: True/False</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>

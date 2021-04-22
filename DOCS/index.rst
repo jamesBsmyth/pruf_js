@@ -1417,13 +1417,16 @@ Returns bool for asset existance at ID.
 
 Parameters
 """""""""""
-1. assetId - Bytes32
-* Hash built from individual inputs which is used to identify the asset on the network
+   1. assetId
+   
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
 
 Returns
 """""""""""
    1. Boolean
    
+      * True/False
       * If returned value is true, the asset exists. If false, asset does not exist.
 
   
@@ -1456,13 +1459,16 @@ Returns bool for node existance at name.
 
 Parameters
 """""""""""
-1. name - String
-* Unique name for nodes used throughout the network
+   1. name
+
+      * String
+      * Name which will be associated with the node and assets minted under it
 
 Returns
 """""""""""
    1. Boolean
    
+      * True/False
       * If returned value is true, the node name is available. If false, the name is already in use, therefore unavailable.
 
   
@@ -1495,15 +1501,17 @@ Returns object containing all current node pricing data.
 
 Parameters
 """""""""""
-None
+   None
 
 Returns
 """""""""""
    1. Object
       
-      * currentNodeIndex - uint256
+      * currentNodeIndex 
+         * Uint256
          * Current index position of nodes. Next node to be minted will be index (currentNodeIndex + 1).
-      * currentNodePrice - uint256
+      * currentNodePrice
+         * Uint256
          * Current Node price in PRUF (zero decimals).
   
 Example usage
@@ -1531,31 +1539,41 @@ Returns object containing for all current node data.
 
 Parameters
 """""""""""
-   1. nodeId - uint32
-   
-      * Index of desired node
+   1. nodeId
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
 
 Returns
 """""""""""
    1. Object
       
-      * name - string
-         * Current name of nodes.
-      * root - uint32
+      * name 
+         * String
+         * Current name of node.
+      * root 
+         * Uint32
          * Current root node of node.
-      * custodyType - uint8
+      * custodyType
+         * Uint8
          * Current custody type of node.
-      * managementType - uint8
+      * managementType
+         * Uint8
          * Current management type of node.
-      * storageProvider - uint8
+      * storageProvider
+         * Uint8
          * Current storage provider of node.
-      * discount - uint32
+      * discount
+         * Uint32
          * Current discount of node.
-      * referenceAddress - address
+      * referenceAddress
+         * Address
          * Current reference address of node.
-      * switches - uint8
+      * switches
+         * Uint8
          * Current switch data of node.
-      * extData - bytes32
+      * extData 
+         * Bytes32
          * Current attatched extended data of node.
   
 Example usage
@@ -1566,9 +1584,7 @@ Example usage
 
    //Example pruf-js code
 
-   pruf.get.nodeData(
-   _nodeId
-   )
+   pruf.get.nodeData(_nodeId)
    .then(e => {
       console.log(e)
       //Expected output {name, 
@@ -1593,14 +1609,15 @@ Returns name attatched to nodeId.
 
 Parameters
 """""""""""
-1. nodeId - uint32
-   
-   * Unique ID associated with a node
+   1. nodeId
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
 
 Returns
 """""""""""
-   String
-      
+   1. String
+   
       * Name attatched to desired node.
 
   
@@ -1614,12 +1631,10 @@ Example usage
 
    let _nodeId = "1000003";
 
-   pruf.get.nodeName(
-      _nodeId,
-   )
+   pruf.get.nodeName(_nodeId,)
    .then(e => {
       console.log(e)
-      //Expected output: node name
+      //Expected output: String
    }
 
 
@@ -1634,24 +1649,35 @@ Returns all pricing info for a defined operation.
 
 Parameters
 """""""""""
-1. nodeId - uint32
-   
-   * Unique ID associated with a node
+   1. nodeId
 
-2. operationIndex - uint16
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
 
-   * Specified operation index
+   2. operationIndex 
+
+      * String|Uint16
+      * Index used to catergorize operation costs throughout the PRUF network.
 
 Returns
 """""""""""
-   Object
+   1. Object
       
       * total
+         * Uint
          * Total cost(s) added together (node + root)
       * node
-         * Cost of operation set by node holder
+         * Uint256
+         * Cost of operation set by node holder.
       * root
-         * Cost of operation set by root node holder
+         * Uint256  
+         * Cost of operation set by root node holder.
+      * beneficiary
+         * Address
+         * Beneficiary address set by node holder to recieve node rewards.
+      * rootBeneficiary
+         * Address
+         * Beneficiary address set by root node holder to recieve root node rewards.
 
   
 Example usage
@@ -1671,7 +1697,7 @@ Example usage
    )
    .then(e => {
       console.log(e)
-      //Expected output {total, node, root}
+      //Expected output {total, node, root, beneficiary, rootBeneficiary}
    }
 
 
@@ -1679,23 +1705,25 @@ Example usage
 userType:
 ----------
 
-``pruf.get.userType(userHash, nodeId)``
+``pruf.get.userType(address, nodeId)``
 
-Returns user type for hashed address at a specified node.
+Returns user type for address at a specified node.
 
 Parameters
 """""""""""
-1. userHash - bytes32
+   1. address
    
-   * web3.utils.soliditySha3(address of desired user)
+         * String|Address
+         * Address of node authorized user
 
-2. nodeId - uint32
+   2. nodeId
 
-   * Unique ID associated with a node
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
 
 Returns
 """""""""""
-   uint8
+   1. Uint8
       
       * User type for requested address for specified node.
 
@@ -1708,16 +1736,16 @@ Example usage
 
    //Example pruf-js code
 
-   let _userHash = web3.utils.soliditySha3(0xa49811140e1d6f653dec28037be0924c811c4538)
+   let _address = "0xa49811140e1d6f653dec28037be0924c811c4538"
    let _nodeId = "1000003";
 
    pruf.get.userType(
-      _userHash,
+      address,
       _nodeId,
    )
    .then(e => {
       console.log(e)
-      //Expected output: uint8
+      //Expected output: Uint8
    }
 
 
@@ -1731,13 +1759,14 @@ Returns nodeId reletive to name provided.
 
 Parameters
 """""""""""
-1. name - string
+   1. name
    
-   * Name of node
+      * String
+      * Name of node
 
 Returns
 """""""""""
-   uint32
+   1. Uint32
       
       * NodeId attatched to given node name.
 
@@ -1755,7 +1784,7 @@ Example usage
    pruf.get.nodeId(_name)
    .then(e => {
       console.log(e)
-      //Expected output: uint32
+      //Expected output: Uint32
    }
 
 
@@ -1763,21 +1792,28 @@ Example usage
 isSameRoot:
 ----------
 
-``pruf.get.isSameRoot(name)``
+``pruf.get.isSameRoot(nodeId1, nodeId2)``
 
-Returns whether two nodes have the same root node.
+Returns whether two nodes are connected to the same root node.
 
 Parameters
 """""""""""
-1. name - string
-   
-   * Name of node
+   1. nodeId1
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
+
+   2. nodeId2
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
 
 Returns
 """""""""""
-   uint32
+   1. Boolean
       
-      * NodeId attatched to given node name.
+      * True/False
+      * If true, both nodes have the same root node. If false, the nodes have different root nodes.
 
   
 Example usage
@@ -1788,12 +1824,55 @@ Example usage
 
    //Example pruf-js code
 
-   let _name = "Rolex";
+   let _nodeId1 = "1000003";
+   let _nodeId2 = "1000004";
 
-   pruf.get.isSameRoot(_name)
+   pruf.get.isSameRoot(nodeId1, nodeId2)
    .then(e => {
       console.log(e)
-      //Expected output: uint32
+      //Expected output: True/False
+   }
+
+
+  
+   escrowData:
+----------
+
+``pruf.get.escrowData(assetId)``
+
+Returns escrow data attatched to an asset.
+
+Parameters
+"""""""""""
+   1. assetId
+   
+   * String|Bytes32
+   * Hash built from individual inputs which is used to identify the asset on the network.
+
+Returns
+"""""""""""
+   1. Object
+      
+      * escrowContractHash
+         * Bytes32
+         * .
+
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _nodeId1 = "1000003";
+   let _nodeId2 = "1000004";
+
+   pruf.get.escrowData(nodeId1, nodeId2)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
    }
 
    
