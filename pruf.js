@@ -13868,15 +13868,15 @@ class PRUF {
         }
 
         const assembleInterface = async (contracts) => {
-            if (!contracts) return console.log("%c PRUF_ERR: Failed to init", "color: orange, font-weight: bold")
+            if (!contracts) return console.log("%c PRUF_ERR: Failed to init", "color: yellow, font-weight: bold")
             //@dev add decorate functions, custodialApp, verify, wrap
 
             const hashAlgo = web3Provider.utils.soliditySha3;
 
             const calls = [
                 ["assetRecordExists", async (assetId) => {
-
-                    if (!assetId) return
+                    if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
+                    
                     let bool = false;
 
                     await contracts.STOR.methods
@@ -13890,6 +13890,7 @@ class PRUF {
                     return bool
                 }],
                 ["nodeNameAvailable", async (name) => {
+                    if (!name) return console.error(`PRUF_ERR: Invalid input: ${name}`);
 
                     let bool = false;
 
@@ -13924,7 +13925,7 @@ class PRUF {
                     return priceData
                 }],
                 ["nodeData", async (nodeId) => {
-                    if (!nodeId) return
+                    if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
 
                     let nodeData = "Not Found";
 
@@ -13949,8 +13950,7 @@ class PRUF {
                     return nodeData
                 }],
                 ["nodeName", async (nodeId) => {
-
-                    if (!nodeId) return
+                    if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
 
                     let name = "Not Found"
 
@@ -13964,8 +13964,8 @@ class PRUF {
                     return name;
                 }],
                 ["operationCost", async (nodeId, operationIndex) => {
-                    if (!nodeId || !operationIndex) return
-
+                    if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
+                    if (!operationIndex) return console.error(`PRUF_ERR: Invalid input: ${operationIndex}`);
                     let costInfo = {}
 
                     await contracts.AC_MGR.methods.getServiceCosts(nodeId, operationIndex)
@@ -13975,7 +13975,6 @@ class PRUF {
                                     total: web3Provider.utils.fromWei(result.rootPrice) + web3Provider.utils.fromWei(result.ACTHprice),
                                     node: web3Provider.utils.fromWei(result.ACTHprice),
                                     root: web3Provider.utils.fromWei(result.rootPrice),
-                                    beneficiary: result.ACTHaddress,
                                     rootBeneficiary: result.rootAddress
                                 }
                             }
@@ -13984,7 +13983,8 @@ class PRUF {
                     return costInfo;
                 }],
                 ["userType", async (address, nodeId) => {
-                    if (!nodeId || !address) return
+                    if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
+                    if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
 
                     let typeId = "Not Found"
 
@@ -13998,7 +13998,7 @@ class PRUF {
                     return typeId
                 }],
                 ["nodeId", async (name) => {
-                    if (!name) return
+                    if (!name) return console.error(`PRUF_ERR: Invalid input: ${name}`);
 
                     let nodeId = "Not Found"
 
@@ -14012,7 +14012,8 @@ class PRUF {
                     return nodeId
                 }],
                 ["isSameRoot", async (nodeId1, nodeId2) => {
-                    if (!nodeId1 || nodeId2) return
+                    if (!nodeId1) return console.error(`PRUF_ERR: Invalid input: ${nodeId1}`);
+                    if(!nodeId2) return console.error(`PRUF_ERR: Invalid input: ${nodeId2}`);
 
                     let bool = false;
 
@@ -14026,7 +14027,7 @@ class PRUF {
                     return bool
                 }],
                 ["escrowData", async (assetId) => {
-                    if (!assetId) return
+                    if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
 
                     let escrowData = {}
 
@@ -14045,7 +14046,7 @@ class PRUF {
 
                 }],
                 ["escrowOwner", async (assetId) => {
-                    if (!assetId) return
+                    if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
 
                     let ownerHash = "Not Found"
 
@@ -14059,7 +14060,8 @@ class PRUF {
                     return ownerHash
                 }],
                 ["isRightsHolder", async (assetId, rightsHash) => {
-                    if (!assetId || !rightsHash) return
+                    if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
+                    if (!rightsHash) return console.error(`PRUF_ERR: Invalid input: ${rightsHash}`);
 
                     let bool = false
 
@@ -14073,7 +14075,7 @@ class PRUF {
                     return bool
                 }],
                 ["assetPriceData", async (assetId) => {
-                    if (!assetId) return
+                    if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
 
                     let priceData = "Not Found"
 
@@ -14091,7 +14093,7 @@ class PRUF {
 
                 }],
                 ["assetRecord", async (assetId) => {
-                    if (!assetId) return
+                    if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
 
                     let record = {}
 
@@ -14115,7 +14117,8 @@ class PRUF {
                     return record
                 }],
                 ["heldAssetAtIndex", async (address, index) => {
-                    if (!index || !address) return
+                    if (!index) return console.error(`PRUF_ERR: Invalid input: ${index}`);
+                    if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
 
                     let assetId = "Not Found"
                     
@@ -14132,7 +14135,7 @@ class PRUF {
                     return assetId
                 }],
                 ["assetAtIndex", async (index) => {
-                    if (!index) return
+                    if (!index) return console.error(`PRUF_ERR: Invalid input: ${index}`);
                     
                     let assetId = "Not Found"
                     
@@ -14149,7 +14152,7 @@ class PRUF {
                     return assetId
                 }],
                 ["assetTokenExists", async (index) => {
-                    if (!index) return 
+                    if (!index) return console.error(`PRUF_ERR: Invalid input: ${index}`);
 
                     let bool = false
 
@@ -14163,7 +14166,7 @@ class PRUF {
                     return bool
                 }],
                 ["assetBalance", async (address) => {
-                    if(!address) return
+                    if(!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
 
                     let assetBalance = "Not Found"
 
@@ -14190,7 +14193,7 @@ class PRUF {
                     return totalAssetSupply
                 }],
                 ["ownerOfAsset", async (assetId) => {
-                    if (!assetId) return 
+                    if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
 
                     let ownerOfAsset = "Not Found"
 
@@ -14204,7 +14207,7 @@ class PRUF {
                     return ownerOfAsset
                 }],
                 ["prufBalance", async (address) => {
-                    if(!address) return
+                    if(!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
                     
                     let prufBalance = "Not Found"
                     
@@ -14218,7 +14221,7 @@ class PRUF {
                     return prufBalance
                 }],
                 ["isColdWallet", async (address) => {
-                    if(!address) return
+                    if(!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
                     
                     let bool
                     
@@ -14245,7 +14248,7 @@ class PRUF {
                     return totalPrufSupply
                 }],
                 ["nodeBalance", async (address) => {
-                    if (!address) return
+                    if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
                     
                     let nodeBalance = "Not Found"
                     
@@ -14259,7 +14262,7 @@ class PRUF {
                     return nodeBalance
                 }],
                 ["nodeExists", async (nodeId) => {
-                    if(!nodeId) return
+                    if(!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
                     
                     let bool = false
                     
@@ -14273,7 +14276,8 @@ class PRUF {
                     return bool
                 }],
                 ["heldNodeAtIndex", async (address, index) => {
-                    if(!index  || !address) return
+                    if (!index) return console.error(`PRUF_ERR: Invalid input: ${index}`);
+                    if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
 
                     let nodeId = "Not Found"
                     
@@ -14287,7 +14291,7 @@ class PRUF {
                     return nodeId
                 }],
                 ["nodeAtIndex", async (index) => {
-                    if(!index) return
+                    if(!index) return console.error(`PRUF_ERR: Invalid input: ${index}`);
                     
                     let nodeId = "Not Found"
                     
@@ -14314,7 +14318,7 @@ class PRUF {
                     return totalNodeSupply
                 }],
                 ["ownerOfNode", async (nodeId) => {
-                    if (!nodeId) return    
+                    if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);    
                     
                     let ownerOfNode = "Not Found"
 
@@ -14328,7 +14332,7 @@ class PRUF {
                     return ownerOfNode
                 }],
                 ["holdsId", async (address) => {
-                    if (!address) return
+                    if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
                     
                     let bool = false
                     
@@ -14402,19 +14406,19 @@ class PRUF {
 
                 }],
                 ["ipfsFromB32", async (bytes32Hex) => {
-                    if (!bytes32Hex) return
+                    if (!bytes32Hex) return console.error(`PRUF_ERR: Invalid input: ${bytes32Hex}`);
                     const hashHex = "1220" + bytes32Hex.slice(2);
                     const hashBytes = Buffer.from(hashHex, "hex");
                     const hashStr = bs58.encode(hashBytes);
                     return hashStr;
                 }],
                 ["ipfsToB32", async (hash) => {
-                    if (!hash) return
+                    if (!hash) return console.error(`PRUF_ERR: Invalid input: ${hash}`);
                     let str = "0x" + bs58.decode(hash).slice(2).toString("hex");
                     return str;
                 }],
                 ["stringifyStatus", async (_status) => {
-                    if (!_status) return
+                    if (!_status) return console.error('PRUF_ERR: Status id "', statusId, '"not recognized.');
                     let tempStat = "Not Recognized";
                     let statusId = String(_status)
 
@@ -14446,7 +14450,8 @@ class PRUF {
                 }],
 
                 ["convertEscrowTime", async (rawTime, to) => {
-                    if (!rawTime || !to) return
+                    if (!rawTime) return console.error(`PRUF_ERR: Invalid input: ${rawTime}`);
+                    if (!to) return console.error(`PRUF_ERR: Invalid input: ${to}`);
                     let time;
                     switch (to) {
                         case ("seconds"): time = rawTime; break
@@ -14470,7 +14475,7 @@ class PRUF {
                 }],
 
                 ["generateAssetID", async ({ type, make, model, serial }) => {
-                    if (!make || !model || !series || !serial) return console.error("PRUF_ERR: ID must contain all fields")
+                    if (!make || !model || !series || !serial) return console.error(`PRUF_ERR: One of the input fields returned undefined`);
 
                     let id = await hashAlgo(
                         String(type).replace(/\s/g, ""),
@@ -14484,6 +14489,8 @@ class PRUF {
                 }],
 
                 ["generateSecureRgt", async (assetId, { first, middle, last, id, password }) => {
+                    if (!assetId) return console.error(`Invalid input: ${assetId}`);
+                    if (!first || !middle || !last || !id || !password) return console.error(`PRUF_ERR: One of the input fields returned undefined`);
                     let rgtRaw = await hashAlgo(
                         String(first).replace(/\s/g, ""),
                         String(middle).replace(/\s/g, ""),
