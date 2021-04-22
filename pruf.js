@@ -14032,7 +14032,11 @@ class PRUF {
                     await contracts.ECR_MGR.methods.retrieveEscrowData(assetId)
                         .call((error, result) => {
                             if (!error) {
-                                return escrowData = result
+                                return escrowData = {
+                                    escrowContractHash: result.controllingContractNameHash,
+                                    escrowOwnerHash: result.escrowOwnerAddressHash,
+                                    timelock: result.timelock
+                                }
                             }
                         })
 

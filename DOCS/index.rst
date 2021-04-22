@@ -1833,6 +1833,48 @@ Example usage
       //Expected output: True/False
    }
 
+
+  
+   escrowData:
+----------
+
+``pruf.get.escrowData(assetId)``
+
+Returns escrow data attatched to an asset.
+
+Parameters
+"""""""""""
+   1. assetId
+   
+   * String|Bytes32
+   * Hash built from individual inputs which is used to identify the asset on the network.
+
+Returns
+"""""""""""
+   1. Object
+      
+      * escrowContractHash
+         * Bytes32
+         * .
+
+  
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _nodeId1 = "1000003";
+   let _nodeId2 = "1000004";
+
+   pruf.get.escrowData(nodeId1, nodeId2)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
+   }
+
    
 .utils
 ============
