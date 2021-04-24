@@ -52,6 +52,8 @@ Example Initialization
 
 -------------------------------------------------------------------------------------------------
 
+----------
+
 mintAsset:
 ----------
 
@@ -116,6 +118,8 @@ Example usage
    });
 
 
+----------
+
 verifyRightsHash:
 -----------------
    
@@ -157,6 +161,8 @@ Example usage
          console.log(receipt.events.REPORT.returnValues._msg);
       });
 
+
+----------
 
 transferAsset:
 -----------------
@@ -206,6 +212,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+----------
 
 setAssetURI:
 -----------------
@@ -248,6 +255,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+----------
 
 discardAsset:
 -----------------
@@ -283,7 +291,8 @@ Example usage
          console.log(receipt.transactionHash);
       });  
       
-      
+----------
+  
 engraveAsset:
 -----------------
    
@@ -325,7 +334,9 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
-         
+        
+----------
+ 
 importAsset:
 -----------------
    
@@ -367,6 +378,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 modifyRightsHash:
 ----------------------
@@ -410,6 +423,8 @@ Example usage
       });
 
 
+----------
+
 decrementLifeCycle:
 -------------------
    
@@ -452,6 +467,8 @@ Example usage
       });
 
 
+----------
+
 exportAsset:
 -----------------
    
@@ -486,6 +503,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 modifyAssetExtData:
 --------------------
@@ -529,6 +548,8 @@ Example usage
       });
 
 
+----------
+
 modifyAssetStatus:
 --------------------
    
@@ -570,6 +591,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 markAssetLostOrStolen:
 -----------------------
@@ -613,6 +636,8 @@ Example usage
       });
 
       
+----------
+
 redeemPipAsset:
 --------------------
    
@@ -675,6 +700,8 @@ Example usage
       });
 
 
+----------
+
 mintPip:
 --------------------
    
@@ -722,6 +749,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 setForSale:
 --------------------
@@ -778,6 +807,8 @@ Example usage
       });
 
 
+----------
+
 unSetForSale:
 --------------------
    
@@ -812,6 +843,8 @@ Example usage
       });
 
 
+----------
+
 buyAsset:
 --------------------
    
@@ -845,6 +878,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 recycleAsset:
 --------------------
@@ -895,6 +930,8 @@ Example usage
       });
 
 
+----------
+
 setColdWallet:
 --------------------
    
@@ -922,6 +959,8 @@ Example usage
       });
 
 
+----------
+
 unSetColdWallet:
 --------------------
    
@@ -948,6 +987,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 transferPruf:
 --------------------
@@ -998,6 +1039,8 @@ Example usage
       });
 
 
+----------
+
 transferNode:
 --------------------
    
@@ -1046,6 +1089,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 setOperationCost:
 --------------------
@@ -1103,6 +1148,8 @@ Example usage
       });
 
 
+----------
+
 purchaseNode:
 --------------------
    
@@ -1159,6 +1206,8 @@ Example usage
       });
 
 
+----------
+
 modifyExtendedConfig:
 ----------------------
    
@@ -1199,6 +1248,8 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
+----------
 
 authorizeUser:
 --------------------
@@ -1249,6 +1300,8 @@ Example usage
       });
 
 
+----------
+
 modifyNodeName:
 --------------------
    
@@ -1290,6 +1343,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 finalizeNode:
 --------------------
@@ -1347,6 +1402,8 @@ Example usage
       });
 
 
+----------
+
 getId: (!!TEST NETWORK ONLY!!)
 --------------------------------
    
@@ -1374,6 +1431,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 getPruf: (!!TEST NETWORK ONLY!!)
 ---------------------------------
@@ -1408,12 +1467,14 @@ Example usage
 
 -------------------------------------------------------------------------------------------------
 
+----------
+
 assetRecordExists:
 ----------
 
 ``pruf.get.assetRecordExists(assetId)``
 
-Returns bool for asset existance at ID.
+Returns boolean for asset existance at ID.
 
 Parameters
 """""""""""
@@ -1450,12 +1511,14 @@ Example usage
 
 
    
+----------
+
 nodeNameAvailable:
 ----------
 
 ``pruf.get.nodeNameAvailable(name)``
 
-Returns bool for node existance at name.
+Returns boolean for node existance at name.
 
 Parameters
 """""""""""
@@ -1491,6 +1554,8 @@ Example usage
    }
 
 
+
+----------
 
 nodePricing:
 ----------
@@ -1529,6 +1594,8 @@ Example usage
    }
 
 
+
+----------
 
 nodeData:
 ----------
@@ -1600,6 +1667,8 @@ Example usage
 
 
   
+----------
+
 nodeName:
 ----------
 
@@ -1640,6 +1709,8 @@ Example usage
 
 
   
+----------
+
 operationCost:
 ----------
 
@@ -1649,15 +1720,16 @@ Returns all pricing info for a defined operation.
 
 Parameters
 """""""""""
-   1. nodeId
+   1. operationIndex 
+
+      * String|Uint16
+      * Index used to catergorize operation costs throughout the PRUF network.
+
+   2. nodeId
 
       * String|Uint32
       * ID used to reference a node, in most cases used to classify assets by type or producer.
 
-   2. operationIndex 
-
-      * String|Uint16
-      * Index used to catergorize operation costs throughout the PRUF network.
 
 Returns
 """""""""""
@@ -1688,12 +1760,12 @@ Example usage
 
    //Example pruf-js code
 
-   let _nodeId = "1000003";
    let _operationIndex = "1";
+   let _nodeId = "1000003";
 
    pruf.get.operationCost(
-      _nodeId,
-      _operationIndex
+      _operationIndex,
+      _nodeId
    )
    .then(e => {
       console.log(e)
@@ -1702,6 +1774,8 @@ Example usage
 
 
   
+----------
+
 userType:
 ----------
 
@@ -1750,6 +1824,8 @@ Example usage
 
 
   
+----------
+
 nodeId:
 ----------
 
@@ -1789,6 +1865,8 @@ Example usage
 
 
   
+----------
+
 isSameRoot:
 ----------
 
@@ -1835,12 +1913,14 @@ Example usage
 
 
   
-   escrowData:
+----------
+
+escrowData:
 ----------
 
 ``pruf.get.escrowData(assetId)``
 
-Returns escrow data attatched to an asset.
+Returns all current escrow data attatched to an asset.
 
 Parameters
 """""""""""
@@ -1850,13 +1930,19 @@ Parameters
    * Hash built from individual inputs which is used to identify the asset on the network.
 
 Returns
-"""""""""""
+""""""""""" 
+
    1. Object
       
       * escrowContractHash
          * Bytes32
-         * .
-
+         * Hash of the name of the controlling escrow contract
+      * escrowOwnerHash
+         * Bytes32
+         * Hash of an address designated as an executor for the escrow contract
+      * timelock
+         * Uint256
+         * The time lock associated with the escrowed asset.
   
 Example usage
 """"""""""""""
@@ -1866,10 +1952,892 @@ Example usage
 
    //Example pruf-js code
 
-   let _nodeId1 = "1000003";
-   let _nodeId2 = "1000004";
+   let _assetId = "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50";
 
-   pruf.get.escrowData(nodeId1, nodeId2)
+   pruf.get.escrowData(assetId)
+   .then(e => {
+      console.log(e)
+      //Expected output: {escrowContractHash, escrowOwnerHash, timelock}
+   }
+
+
+  
+----------
+
+escrowOwner:
+----------
+
+``pruf.get.escrowOwner(assetId)``
+
+Returns the hash of an address designed as an executor in the escrow contract for a specific asset.
+
+Parameters
+"""""""""""
+   1. assetId
+   
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
+
+Returns
+"""""""""""
+
+   1. Bytes32
+      
+      * Hash of an address designated as an executor for the escrow contract
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _assetId = "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50";
+
+   pruf.get.escrowOwner(assetId)
+   .then(e => {
+      console.log(e)
+      //Expected output: Bytes32
+   }
+
+
+  
+----------
+
+isRightsHolder:
+----------
+
+``pruf.get.isRightsHolder(assetId, rightsHash)``
+
+Returns a boolean confirming or denying whether or not the given rightsHash is associated with the given assetId.
+
+Parameters
+"""""""""""
+   1. assetId
+   
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
+   
+   2. rightsHash
+      
+      * String|Bytes32
+      * Hash built from individual inputs which is used to verify asset ownership
+
+Returns
+"""""""""""
+
+   1. Boolean
+      
+      * True/False
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _assetId = "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50";
+   let _rightsHash = "0xd4956f6b3d95257bd57fdabb49ee8ed2ccd96db0379fbfe8749275c52b7cce86";
+
+   pruf.get.isRightsHolder(_assetId, _rightsHash)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
+   }
+
+
+
+----------
+  
+assetPriceData:
+----------
+
+``pruf.get.assetPriceData(assetId)``
+
+Returns all price data associated with an asset, including price and currency.
+
+Parameters
+"""""""""""
+   1. assetId
+   
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
+
+Returns
+"""""""""""
+
+   1. Object
+      
+      * price
+         * Uint120
+         * The price set by an asset holder who sets their asset for sale.
+      * currency
+         * Uint8
+         * the currency set by an asset holder who sets their asset for sale(e.g. PRUF, USD, ETH)
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _assetId = "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50";
+
+   pruf.get.assetPriceData(_assetId)
+   .then(e => {
+      console.log(e)
+      //Expected output: {price, currency}
+   }
+
+
+
+----------
+  
+assetRecord:
+----------
+
+``pruf.get.assetRecord(assetId)``
+
+Returns all public data associated with an asset.
+
+Parameters
+"""""""""""
+   1. assetId
+   
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
+
+Returns
+"""""""""""
+
+   1. Object
+      
+      * id
+         * Bytes32
+         * Hash built from individual inputs which is used to identify the asset on the network.
+      * statusNum
+         * Uint8
+         * The current status number of an asset, acting as a layer of permissions for the network.
+      * forceModCount
+         * Uint8
+         * The number of times an asset has been modified forcefully by a node manager. JBS:Examine
+      * nodeId
+         * Uint32
+         * ID used to reference a node, in most cases used to classify assets by type or producer.
+      * countPair
+         * Uint32/Uint32
+         * Non-increasing one way counter used for life-cycle purposes(e.g. Warrenties, Limited-issue items).
+      * mutableDataA
+         * Bytes32
+         * A container used for storing a modifiable data hash.
+      * mutableDataB
+         * Bytes32
+         * A container used for storing a modifiable data hash.
+      * engravingA
+         * Bytes32
+         * A container used for storing an unmodifiable data hash.
+      * engravingB
+         * Bytes32
+         * A container used for storing an unmodifiable data hash.
+      * numberOfTransfers
+         * Uint16
+         * A counter tracking the lifecycle movement of an asset, which increments upon each asset transfer.
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _assetId = "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50";
+
+   pruf.get.assetRecord(_assetId)
+   .then(e => {
+      console.log(e)
+      //Expected output: {id, 
+      //                  statusNum, 
+      //                  forceModCount, 
+      //                  nodeId, 
+      //                  countPair, 
+      //                  mutableDataA, 
+      //                  mutableDataB, 
+      //                  engravingA, 
+      //                  engravingB, 
+      //                  numberOfTransfers}
+   }
+
+
+
+----------
+  
+heldAssetAtIndex:
+----------
+
+``pruf.get.heldAssetAtIndex(address, index)``
+
+Returns a token ID owned by an address at an enumerated `index` of its token list
+
+Parameters
+"""""""""""
+   1. address
+   
+      * String|Address
+      * Address used to select target user.
+  
+   2. index
+      
+      * String|Uint256
+      * Used to select an asset out of an enumerated list of assets at a given address.
+
+Returns
+"""""""""""
+
+   1. Uint256
+      
+      * Hash built from individual inputs which is used to identify the asset on the network. JBS: Examine (uint256? tokenID is idx?)
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _address = "0xa49811140e1d6f653dec28037be0924c811c4538"
+   let _index = "3"
+
+   pruf.get.heldAssetAtIndex(_address, _index)
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+
+----------
+  
+assetAtIndex:
+----------
+
+``pruf.get.assetAtIndex(address, index)``
+
+Returns a token ID at an enumerated `index` of all tokens.
+
+Parameters
+"""""""""""
+   1. index
+      
+      * String|Uint256
+      * Used to select an asset out of an enumerated list of assets at a given address.
+
+Returns
+"""""""""""
+
+   1. uint256
+      
+      * Hash built from individual inputs which is used to identify the asset on the network. JBS: Examine (uint256? tokenID is idx?)
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _index = "3"
+
+   pruf.get.assetAtIndex(_index)
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+
+----------
+  
+assetTokenExists:
+----------
+
+``pruf.get.assetTokenExists(tokenId)``
+
+Returns a boolean confirming or denying whether or not the given tokenId exists within the network.
+
+Parameters
+"""""""""""
+   1. tokenId
+   
+      * String|Uint256
+      * Used to select an asset out of the list of created assets throughout the network.
+
+Returns
+"""""""""""
+
+   1. Boolean
+      
+      * True/False
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _tokenId = "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50";
+
+   pruf.get.assetTokenExists(_tokenId)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
+   }
+
+
+
+----------
+  
+assetBalance:
+----------
+   
+``pruf.get.assetBalance(address)``
+   
+Returns number of asset tokens held by an address
+   
+Parameters
+   """""""""""
+   1. address
+      
+      * String|Address
+      * Address used to select target user.
+   
+Returns
+"""""""""""
+   
+   1. Uint256
+         
+      * Number of asset tokens held by address
+Example usage
+""""""""""""""
+   
+.. code-block:: javascript 
+   :linenos:
+   
+   //Example pruf-js code
+   
+   let _address = "0xa49811140e1d6f653dec28037be0924c811c4538"
+   
+   pruf.get.assetBalance(_address)
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+----------
+
+howManyAssets:
+----------
+   
+``pruf.get.howManyAssets()``
+   
+Returns total number of assets within the network.
+   
+Parameters
+   """""""""""
+   None
+   
+Returns
+"""""""""""
+   
+   1. Uint256
+         
+      * Number of asset tokens minted throughout the network
+Example usage
+""""""""""""""
+   
+.. code-block:: javascript 
+   :linenos:
+   
+   //Example pruf-js code
+   
+   pruf.get.howManyAssets()
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+----------
+
+ownerOfAsset:
+----------
+   
+``pruf.get.ownerOfAsset(assetId)``
+   
+Returns onwer address associated with an asset token.
+   
+Parameters
+   """""""""""
+   1. assetId
+   
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
+   
+Returns
+"""""""""""
+   
+   1. Address
+         
+      * Owner address of given assetId
+Example usage
+""""""""""""""
+   
+.. code-block:: javascript 
+   :linenos:
+   
+   //Example pruf-js code
+
+   let _assetId = "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50";
+   
+   pruf.get.ownerOfAsset(_assetId)
+   .then(e => {
+      console.log(e)
+      //Expected output: Address
+   }
+
+
+
+----------
+  
+prufBalance:
+----------
+   
+``pruf.get.prufBalance(address)``
+   
+Returns number of PRUF tokens held by an address
+   
+Parameters
+   """""""""""
+   1. address
+      
+      * String|Address
+      * Address used to select target user.
+   
+Returns
+"""""""""""
+   
+   1. Uint256
+         
+      * Number of PRUF tokens held by address
+Example usage
+""""""""""""""
+   
+.. code-block:: javascript 
+   :linenos:
+   
+   //Example pruf-js code
+   
+   let _address = "0xa49811140e1d6f653dec28037be0924c811c4538"
+   
+   pruf.get.prufBalance(_address)
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+
+----------
+  
+isColdWallet:
+----------
+
+``pruf.get.isColdWallet(address)``
+
+Returns a boolean confirming or denying whether or not the given address is a locked PRUF wallet or not.
+
+Parameters
+"""""""""""
+   1. address
+   
+      * String|Address
+      * Used to select an account to view its status.
+
+Returns
+"""""""""""
+
+   1. Boolean
+      
+      * True/False
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+   
+   let _address = "0xa49811140e1d6f653dec28037be0924c811c4538"
+   
+   pruf.get.isColdWallet(_address)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
+   }
+
+
+----------
+
+howManyPruf:
+----------
+   
+``pruf.get.howManyPruf()``
+   
+Returns total number of PRUF within the network.
+   
+Parameters
+   """""""""""
+   None
+   
+Returns
+"""""""""""
+   
+   1. Uint256
+         
+      * Number of PRUF tokens minted throughout the network.
+Example usage
+""""""""""""""
+   
+.. code-block:: javascript 
+   :linenos:
+   
+   //Example pruf-js code
+   
+   pruf.get.howManyPruf()
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+
+----------
+  
+nodeBalance:
+----------
+   
+``pruf.get.nodeBalance(address)``
+   
+Returns number of nodes held by an address
+   
+Parameters
+   """""""""""
+   1. address
+      
+      * String|Address
+      * Address used to select target user.
+   
+Returns
+"""""""""""
+   
+   1. Uint256
+         
+      * Number of nodes held by address
+Example usage
+""""""""""""""
+   
+.. code-block:: javascript 
+   :linenos:
+   
+   //Example pruf-js code
+   
+   let _address = "0xa49811140e1d6f653dec28037be0924c811c4538"
+   
+   pruf.get.nodeBalance(_address)
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+
+----------
+  
+assetTokenExists:
+----------
+
+``pruf.get.assetTokenExists(tokenId)``
+
+Returns a boolean confirming or denying whether or not the given tokenId exists within the network.
+
+Parameters
+"""""""""""
+   1. tokenId
+   
+      * String|Uint256
+      * Used to select an asset out of the list of created assets throughout the network.
+
+Returns
+"""""""""""
+
+   1. Boolean
+      
+      * True/False
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _tokenId = "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50";
+
+   pruf.get.assetTokenExists(_tokenId)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
+   }
+
+
+
+----------
+  
+nodeExists:
+----------
+
+``pruf.get.nodeExists(nodeId)``
+
+Returns a boolean confirming or denying whether or not the given nodeId exists within the network.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
+
+Returns
+"""""""""""
+
+   1. Boolean
+      
+      * True/False
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _nodeId = "1000003";
+
+   pruf.get.nodeExists(_nodeId)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
+   }
+
+
+
+----------
+  
+heldNodeAtIndex:
+----------
+
+``pruf.get.heldNodeAtIndex(address, index)``
+
+Returns a nodeId owned by an address at an enumerated `index` of its node list.
+
+Parameters
+"""""""""""
+   1. address
+   
+      * String|Address
+      * Address used to select target user.
+  
+   2. index
+      
+      * String|Uint256
+      * Used to select an asset out of an enumerated list of nodes at a given address.
+
+Returns
+"""""""""""
+
+   1. Uint256
+      
+      * nodeId used to identify unique node from one another.
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _address = "0xa49811140e1d6f653dec28037be0924c811c4538"
+   let _index = "3"
+
+   pruf.get.heldNodeAtIndex(_address, _index)
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+
+----------
+  
+nodeAtIndex:
+----------
+
+``pruf.get.nodeAtIndex(address, index)``
+
+Returns a nodeID at an enumerated `index` of all nodes.
+
+Parameters
+"""""""""""
+   1. index
+      
+      * String|Uint256
+      * Used to select an asset out of an enumerated list of nodes at a given address.
+
+Returns
+"""""""""""
+
+   1. uint256
+      
+      * NodeId which is used to identify the node on the network.
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _index = "3"
+
+   pruf.get.nodeAtIndex(_index)
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+----------
+
+howManyNodes:
+----------
+   
+``pruf.get.howManyNodes()``
+   
+Returns total number of nodes within the network.
+   
+Parameters
+   """""""""""
+   None
+   
+Returns
+"""""""""""
+   
+   1. Uint256
+         
+      * Number of nodes minted throughout the network
+Example usage
+""""""""""""""
+   
+.. code-block:: javascript 
+   :linenos:
+   
+   //Example pruf-js code
+   
+   pruf.get.howManyNodes()
+   .then(e => {
+      console.log(e)
+      //Expected output: Uint256
+   }
+
+
+----------
+
+ownerOfNode:
+----------
+   
+``pruf.get.ownerOfNode(nodeId)``
+   
+Returns owner address associated with a node.
+   
+Parameters
+   """""""""""
+   
+   1. nodeId
+      
+      * String|Uint32
+      * ID used to reference a node, in most cases used to classify assets by type or producer.
+   
+Returns
+"""""""""""
+   
+   1. Address
+         
+      * Owner address of given nodeId
+Example usage
+""""""""""""""
+   
+.. code-block:: javascript 
+   :linenos:
+   
+   //Example pruf-js code
+
+   let _nodeId = "1000003";
+   
+   pruf.get.ownerOfNode(_nodeId)
+   .then(e => {
+      console.log(e)
+      //Expected output: Address
+   }
+
+
+
+----------
+  
+holdsId:
+----------
+
+``pruf.get.holdsId(address)``
+
+Returns a boolean confirming or denying whether or not the given address holds an ID token.
+
+Parameters
+"""""""""""
+   1. address
+
+      * String|Address
+      * Address used to select target user.
+
+Returns
+"""""""""""
+
+   1. Boolean
+      
+      * True/False
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _address = "0xa49811140e1d6f653dec28037be0924c811c4538"
+
+   pruf.get.holdsId(_address)
    .then(e => {
       console.log(e)
       //Expected output: True/False
@@ -1881,28 +2849,28 @@ Example usage
 
 -------------------------------------------------------------------------------------------------
 
-util:
+----------
+  
+isValidId:
 ----------
 
-``pruf.utils.util(params)``
+``pruf.utils.isValidId(id)``
 
-Brief Intro.
+Returns a boolean confirming or denying whether or not the given id is a valid id.
 
 Parameters
 """""""""""
-   1. param1
-   
-      * type
-      * Explanation  
+   1. id
+
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
 
 Returns
 """""""""""
-   1. Value1
-   
-      * type
-      * Explanation
 
-  
+   1. Boolean
+      
+      * True/False
 Example usage
 """"""""""""""
 
@@ -1910,6 +2878,369 @@ Example usage
    :linenos:
 
    //Example pruf-js code
+
+   let unhashedId = {
+   type: "bike,
+   manufacturer: "mongoose",
+   model: "trail",
+   serial: "12345678"
+   }
+   let _id = await pruf.utils.generateAssetID(unhashedId)
+
+   pruf.utils.isValidId(_id)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
+   }
+
+
+
+
+----------
+  
+ipfsFromB32: JBS:Examine
+----------
+
+``pruf.utils.ipfsFromB32(bytes32Hex)``
+
+Returns a boolean confirming or denying whether or not the given id is a valid id.
+
+Parameters
+"""""""""""
+   1. bytes32Hex
+
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
+
+Returns
+"""""""""""
+
+   1. Boolean
+      
+      * True/False
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let unhashedId = {
+   type: "bike,
+   manufacturer: "mongoose",
+   model: "trail",
+   serial: "12345678"
+   }
+   let _id = await pruf.utils.generateAssetID(unhashedId)
+
+   pruf.utils.ipfsFromB32(_id)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
+   }
+
+
+
+   
+----------
+  
+ipfsToB32: JBS:Examine
+----------
+
+``pruf.utils.ipfsToB32(bytes32Hex)``
+
+Returns a boolean confirming or denying whether or not the given id is a valid id.
+
+Parameters
+"""""""""""
+   1. bytes32Hex
+
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
+
+Returns
+"""""""""""
+
+   1. Boolean
+      
+      * True/False
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let unhashedId = {
+   type: "bike,
+   manufacturer: "mongoose",
+   model: "trail",
+   serial: "12345678"
+   }
+   let _id = await pruf.utils.generateAssetID(unhashedId)
+
+   pruf.utils.ipfsToB32(_id)
+   .then(e => {
+      console.log(e)
+      //Expected output: True/False
+   }
+
+
+
+   
+----------
+  
+stringifyStatus:
+----------
+
+``pruf.utils.stringifyStatus(status)``
+
+Returns the status name associated with a status number.
+
+Parameters
+"""""""""""
+   * statusNum
+  
+      * String|Uint8
+      * The current status number of an asset, acting as a layer of permissions for the network.
+
+Returns
+"""""""""""
+
+   1. String
+      
+      * Status name associated with a status number
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _status = "51"
+
+   pruf.utils.stringifyStatus(_status)
+   .then(e => {
+      console.log(e)
+      //Expected output: "Transferrable"
+   }
+
+
+
+   
+----------
+  
+convertEscrowTime:
+----------
+
+``pruf.utils.convertEscrowTime(rawTime, to)``
+
+Converts rawTime(seconds) to desired measurement(minutes, hours, days, weeks) for escrow related functions.
+
+Parameters
+"""""""""""
+   * rawTime
+  
+      * Number
+      * The number of seconds being converted.
+      
+   * to
+        
+      * String
+      * The conversion rate for rawTime (minutes, hours, days, weeks).
+
+Returns
+"""""""""""
+
+   1. String
+      
+      * Converted time measurement
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _rawTime = "180"
+   let _to = "minutes"
+
+   pruf.utils.convertEscrowTime(_rawTime, _to)
+   .then(e => {
+      console.log(e)
+      //Expected output: "3"
+   }
+
+
+
+   
+----------
+  
+tenThousandHashesOf: JBS: Examine
+----------
+
+``pruf.utils.tenThousandHashesOf(rawTime, to)``
+
+Converts rawTime(seconds) to desired measurement(minutes, hours, days, weeks) for escrow related functions.
+
+Parameters
+"""""""""""
+   * rawTime
+  
+      * Number
+      * The number of seconds being converted.
+      
+   * to
+        
+      * String
+      * The conversion rate for rawTime (minutes, hours, days, weeks).
+
+Returns
+"""""""""""
+
+   1. String
+      
+      * Converted time measurement
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _rawTime = "180"
+   let _to = "minutes"
+
+   pruf.utils.tenThousandHashesOf(_rawTime, _to)
+   .then(e => {
+      console.log(e)
+      //Expected output: "3"
+   }
+
+
+ 
+----------
+  
+generateAssetID:
+----------
+
+``pruf.utils.generateAssetID({ type, make, model, serial })``
+
+Generates an assetId from specific input fields.
+
+Parameters
+"""""""""""
+   1. Object
+
+      * type  
+         * String
+         * Type of asset being made.
+      * make  
+         * String
+         * Make of asset being made.
+      * model  
+         * String
+         * Model of asset being made.
+      * serial  
+         * String
+         * Serial of asset being made.
+
+Returns
+"""""""""""
+
+   1. String
+      
+      * assetId Hash
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _unhashedId = {
+   type: "bike,
+   manufacturer: "mongoose",
+   model: "trail",
+   serial: "12345678"
+   }
+
+   pruf.utils.generateAssetID(_unhashedId)
+   .then(e => {
+      console.log(e)
+      //Expected output: "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50"
+   }
+
+
+ 
+----------
+  
+generateSecureRgt:
+----------
+
+``pruf.utils.generateSecureRgt(assetId, { first, middle, last, id, password })``
+
+Generates a rightsHash from specific owner input fields and an assetId.
+
+Parameters
+"""""""""""
+   1. assetId
+
+      * String|Bytes32
+      * Hash built from individual inputs which is used to identify the asset on the network.
+
+   2. Object
+
+      * first  
+         * String
+         * First name of owner of asset being made.
+      * middle  
+         * String
+         * Middle name of owner of asset being made.
+      * last  
+         * String
+         * Last name of owner of asset being made.
+      * id  
+         * String
+         * Id of owner of asset being made.
+      * password  
+         * String
+         * Password set by owner of asset being made.
+
+Returns
+"""""""""""
+
+   1. String
+      
+      * Asset rightsHash
+Example usage
+""""""""""""""
+
+.. code-block:: javascript 
+   :linenos:
+
+   //Example pruf-js code
+
+   let _assetId = "0x6a21cf8dad19b95d6976b80a0ea46f71e5acaeb0d7ce0c952c612cb0e1b39b50"
+   let _unhashedRights = {
+   first: "John,
+   middle: "Frederik",
+   last: "Doe",
+   id: "12345678",
+   password: "******"  
+   }
+
+   pruf.utils.generateSecureRgt(_assetId, _unhashedRights)
+   .then(e => {
+      console.log(e)
+      //Expected output: "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+   }
 
 
 -------------------------------------------------------------------------------------------------
