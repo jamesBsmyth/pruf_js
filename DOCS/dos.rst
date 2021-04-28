@@ -1,56 +1,6 @@
-.. pruf-js documentation master file, created by
-   sphinx-quickstart on Fri Mar 26 11:02:50 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-**pruf-js**
-===================================
-
-!! THE DOCUMENTATION IN THIS PAGE IS INDEV. DO NOT USE IT AS A REFERENCE JUST YET. !!
-
-Interface for the PRüF network written in javascript
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-Installation
-=================
-
-Install using node package manager:
-
-   ``npm i --s pruf-js``
-
-   *note: pruf-js requires an instance of web3.js to initialize.*
-
-   *To learn more about web3.js, click here:* 
-   
-   https://web3js.readthedocs.io
-
-
-Example Initialization
------------------------
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js initialization code
-
-   const Web3 = require('web3');
-   const PRUF = require('pruf-js');
-
-   const web3 = new Web3("https://kovan.infura.io/v3/yourInfuraKeyHere");
-   const pruf = new PRUF(web3);
-
-   console.log("Here is the client interface:", pruf);
-
-
-
 
 .do
 ============
-
--------------------------------------------------------------------------------------------------
 
 mintAsset:
 ----------
@@ -116,6 +66,8 @@ Example usage
    });
 
 
+----------
+
 verifyRightsHash:
 -----------------
    
@@ -157,6 +109,8 @@ Example usage
          console.log(receipt.events.REPORT.returnValues._msg);
       });
 
+
+----------
 
 transferAsset:
 -----------------
@@ -206,6 +160,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+----------
 
 setAssetURI:
 -----------------
@@ -248,6 +203,7 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+----------
 
 discardAsset:
 -----------------
@@ -283,7 +239,8 @@ Example usage
          console.log(receipt.transactionHash);
       });  
       
-      
+----------
+  
 engraveAsset:
 -----------------
    
@@ -325,7 +282,9 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
-         
+        
+----------
+ 
 importAsset:
 -----------------
    
@@ -367,6 +326,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 modifyRightsHash:
 ----------------------
@@ -410,6 +371,8 @@ Example usage
       });
 
 
+----------
+
 decrementLifeCycle:
 -------------------
    
@@ -452,6 +415,8 @@ Example usage
       });
 
 
+----------
+
 exportAsset:
 -----------------
    
@@ -486,6 +451,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 modifyAssetExtData:
 --------------------
@@ -529,6 +496,8 @@ Example usage
       });
 
 
+----------
+
 modifyAssetStatus:
 --------------------
    
@@ -570,6 +539,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 markAssetLostOrStolen:
 -----------------------
@@ -613,6 +584,8 @@ Example usage
       });
 
       
+----------
+
 redeemPipAsset:
 --------------------
    
@@ -675,6 +648,8 @@ Example usage
       });
 
 
+----------
+
 mintPip:
 --------------------
    
@@ -722,6 +697,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 setForSale:
 --------------------
@@ -778,6 +755,8 @@ Example usage
       });
 
 
+----------
+
 unSetForSale:
 --------------------
    
@@ -812,6 +791,8 @@ Example usage
       });
 
 
+----------
+
 buyAsset:
 --------------------
    
@@ -845,6 +826,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 recycleAsset:
 --------------------
@@ -895,6 +878,8 @@ Example usage
       });
 
 
+----------
+
 setColdWallet:
 --------------------
    
@@ -922,6 +907,8 @@ Example usage
       });
 
 
+----------
+
 unSetColdWallet:
 --------------------
    
@@ -948,6 +935,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 transferPruf:
 --------------------
@@ -998,6 +987,8 @@ Example usage
       });
 
 
+----------
+
 transferNode:
 --------------------
    
@@ -1046,6 +1037,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 setOperationCost:
 --------------------
@@ -1103,6 +1096,8 @@ Example usage
       });
 
 
+----------
+
 purchaseNode:
 --------------------
    
@@ -1159,6 +1154,8 @@ Example usage
       });
 
 
+----------
+
 modifyExtendedConfig:
 ----------------------
    
@@ -1199,6 +1196,8 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
+
+----------
 
 authorizeUser:
 --------------------
@@ -1249,6 +1248,8 @@ Example usage
       });
 
 
+----------
+
 modifyNodeName:
 --------------------
    
@@ -1290,6 +1291,8 @@ Example usage
          console.log(receipt.transactionHash);
       });
 
+
+----------
 
 finalizeNode:
 --------------------
@@ -1347,6 +1350,8 @@ Example usage
       });
 
 
+----------
+
 getId: (!!TEST NETWORK ONLY!!)
 --------------------------------
    
@@ -1375,6 +1380,8 @@ Example usage
       });
 
 
+----------
+
 getPruf: (!!TEST NETWORK ONLY!!)
 ---------------------------------
    
@@ -1401,462 +1408,3 @@ Example usage
       .on("receipt"()=>{
          console.log(receipt.transactionHash);
       });
-
-
-.get
-============
-
--------------------------------------------------------------------------------------------------
-
-assetRecordExists:
-----------
-
-``pruf.get.assetRecordExists(assetId)``
-
-Returns bool for asset existance at ID.
-
-Parameters
-"""""""""""
-1. assetId - Bytes32
-* Hash built from individual inputs which is used to identify the asset on the network
-
-Returns
-"""""""""""
-   1. Boolean
-   
-      * If returned value is true, the asset exists. If false, asset does not exist.
-
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-   let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d";
-
-   pruf.get.assetRecordExists(
-      _assetId,
-   )
-   .then(e => {
-      console.log(e)
-      //Expected output true/false
-   }
-
-
-   
-nodeNameAvailable:
-----------
-
-``pruf.get.nodeNameAvailable(name)``
-
-Returns bool for node existance at name.
-
-Parameters
-"""""""""""
-1. name - String
-* Unique name for nodes used throughout the network
-
-Returns
-"""""""""""
-   1. Boolean
-   
-      * If returned value is true, the node name is available. If false, the name is already in use, therefore unavailable.
-
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-   let _name = "Rolex";
-
-   pruf.get.nodeNameAvailable(
-      _name,
-   )
-   .then(e => {
-      console.log(e)
-      //Expected output true/false
-   }
-
-
-
-nodePricing:
-----------
-
-``pruf.get.nodePricing()``
-
-Returns object containing all current node pricing data.
-
-Parameters
-"""""""""""
-None
-
-Returns
-"""""""""""
-   1. Object
-      
-      * currentNodeIndex - uint256
-         * Current index position of nodes. Next node to be minted will be index (currentNodeIndex + 1).
-      * currentNodePrice - uint256
-         * Current Node price in PRUF (zero decimals).
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-   pruf.get.nodePricing()
-   .then(e => {
-      console.log(e)
-      //Expected output {currentNodeIndex, currentNodePrice}
-   }
-
-
-
-nodeData:
-----------
-
-``pruf.get.nodeData(nodeId)``
-
-Returns object containing for all current node data.
-
-Parameters
-"""""""""""
-   1. nodeId - uint32
-   
-      * Index of desired node
-
-Returns
-"""""""""""
-   1. Object
-      
-      * name - string
-         * Current name of nodes.
-      * root - uint32
-         * Current root node of node.
-      * custodyType - uint8
-         * Current custody type of node.
-      * managementType - uint8
-         * Current management type of node.
-      * storageProvider - uint8
-         * Current storage provider of node.
-      * discount - uint32
-         * Current discount of node.
-      * referenceAddress - address
-         * Current reference address of node.
-      * switches - uint8
-         * Current switch data of node.
-      * extData - bytes32
-         * Current attatched extended data of node.
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-   pruf.get.nodeData(
-   _nodeId
-   )
-   .then(e => {
-      console.log(e)
-      //Expected output {name, 
-      //                 root, 
-      //                 custodyType, 
-      //                 managementType, 
-      //                 storageProvider, 
-      //                 discount, 
-      //                 referenceAddress, 
-      //                 switches, 
-      //                 extData}
-   }
-
-
-  
-nodeName:
-----------
-
-``pruf.get.nodeName(nodeId)``
-
-Returns name attatched to nodeId.
-
-Parameters
-"""""""""""
-1. nodeId - uint32
-   
-   * Unique ID associated with a node
-
-Returns
-"""""""""""
-   String
-      
-      * Name attatched to desired node.
-
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-   let _nodeId = "1000003";
-
-   pruf.get.nodeName(
-      _nodeId,
-   )
-   .then(e => {
-      console.log(e)
-      //Expected output: node name
-   }
-
-
-
-  
-operationCost:
-----------
-
-``pruf.get.operationCost(nodeId, operationIndex)``
-
-Returns all pricing info for a defined operation.
-
-Parameters
-"""""""""""
-1. nodeId - uint32
-   
-   * Unique ID associated with a node
-
-2. operationIndex - uint16
-
-   * Specified operation index
-
-Returns
-"""""""""""
-   Object
-      
-      * total
-         * Total cost(s) added together (node + root)
-      * node
-         * Cost of operation set by node holder
-      * root
-         * Cost of operation set by root node holder
-
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-   let _nodeId = "1000003";
-   let _operationIndex = "1";
-
-   pruf.get.operationCost(
-      _nodeId,
-      _operationIndex
-   )
-   .then(e => {
-      console.log(e)
-      //Expected output {total, node, root}
-   }
-
-
-  
-userType:
-----------
-
-``pruf.get.userType(userHash, nodeId)``
-
-Returns user type for hashed address at a specified node.
-
-Parameters
-"""""""""""
-1. userHash - bytes32
-   
-   * web3.utils.soliditySha3(address of desired user)
-
-2. nodeId - uint32
-
-   * Unique ID associated with a node
-
-Returns
-"""""""""""
-   uint8
-      
-      * User type for requested address for specified node.
-
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-   let _userHash = web3.utils.soliditySha3(0xa49811140e1d6f653dec28037be0924c811c4538)
-   let _nodeId = "1000003";
-
-   pruf.get.userType(
-      _userHash,
-      _nodeId,
-   )
-   .then(e => {
-      console.log(e)
-      //Expected output: uint8
-   }
-
-
-  
-nodeId:
-----------
-
-``pruf.get.nodeId(name)``
-
-Returns nodeId reletive to name provided.
-
-Parameters
-"""""""""""
-1. name - string
-   
-   * Name of node
-
-Returns
-"""""""""""
-   uint32
-      
-      * NodeId attatched to given node name.
-
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-   let _name = "Rolex";
-
-   pruf.get.nodeId(_name)
-   .then(e => {
-      console.log(e)
-      //Expected output: uint32
-   }
-
-
-  
-isSameRoot:
-----------
-
-``pruf.get.isSameRoot(name)``
-
-Returns whether two nodes have the same root node.
-
-Parameters
-"""""""""""
-1. name - string
-   
-   * Name of node
-
-Returns
-"""""""""""
-   uint32
-      
-      * NodeId attatched to given node name.
-
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-   let _name = "Rolex";
-
-   pruf.get.isSameRoot(_name)
-   .then(e => {
-      console.log(e)
-      //Expected output: uint32
-   }
-
-   
-.utils
-============
-
--------------------------------------------------------------------------------------------------
-
-util:
-----------
-
-``pruf.utils.util(params)``
-
-Brief Intro.
-
-Parameters
-"""""""""""
-   1. param1
-   
-      * type
-      * Explanation  
-
-Returns
-"""""""""""
-   1. Value1
-   
-      * type
-      * Explanation
-
-  
-Example usage
-""""""""""""""
-
-.. code-block:: javascript 
-   :linenos:
-
-   //Example pruf-js code
-
-
--------------------------------------------------------------------------------------------------
-
-
-
-Contribute to the project
---------------------------------
-
-- Issue Tracker: github.com/jamesBsmyth/pruf_js/issues
-- Source Code: github.com/jamesBsmyth/pruf_js
-
-Developer support
-------------------------
-
-If you are having issues, please let us know.
-Contact us at: support@pruf.io
-
-Or on Telegram: t.me/pruftalk
-
-Project Resources
-------------------
-
-Website: https://pruf.io
-
-License
---------
-
-The project is licensed under the MIT license.

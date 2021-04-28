@@ -14053,7 +14053,7 @@ class PRUF {
                     await contracts.ECR_MGR.methods.retrieveEscrowOwner(assetId)
                         .call((error, result) => {
                             if (!error) {
-                                return ownerHash = result
+                                return escrowOwnerHash = result
                             }
                         })
 
@@ -14417,10 +14417,10 @@ class PRUF {
                     let str = "0x" + bs58.decode(hash).slice(2).toString("hex");
                     return str;
                 }],
-                ["stringifyStatus", async (_status) => {
-                    if (!_status) return console.error('PRUF_ERR: Status id "', statusId, '"not recognized.');
+                ["stringifyStatus", async (status) => {
                     let tempStat = "Not Recognized";
-                    let statusId = String(_status)
+                    let statusId = String(status)
+                    if (!status) return console.error('PRUF_ERR: Status id "', statusId, '"not recognized.');
 
                     switch (statusId) {
                         case ("0"): tempStat = "No Status Set"; break
@@ -14488,7 +14488,7 @@ class PRUF {
 
                 }],
 
-                ["generateSecureRgt", async (assetId, { first, middle, last, id, password }) => {
+                ["generateSecureRgt", async (assetId, { first, middle, last, id, password }) => { //JBS:Examine, needs to be compliable for middle name not being neccesary.
                     if (!assetId) return console.error(`Invalid input: ${assetId}`);
                     if (!first || !middle || !last || !id || !password) return console.error(`PRUF_ERR: One of the input fields returned undefined`);
                     let rgtRaw = await hashAlgo(
