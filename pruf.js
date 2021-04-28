@@ -13963,7 +13963,7 @@ class PRUF {
 
                     return name;
                 }],
-                ["operationCost", async (nodeId, operationIndex) => {
+                ["operationCost", async (operationIndex, nodeId) => {
                     if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
                     if (!operationIndex) return console.error(`PRUF_ERR: Invalid input: ${operationIndex}`);
                     let costInfo = {}
