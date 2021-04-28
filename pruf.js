@@ -13963,7 +13963,7 @@ class PRUF {
 
                     return name;
                 }],
-                ["operationCost", async (operationIndex, nodeId) => {
+                ["operationCost", async (nodeId, operationIndex) => {
                     if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
                     if (!operationIndex) return console.error(`PRUF_ERR: Invalid input: ${operationIndex}`);
                     let costInfo = {}
@@ -13975,6 +13975,7 @@ class PRUF {
                                     total: web3Provider.utils.fromWei(result.rootPrice) + web3Provider.utils.fromWei(result.ACTHprice),
                                     node: web3Provider.utils.fromWei(result.ACTHprice),
                                     root: web3Provider.utils.fromWei(result.rootPrice),
+                                    beneficiary: result.ACTHaddress,
                                     rootBeneficiary: result.rootAddress
                                 }
                             }
