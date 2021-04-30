@@ -25,25 +25,26 @@ Returns
       * True/False
 
 Example usage 
-""""""""""""""
-.. code-block:: javascript 
-   :linenos:
+"""""""""""""
 
-   //Example pruf-js code
+   .. code-block:: javascript
+      :linenos:
 
-   let unhashedId = {
-      type: "bike,
-      manufacturer: "mongoose",
-      model: "trail",
-      serial: "12345678"
-   }
-   let _id = await pruf.utils.generateAssetID(unhashedId)
+      //Example pruf-js code
 
-   pruf.utils.isValidId(_id)
-   .then(e => {
-      console.log(e)
-      //Expected output: True
-   }
+      let unhashedId = {
+         type: "bike,
+         manufacturer: "mongoose",
+         model: "trail",
+         serial: "12345678"
+      }
+      let _id = await pruf.utils.generateAssetID(unhashedId)
+
+      pruf.utils.isValidId(_id)
+      .then(e => {
+         console.log(e)
+         //Expected output: True/False
+      }
 
 
 
@@ -73,6 +74,7 @@ Returns
   
 Example usage
 """"""""""""""
+
 .. code-block:: javascript 
    :linenos:
 

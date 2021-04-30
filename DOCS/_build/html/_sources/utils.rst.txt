@@ -24,27 +24,25 @@ Returns
       
       * True/False
 
-
 Example usage 
-"""""""""""""
-
+""""""""""""""
 .. code-block:: javascript 
    :linenos:
 
    //Example pruf-js code
 
    let unhashedId = {
-   type: "bike,
-   manufacturer: "mongoose",
-   model: "trail",
-   serial: "12345678"
+      type: "bike,
+      manufacturer: "mongoose",
+      model: "trail",
+      serial: "12345678"
    }
    let _id = await pruf.utils.generateAssetID(unhashedId)
 
    pruf.utils.isValidId(_id)
    .then(e => {
       console.log(e)
-      //Expected output: True/False
+      //Expected output: True
    }
 
 
@@ -53,7 +51,7 @@ Example usage
 ----------
   
 ipfsFromB32:
--------------------------
+-------------
 
 ``pruf.utils.ipfsFromB32(bytes32Hex)``
 
@@ -75,7 +73,6 @@ Returns
   
 Example usage
 """"""""""""""
-
 .. code-block:: javascript 
    :linenos:
 
@@ -95,7 +92,7 @@ Example usage
 ----------
   
 ipfsToB32:
-----------
+-----------
 
 ``pruf.utils.ipfsToB32(cid)``
 
@@ -137,7 +134,7 @@ Example usage
 ----------
   
 stringifyStatus:
-----------
+-----------------
 
 ``pruf.utils.stringifyStatus(status)``
 
@@ -156,6 +153,7 @@ Returns
    1. String
       
       * Status name associated with a status number
+
 Example usage
 """"""""""""""
 
@@ -178,7 +176,7 @@ Example usage
 ----------
   
 convertEscrowTime:
-----------
+-------------------
 
 ``pruf.utils.convertEscrowTime(rawTime, to)``
 
@@ -202,6 +200,7 @@ Returns
    1. String
       
       * Converted time measurement
+
 Example usage
 """"""""""""""
 
@@ -225,7 +224,7 @@ Example usage
 ----------
   
 tenThousandHashesOf: 
-----------
+---------------------
 
 ``pruf.utils.tenThousandHashesOf(toBeHashed)``
 
@@ -267,7 +266,7 @@ Example usage
 ----------
   
 generateAssetID:
-----------
+-----------------
 
 ``pruf.utils.generateAssetID({ type, make, model, serial })``
 
@@ -296,6 +295,7 @@ Returns
    1. String
       
       * assetId Hash
+
 Example usage
 """"""""""""""
 
@@ -322,7 +322,7 @@ Example usage
 ----------
   
 generateSecureRgt:
-----------
+-------------------
 
 ``pruf.utils.generateSecureRgt(assetId, { first, middle, last, id, password })``
 
@@ -359,6 +359,7 @@ Returns
    1. String
       
       * Asset rightsHash
+
 Example usage
 """"""""""""""
 

@@ -42,7 +42,7 @@ Parameters
 Example usage
 """"""""""""""
 
-.. code-block:: javascript 
+.. code-block:: javascript
    :linenos:
 
    //Example pruf-js code
@@ -114,7 +114,7 @@ Example usage
 ----------
 
 transferAsset:
------------------
+---------------
    
    ``pruf.do.transferAsset(from, to, assetId)``
    
@@ -164,7 +164,7 @@ Example usage
 ----------
 
 setAssetURI:
------------------
+-------------
    
    ``pruf.do.setAssetURI(assetId, newURI)``
    
@@ -207,7 +207,7 @@ Example usage
 ----------
 
 discardAsset:
------------------
+--------------
    
    ``pruf.do.discardAsset(assetId)``
    
@@ -243,7 +243,7 @@ Example usage
 ----------
   
 engraveAsset:
------------------
+--------------
    
    ``pruf.do.engraveAsset(assetId, inscription)``
    
@@ -287,7 +287,7 @@ Example usage
 ----------
  
 importAsset:
------------------
+-------------
    
    ``pruf.do.importAsset(assetId, newURI)``
    
@@ -331,7 +331,7 @@ Example usage
 ----------
 
 modifyRightsHash:
-----------------------
+------------------
    
    ``pruf.do.modifyRightsHash(assetId, newRightsHash)``
    
@@ -375,7 +375,7 @@ Example usage
 ----------
 
 decrementLifeCycle:
--------------------
+--------------------
    
    ``pruf.do.decrementLifeCycle(assetId, amount)``
    
@@ -419,7 +419,7 @@ Example usage
 ----------
 
 exportAsset:
------------------
+-------------
    
    ``pruf.do.exportAsset(assetId)``
    
@@ -500,7 +500,7 @@ Example usage
 ----------
 
 modifyAssetStatus:
---------------------
+-------------------
    
    ``pruf.do.modifyAssetStatus(assetId, newStatus)``
    
@@ -588,7 +588,7 @@ Example usage
 ----------
 
 redeemPipAsset:
---------------------
+----------------
    
    ``pruf.do.redeemPipAsset(assetId, authCode, nodeId, rightsHash, LifeCycleLimit)``
    
@@ -652,7 +652,7 @@ Example usage
 ----------
 
 mintPip:
---------------------
+---------
    
    ``pruf.do.mintPip(assetId, authCodeHash, nodeId)``
    
@@ -702,7 +702,7 @@ Example usage
 ----------
 
 setForSale:
---------------------
+------------
    
    ``pruf.do.setForSale(assetId, price, currency, setTransferable)``
    
@@ -759,7 +759,7 @@ Example usage
 ----------
 
 unSetForSale:
---------------------
+--------------
    
    ``pruf.do.unSetForSale(assetId)``
    
@@ -795,7 +795,7 @@ Example usage
 ----------
 
 buyAsset:
---------------------
+----------
    
    ``pruf.do.buyAsset(assetId)``
    
@@ -831,7 +831,7 @@ Example usage
 ----------
 
 recycleAsset:
---------------------
+--------------
    
    ``pruf.do.recycleAsset(assetId, rightsHash, nodeId)``
    
@@ -882,7 +882,7 @@ Example usage
 ----------
 
 setColdWallet:
---------------------
+---------------
    
    ``pruf.do.setColdWallet()``
    
@@ -911,7 +911,7 @@ Example usage
 ----------
 
 unSetColdWallet:
---------------------
+-----------------
    
    ``pruf.do.unSetColdWallet()``
    
@@ -940,7 +940,7 @@ Example usage
 ----------
 
 transferPruf:
---------------------
+--------------
    
    ``pruf.do.transferPruf(from, to, amount)``
    
@@ -991,7 +991,7 @@ Example usage
 ----------
 
 transferNode:
---------------------
+--------------
    
    ``pruf.do.transferNode(from, to, nodeId)``
    
@@ -1042,7 +1042,7 @@ Example usage
 ----------
 
 setOperationCost:
---------------------
+------------------
    
    ``pruf.do.setOperationCost(nodeId, operationIndex, newCost, beneficiaryAddress)``
    
@@ -1100,7 +1100,7 @@ Example usage
 ----------
 
 purchaseNode:
---------------------
+--------------
    
    ``pruf.do.purchaseNode(name, rootNode, custodyType, extendedConfig)``
    
@@ -1201,7 +1201,7 @@ Example usage
 ----------
 
 authorizeUser:
---------------------
+---------------
    
    ``pruf.do.authorizeUser(nodeId, authAddressHash, userType)``
    
@@ -1252,7 +1252,7 @@ Example usage
 ----------
 
 modifyNodeName:
---------------------
+----------------
    
    ``pruf.do.modifyNodeName(nodeId, newName)``
    
@@ -1296,7 +1296,7 @@ Example usage
 ----------
 
 finalizeNode:
---------------------
+--------------
    
    ``pruf.do.finalizeNode(nodeId, managementType, storageProvider, referenceAddress)``
    

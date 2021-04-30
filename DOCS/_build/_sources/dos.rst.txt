@@ -42,7 +42,7 @@ Parameters
 Example usage
 """"""""""""""
 
-.. code-block:: javascript
+.. code-block:: javascript 
    :linenos:
 
    //Example pruf-js code
