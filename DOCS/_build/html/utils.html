@@ -100,10 +100,10 @@ pruf.utils.isValidId(_id)
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="ipfsfromb32-jbs-examine">
-<h2>ipfsFromB32: JBS:Examine<a class="headerlink" href="#ipfsfromb32-jbs-examine" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ipfsfromb32">
+<h2>ipfsFromB32:<a class="headerlink" href="#ipfsfromb32" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pruf.utils.ipfsFromB32(bytes32Hex)</span></code></p>
-<p>Returns a boolean confirming or denying whether or not the given id is a valid id.</p>
+<p>Returns a valid ipfs CID from a Bytes32.</p>
 <div class="section" id="id1">
 <h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -111,7 +111,7 @@ pruf.utils.isValidId(_id)
 <li><p>bytes32Hex</p>
 <ul class="simple">
 <li><p>String|Bytes32</p></li>
-<li><p>Hash built from individual inputs which is used to identify the asset on the network.</p></li>
+<li><p>Hash parsed from a CID to be stored on the blockchain.</p></li>
 </ul>
 </li>
 </ol>
@@ -121,9 +121,9 @@ pruf.utils.isValidId(_id)
 <h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Boolean</p>
+<li><p>CID|String</p>
 <ul class="simple">
-<li><p>True/False</p></li>
+<li><p>Used to query ipfs clients for data which matches the CID</p></li>
 </ul>
 </li>
 </ol>
@@ -131,52 +131,40 @@ pruf.utils.isValidId(_id)
 </div>
 <div class="section" id="id3">
 <h3>Example usage<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>//Example pruf-js code
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
 
-let unhashedId = {
-type: &quot;bike,
-manufacturer: &quot;mongoose&quot;,
-model: &quot;trail&quot;,
-serial: &quot;12345678&quot;
-}
-let _id = await pruf.utils.generateAssetID(unhashedId)
+<span class="kd">let</span> <span class="nx">_bytes32Hex</span> <span class="o">=</span> <span class="s1">&#39;0x22f7ee355249d57c4e05e8437879bfa360570bc25620d6c758f8e9a9ba8c5156&#39;</span>
 
-pruf.utils.ipfsFromB32(_id)
-.then(e =&gt; {
-   console.log(e)
-   //Expected output: True/False
-}
+<span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">ipfsFromB32</span><span class="p">(</span><span class="nx">_bytes32Hex</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+   <span class="c1">//Expected output: &#39;QmQh9qobTmwHRztiTyi2fckYgpiygSZhDN7yfDymvUfZh7&#39;</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="ipfstob32-jbs-examine">
-<h2>ipfsToB32: JBS:Examine<a class="headerlink" href="#ipfstob32-jbs-examine" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pruf.utils.ipfsToB32(bytes32Hex)</span></code></p>
-<p>Returns a boolean confirming or denying whether or not the given id is a valid id.</p>
+<div class="section" id="ipfstob32">
+<h2>ipfsToB32:<a class="headerlink" href="#ipfstob32" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.utils.ipfsToB32(cid)</span></code></p>
+<p>Returns a Bytes32 pasred from an ipfs CID.</p>
 <div class="section" id="id4">
 <h3>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>bytes32Hex</p>
+<li><p>CID</p>
 <ul class="simple">
-<li><p>String|Bytes32</p></li>
-<li><p>Hash built from individual inputs which is used to identify the asset on the network.</p></li>
+<li><p>String|Bs58</p></li>
+<li><p>Used to query ipfs clients for data which matches the CID</p></li>
 </ul>
 </li>
 </ol>
@@ -186,9 +174,9 @@ pruf.utils.ipfsFromB32(_id)
 <h3>Returns<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Boolean</p>
+<li><p>Bytes32|String</p>
 <ul class="simple">
-<li><p>True/False</p></li>
+<li><p>Hash parsed from a CID to be stored on the blockchain.</p></li>
 </ul>
 </li>
 </ol>
@@ -196,35 +184,23 @@ pruf.utils.ipfsFromB32(_id)
 </div>
 <div class="section" id="id6">
 <h3>Example usage<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>//Example pruf-js code
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
 
-let unhashedId = {
-type: &quot;bike,
-manufacturer: &quot;mongoose&quot;,
-model: &quot;trail&quot;,
-serial: &quot;12345678&quot;
-}
-let _id = await pruf.utils.generateAssetID(unhashedId)
+<span class="kd">let</span> <span class="nx">_cid</span> <span class="o">=</span> <span class="s1">&#39;QmQh9qobTmwHRztiTyi2fckYgpiygSZhDN7yfDymvUfZh7&#39;</span>
 
-pruf.utils.ipfsToB32(_id)
-.then(e =&gt; {
-   console.log(e)
-   //Expected output: True/False
-}
+<span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">ipfsToB32</span><span class="p">(</span><span class="nx">_cid</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+   <span class="c1">//Expected output: &#39;0x22f7ee355249d57c4e05e8437879bfa360570bc25620d6c758f8e9a9ba8c5156&#39;</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -350,27 +326,19 @@ pruf.utils.ipfsToB32(_id)
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="tenthousandhashesof-jbs-examine">
-<h2>tenThousandHashesOf: JBS: Examine<a class="headerlink" href="#tenthousandhashesof-jbs-examine" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pruf.utils.tenThousandHashesOf(rawTime,</span> <span class="pre">to)</span></code></p>
-<p>Converts rawTime(seconds) to desired measurement(minutes, hours, days, weeks) for escrow related functions.</p>
+<div class="section" id="tenthousandhashesof">
+<h2>tenThousandHashesOf:<a class="headerlink" href="#tenthousandhashesof" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.utils.tenThousandHashesOf(toBeHashed)</span></code></p>
+<p>Hashes a given value ten thousand times using the current algorithm supported by the network</p>
 <div class="section" id="id13">
 <h3>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
-<li><p>rawTime</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Number</p></li>
-<li><p>The number of seconds being converted.</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>to</p>
+<li><p>toBeHashed</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>String</p></li>
-<li><p>The conversion rate for rawTime (minutes, hours, days, weeks).</p></li>
+<li><p>String to be hashed.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -381,9 +349,9 @@ pruf.utils.ipfsToB32(_id)
 <h3>Returns<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>String</p>
+<li><p>String|Bytes32</p>
 <ul class="simple">
-<li><p>Converted time measurement</p></li>
+<li><p>Resulting Bytes32 string of the given toBeHashed value</p></li>
 </ul>
 </li>
 </ol>
@@ -391,24 +359,22 @@ pruf.utils.ipfsToB32(_id)
 </div>
 <div class="section" id="id15">
 <h3>Example usage<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js code</span>
 
-<span class="kd">let</span> <span class="nx">_rawTime</span> <span class="o">=</span> <span class="s2">&quot;180&quot;</span>
-<span class="kd">let</span> <span class="nx">_to</span> <span class="o">=</span> <span class="s2">&quot;minutes&quot;</span>
+<span class="kd">let</span> <span class="nx">_toBeHashed</span> <span class="o">=</span> <span class="s1">&#39;Hello World&#39;</span>
 
-<span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">tenThousandHashesOf</span><span class="p">(</span><span class="nx">_rawTime</span><span class="p">,</span> <span class="nx">_to</span><span class="p">)</span>
+<span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">tenThousandHashesOf</span><span class="p">(</span><span class="nx">_toBeHashed</span><span class="p">)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-   <span class="c1">//Expected output: &quot;3&quot;</span>
+   <span class="c1">//Expected output: &#39;0x251a68a00a43256025c9bd8fc98f63b1a46d27b1c1bc872ead767121ca873700&#39;</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -643,11 +609,11 @@ pruf.utils.generateSecureRgt(_assetId, _unhashedRights)
 <li class="toctree-l1"><a class="reference internal" href="gets.html">.get</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">.utils</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#isvalidid">isValidId:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ipfsfromb32-jbs-examine">ipfsFromB32: JBS:Examine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ipfstob32-jbs-examine">ipfsToB32: JBS:Examine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ipfsfromb32">ipfsFromB32:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ipfstob32">ipfsToB32:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stringifystatus">stringifyStatus:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#convertescrowtime">convertEscrowTime:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tenthousandhashesof-jbs-examine">tenThousandHashesOf: JBS: Examine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tenthousandhashesof">tenThousandHashesOf:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#generateassetid">generateAssetID:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#generatesecurergt">generateSecureRgt:</a></li>
 </ul>

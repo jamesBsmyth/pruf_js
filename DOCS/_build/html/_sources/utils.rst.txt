@@ -52,26 +52,27 @@ Example usage
 
 ----------
   
-ipfsFromB32: JBS:Examine
+ipfsFromB32:
 -------------------------
 
 ``pruf.utils.ipfsFromB32(bytes32Hex)``
 
-Returns a boolean confirming or denying whether or not the given id is a valid id.
+Returns a valid ipfs CID from a Bytes32.
 
 Parameters
 """""""""""
    1. bytes32Hex
 
       * String|Bytes32
-      * Hash built from individual inputs which is used to identify the asset on the network.
+      * Hash parsed from a CID to be stored on the blockchain.
 
 Returns
 """""""""""
 
-   1. Boolean
+   1. CID|String
       
-      * True/False
+      * Used to query ipfs clients for data which matches the CID
+  
 Example usage
 """"""""""""""
 
@@ -80,18 +81,12 @@ Example usage
 
    //Example pruf-js code
 
-   let unhashedId = {
-   type: "bike,
-   manufacturer: "mongoose",
-   model: "trail",
-   serial: "12345678"
-   }
-   let _id = await pruf.utils.generateAssetID(unhashedId)
+   let _bytes32Hex = '0x22f7ee355249d57c4e05e8437879bfa360570bc25620d6c758f8e9a9ba8c5156'
 
-   pruf.utils.ipfsFromB32(_id)
+   pruf.utils.ipfsFromB32(_bytes32Hex)
    .then(e => {
       console.log(e)
-      //Expected output: True/False
+      //Expected output: 'QmQh9qobTmwHRztiTyi2fckYgpiygSZhDN7yfDymvUfZh7'
    }
 
 
@@ -99,26 +94,27 @@ Example usage
    
 ----------
   
-ipfsToB32: JBS:Examine
+ipfsToB32:
 ----------
 
-``pruf.utils.ipfsToB32(bytes32Hex)``
+``pruf.utils.ipfsToB32(cid)``
 
-Returns a boolean confirming or denying whether or not the given id is a valid id.
+Returns a Bytes32 pasred from an ipfs CID.
 
 Parameters
 """""""""""
-   1. bytes32Hex
+   1. CID
 
-      * String|Bytes32
-      * Hash built from individual inputs which is used to identify the asset on the network.
+      * String|Bs58
+      * Used to query ipfs clients for data which matches the CID
 
 Returns
 """""""""""
 
-   1. Boolean
+   1. Bytes32|String
       
-      * True/False
+      * Hash parsed from a CID to be stored on the blockchain.
+  
 Example usage
 """"""""""""""
 
@@ -127,18 +123,12 @@ Example usage
 
    //Example pruf-js code
 
-   let unhashedId = {
-   type: "bike,
-   manufacturer: "mongoose",
-   model: "trail",
-   serial: "12345678"
-   }
-   let _id = await pruf.utils.generateAssetID(unhashedId)
+   let _cid = 'QmQh9qobTmwHRztiTyi2fckYgpiygSZhDN7yfDymvUfZh7'
 
-   pruf.utils.ipfsToB32(_id)
+   pruf.utils.ipfsToB32(_cid)
    .then(e => {
       console.log(e)
-      //Expected output: True/False
+      //Expected output: '0x22f7ee355249d57c4e05e8437879bfa360570bc25620d6c758f8e9a9ba8c5156'
    }
 
 
@@ -234,31 +224,28 @@ Example usage
    
 ----------
   
-tenThousandHashesOf: JBS: Examine
+tenThousandHashesOf: 
 ----------
 
-``pruf.utils.tenThousandHashesOf(rawTime, to)``
+``pruf.utils.tenThousandHashesOf(toBeHashed)``
 
-Converts rawTime(seconds) to desired measurement(minutes, hours, days, weeks) for escrow related functions.
+Hashes a given value ten thousand times using the current algorithm supported by the network
 
 Parameters
 """""""""""
-   * rawTime
+   * toBeHashed
   
-      * Number
-      * The number of seconds being converted.
-      
-   * to
-        
       * String
-      * The conversion rate for rawTime (minutes, hours, days, weeks).
+      * String to be hashed.
+      
 
 Returns
 """""""""""
 
-   1. String
+   1. String|Bytes32
       
-      * Converted time measurement
+      * Resulting Bytes32 string of the given toBeHashed value
+  
 Example usage
 """"""""""""""
 
@@ -267,13 +254,12 @@ Example usage
 
    //Example pruf-js code
 
-   let _rawTime = "180"
-   let _to = "minutes"
+   let _toBeHashed = 'Hello World' 
 
-   pruf.utils.tenThousandHashesOf(_rawTime, _to)
+   pruf.utils.tenThousandHashesOf(_toBeHashed)
    .then(e => {
       console.log(e)
-      //Expected output: "3"
+      //Expected output: '0x251a68a00a43256025c9bd8fc98f63b1a46d27b1c1bc872ead767121ca873700'
    }
 
 
