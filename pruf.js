@@ -14349,49 +14349,49 @@ class PRUF {
                 }],
             ]
 
-            const txns = [
-                ["verifyRightsHash", contracts.STOR.methods.blockchainVerifyRightsHolder],
-                ["transferAsset", contracts.A_TKN.methods.safeTransferFrom],
-                ["setAssetURI", contracts.A_TKN.methods.setURI],
-                ["discardAsset", contracts.A_TKN.methods.discard],
-                ["engraveAsset", contracts.APP_NC.methods.addIpfs2Note],
-                ["importAsset", contracts.APP_NC.methods.importAsset],
-                ["mintAsset", contracts.APP_NC.methods.newRecordWithNote],
-                ["mintAssetBare", contracts.APP_NC.methods.newRecord],
-                ["initEscrow", contracts.ECR_NC.methods.setEscrow],
-                ["terminateEscrow", contracts.ECR_NC.methods.endEscrow],
-                ["modifyRightsHash", contracts.NP_NC.methods._changeRgt],
-                ["decrementLifeCycle", contracts.NP_NC.methods._decCounter],
-                ["exportAsset", contracts.NP_NC.methods._exportNC],
-                ["modifyAssetExtData", contracts.NP_NC.methods._modIpfs1],
-                ["modifyAssetStatus", contracts.NP_NC.methods._modStatus],
-                ["markAssetLostOrStolen", contracts.NP_NC.methods._setLostOrStolen],
-                ["redeemPipAsset", contracts.PIP.methods.claimPipAsset],
-                ["mintPip", contracts.PIP.methods.mintPipAsset],
-                ["setForSale", contracts.PURCHASE.methods._setPrice],
-                ["unSetForSale", contracts.PURCHASE.methods._clearPrice],
-                ["buyAsset", contracts.PURCHASE.methods.purchaseWithPRUF],
-                ["recycleAsset", contracts.RCLR.methods.recycle],
-                ["setColdWallet", contracts.UTIL_TKN.methods.setColdWallet],
-                ["unSetColdWallet", contracts.UTIL_TKN.methods.unSetColdWallet],
-                ["transferPruf", contracts.UTIL_TKN.methods.transferFrom],
-                ["transferNode", contracts.AC_TKN.methods.safeTransferFrom],
-                ["setOperationCost", contracts.AC_MGR.methods.ACTH_setCosts],
-                ["purchaseNode", contracts.AC_MGR.methods.purchaseACnode],
-                ["modifyExtendedConfig", contracts.AC_MGR.methods.updateACipfs],
-                ["authorizeUser", contracts.AC_MGR.methods.addUser],
-                ["modifyNodeName", contracts.AC_MGR.methods.updateACname],
-                ["finalizeNode", contracts.AC_MGR.methods.updateACImmutable],
+            const txObj = {
+                verifyRightsHash: contracts.STOR.methods.blockchainVerifyRightsHolder,
+                transferAsset: contracts.A_TKN.methods.safeTransferFrom,
+                setAssetURI: contracts.A_TKN.methods.setURI,
+                discardAsset: contracts.A_TKN.methods.discard,
+                engraveAsset: contracts.APP_NC.methods.addIpfs2Note,
+                importAsset: contracts.APP_NC.methods.importAsset,
+                mintAsset: contracts.APP_NC.methods.newRecordWithNote,
+                mintAssetBare: contracts.APP_NC.methods.newRecord,
+                initEscrow: contracts.ECR_NC.methods.setEscrow,
+                terminateEscrow: contracts.ECR_NC.methods.endEscrow,
+                modifyRightsHash: contracts.NP_NC.methods._changeRgt,
+                decrementLifeCycle: contracts.NP_NC.methods._decCounter,
+                exportAsset: contracts.NP_NC.methods._exportNC,
+                modifyAssetExtData: contracts.NP_NC.methods._modIpfs1,
+                modifyAssetStatus: contracts.NP_NC.methods._modStatus,
+                markAssetLostOrStolen: contracts.NP_NC.methods._setLostOrStolen,
+                redeemPipAsset: contracts.PIP.methods.claimPipAsset,
+                mintPip: contracts.PIP.methods.mintPipAsset,
+                setForSale: contracts.PURCHASE.methods._setPrice,
+                unSetForSale: contracts.PURCHASE.methods._clearPrice,
+                buyAsset: contracts.PURCHASE.methods.purchaseWithPRUF,
+                recycleAsset: contracts.RCLR.methods.recycle,
+                setColdWallet: contracts.UTIL_TKN.methods.setColdWallet,
+                unSetColdWallet: contracts.UTIL_TKN.methods.unSetColdWallet,
+                transferPruf: contracts.UTIL_TKN.methods.transferFrom,
+                transferNode: contracts.AC_TKN.methods.safeTransferFrom,
+                setOperationCost: contracts.AC_MGR.methods.ACTH_setCosts,
+                purchaseNode: contracts.AC_MGR.methods.purchaseACnode,
+                modifyExtendedConfig: contracts.AC_MGR.methods.updateACipfs,
+                authorizeUser: contracts.AC_MGR.methods.addUser,
+                modifyNodeName: contracts.AC_MGR.methods.updateACname,
+                finalizeNode: contracts.AC_MGR.methods.updateACImmutable,
 
                 //PARTY -- TEST RELEASE ONLY
-                ["getId", contracts.PARTY.methods.GET_ID],
-                ["getPruf", contracts.PARTY.methods.BUY_PRUF],
+                getId: contracts.PARTY.methods.GET_ID,
+                getPruf: contracts.PARTY.methods.BUY_PRUF,
                 //
-            ]
+            }
 
-            const utils = [
+            const utilObj = {
                 //generateIndex, generateRightsHash
-                ["isValidId", async (id) => {
+                isValidId: async (id) => {
                     try {
                         if (!id) throw "TokenID is undefined"
                         else if (typeof id !== "string") throw "tokenID must be a string"
@@ -14406,20 +14406,20 @@ class PRUF {
                         return false
                     }
 
-                }],
-                ["ipfsFromB32", async (bytes32Hex) => {
+                },
+                ipfsFromB32: async (bytes32Hex) => {
                     if (!bytes32Hex) return console.error(`PRUF_ERR: Invalid input: ${bytes32Hex}`);
                     const hashHex = "1220" + bytes32Hex.slice(2);
                     const hashBytes = Buffer.from(hashHex, "hex");
                     const hashStr = bs58.encode(hashBytes);
                     return hashStr;
-                }],
-                ["ipfsToB32", async (hash) => {
+                },
+                ipfsToB32: async (hash) => {
                     if (!hash) return console.error(`PRUF_ERR: Invalid input: ${hash}`);
                     let str = "0x" + bs58.decode(hash).slice(2).toString("hex");
                     return str;
-                }],
-                ["stringifyStatus", async (status) => {
+                },
+                stringifyStatus: async (status) => {
                     let tempStat = "Not Recognized";
                     let statusId = String(status)
                     if (!status) return console.error('PRUF_ERR: Status id "', statusId, '"not recognized.');
@@ -14449,9 +14449,9 @@ class PRUF {
                     }
 
                     return (tempStat)
-                }],
+                },
 
-                ["convertEscrowTime", async (rawTime, to) => {
+                convertEscrowTime: async (rawTime, to) => {
                     if (!rawTime) return console.error(`PRUF_ERR: Invalid input: ${rawTime}`);
                     if (!to) return console.error(`PRUF_ERR: Invalid input: ${to}`);
                     let time;
@@ -14463,9 +14463,9 @@ class PRUF {
                         case ("weeks"): time = rawTime * 604800; break
                     }
                     return time;
-                }],
+                },
 
-                ["tenThousandHashesOf", async (job) => {
+                tenThousandHashesOf: async (job) => {
                     if (!job) return
                     let tempHash = job
 
@@ -14474,9 +14474,9 @@ class PRUF {
                     }
 
                     return tempHash
-                }],
+                },
 
-                ["generateAssetID", async ({ type, make, model, serial }) => {
+                generateAssetID: async ({ type, make, model, serial }) => {
                     if (!make || !model || !series || !serial) return console.error(`PRUF_ERR: One of the input fields returned undefined`);
 
                     let id = await hashAlgo(
@@ -14488,9 +14488,9 @@ class PRUF {
 
                     return id
 
-                }],
+                },
 
-                ["generateSecureRgt", async (assetId, { first, middle, last, id, password }) => {
+                generateSecureRgt: async (assetId, { first, middle, last, id, password }) => {
                     if (!assetId) return console.error(`Invalid input: ${assetId}`);
                     if (!first || !last || !id || !password) return console.error(`PRUF_ERR: One of the input fields returned undefined`);
                     if (!middle) middle = ""
@@ -14510,8 +14510,8 @@ class PRUF {
                     }
 
                     return rgt
-                }],
-            ]
+                },
+            }
 
             let callObj = {}, txObj = {}, utilObj = {};
 
