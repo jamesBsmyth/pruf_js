@@ -13971,7 +13971,7 @@ class PRUF {
                         .call((error, result) => {
                             if (!error) {
                                 return costInfo = {
-                                    total: web3Provider.utils.fromWei(result.rootPrice) + web3Provider.utils.fromWei(result.ACTHprice),
+                                    total: String(Number(web3Provider.utils.fromWei(result.rootPrice)) + Number(web3Provider.utils.fromWei(result.ACTHprice))),
                                     node: web3Provider.utils.fromWei(result.ACTHprice),
                                     root: web3Provider.utils.fromWei(result.rootPrice),
                                     beneficiary: result.ACTHaddress,
@@ -14522,20 +14522,22 @@ class PRUF {
 
         else {
             try {
+                console.time("Time spent initializing: ")
                 resolveContracts(web3Provider).then((f) => {
                     if (!f) throw "Contracts returned undefined"
-                    else {
-                        try {
-                            assembleInterface(f).then((g) => {
-                                if (!g) throw "Interface returned undefined"
-                                this.get = g.get
-                                this.utils = g.utils
-                                this.do = g.do
-                            })
-                        }
-                        catch (err) {
-                            console.error("PRUF_ERR:", err)
-                        }
+                    console.log(f)
+                    try {
+                        assembleInterface(f).then((g) => {
+                            if (!g) throw "Interface returned undefined"
+                            console.log(g)
+                            this.get = g.get
+                            this.utils = g.utils
+                            this.do = g.do
+                            console.timeEnd("Time spent initializing: ")
+                        })
+                    }
+                    catch (err) {
+                        console.error("PRUF_ERR:", err)
                     }
                 })
             }
