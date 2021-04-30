@@ -328,7 +328,7 @@ Returns
 """""""""""
    1. Uint8
       
-      * User type for requested address for specified node.
+      * User type for requested address on specified node.
 
 Example usage
 """"""""""""""
