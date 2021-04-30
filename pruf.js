@@ -13876,11 +13876,11 @@ class PRUF {
             const calls = [
                 ["assetRecordExists", async (assetId) => {
                     if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
-                    
+
                     let bool = false;
 
                     await contracts.STOR.methods
-                    .retrieveShortRecord(assetId)
+                        .retrieveShortRecord(assetId)
                         .call((error, result) => {
                             if (!error && result["2"] !== "0") {
                                 return bool = true
@@ -13944,7 +13944,7 @@ class PRUF {
                                     switches: result.switches,
                                     extData: result["IPFS"],
                                 }
-                            }   else return nodeData = {};
+                            } else return nodeData = {};
                         })
 
                     return nodeData
@@ -14014,7 +14014,7 @@ class PRUF {
                 }],
                 ["isSameRoot", async (nodeId1, nodeId2) => {
                     if (!nodeId1) return console.error(`PRUF_ERR: Invalid input: ${nodeId1}`);
-                    if(!nodeId2) return console.error(`PRUF_ERR: Invalid input: ${nodeId2}`);
+                    if (!nodeId2) return console.error(`PRUF_ERR: Invalid input: ${nodeId2}`);
 
                     let bool = false;
 
@@ -14095,12 +14095,11 @@ class PRUF {
                 }],
                 ["assetRecord", async (assetId) => {
                     if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
-
                     let record = {}
 
                     await contracts.STOR.methods.retrieveShortRecord(assetId)
                         .call((error, result) => {
-                            if (!error) {
+                            if (!error && result["2"] !== "0") {
                                 return record = {
                                     id: assetId,
                                     statusNum: result["0"],
@@ -14122,33 +14121,35 @@ class PRUF {
                     if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
 
                     let assetId = "Not Found"
-                    
+
                     await contracts.A_TKN.methods.tokenOfOwnerByIndex(address, index)
-                    .call((error, result) => {
-                        if (!error) {
-                            assetId = web3Provider.utils.numberToHex(result);
-                            if (assetId.length < 66) {
-                                assetId = assetId.substring(0, 2) + String(10^(66-assetId.length)).substring(1) + assetId.substring(2, assetId.length);
+                        .call((error, result) => {
+                            if (!error) {
+                                assetId = web3Provider.utils.numberToHex(result);
+                                if (assetId.length < 66) {
+                                    let paddingZeros = String(Math.pow(10, 66 - assetId.length)).substring(1)
+                                    assetId = assetId.substring(0, 2) + paddingZeros + assetId.substring(2, assetId.length);
+                                }
                             }
-                        }
-                    })
+                        })
 
                     return assetId
                 }],
                 ["assetAtIndex", async (index) => {
                     if (!index) return console.error(`PRUF_ERR: Invalid input: ${index}`);
-                    
+
                     let assetId = "Not Found"
-                    
+
                     await contracts.A_TKN.methods.tokenByIndex(index)
-                    .call((error, result) => {
-                        if(!error) {
-                            assetId = web3Provider.utils.numberToHex(result);
-                            if(assetId.length < 66){
-                                assetId = assetId.substring(0, 2) + String(10^(66-assetId.length)).substring(1) + assetId.substring(2, assetId.length);
+                        .call((error, result) => {
+                            if (!error) {
+                                assetId = web3Provider.utils.numberToHex(result);
+                                if (assetId.length < 66) {
+                                    let paddingZeros = String(Math.pow(10, 66 - assetId.length)).substring(1)
+                                    assetId = assetId.substring(0, 2) + paddingZeros + assetId.substring(2, assetId.length);
+                                }
                             }
-                        }
-                    })
+                        })
 
                     return assetId
                 }],
@@ -14158,38 +14159,38 @@ class PRUF {
                     let bool = false
 
                     await contracts.A_TKN.methods.tokenExists(index)
-                    .call((error, result) => {
-                        if (!error && result === "170") {
-                            return bool = true
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error && result === "170") {
+                                return bool = true
+                            }
+                        })
 
                     return bool
                 }],
                 ["assetBalance", async (address) => {
-                    if(!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
+                    if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
 
                     let assetBalance = "Not Found"
 
                     await contracts.A_TKN.methods.balanceOf(address)
-                    .call((error, result) => {
-                        if (!error) {
-                            return assetBalance = result
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return assetBalance = result
+                            }
+                        })
 
                     return assetBalance
                 }],
                 ["howManyAssets", async () => {
-                    
+
                     let totalAssetSupply = "Not Found"
 
                     await contracts.A_TKN.methods.totalSupply()
-                    .call((error, result) => {
-                        if (!error) {
-                            return totalAssetSupply = result
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return totalAssetSupply = result
+                            }
+                        })
 
                     return totalAssetSupply
                 }],
@@ -14199,80 +14200,80 @@ class PRUF {
                     let ownerOfAsset = "Not Found"
 
                     await contracts.A_TKN.methods.ownerOf(assetId)
-                    .call((error, result) => {
-                        if (!error) {
-                            return ownerOfAsset = result
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return ownerOfAsset = result
+                            }
+                        })
 
                     return ownerOfAsset
                 }],
                 ["prufBalance", async (address) => {
-                    if(!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
-                    
+                    if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
+
                     let prufBalance = "Not Found"
-                    
+
                     await contracts.UTIL_TKN.methods.balanceOf(address)
-                    .call((error, result) => {
-                        if (!error) {
-                            return prufBalance = web3Provider.utils.fromWei(result)  
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return prufBalance = web3Provider.utils.fromWei(result)
+                            }
+                        })
 
                     return prufBalance
                 }],
                 ["isColdWallet", async (address) => {
-                    if(!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
-                    
+                    if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
+
                     let bool
-                    
+
                     await contracts.UTIL_TKN.methods.isColdWallet(address)
-                    .call((error, result) => {
-                        if(!error && result === "170") {
-                            return bool = true
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error && result === "170") {
+                                return bool = true
+                            }
+                        })
 
                     return bool
                 }],
                 ["howManyPruf", async () => {
-                    
+
                     let totalPrufSupply = "Now Found"
-                    
+
                     await contracts.UTIL_TKN.methods.totalSupply()
-                    .call((error, result) => {
-                        if (!error) {
-                            return totalPrufSupply = result
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return totalPrufSupply = result
+                            }
+                        })
 
                     return totalPrufSupply
                 }],
                 ["nodeBalance", async (address) => {
                     if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
-                    
+
                     let nodeBalance = "Not Found"
-                    
+
                     await contracts.AC_TKN.methods.balanceOf(address)
-                    .call((error, result) => {
-                        if (!error) {
-                            return nodeBalance = result
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return nodeBalance = result
+                            }
+                        })
 
                     return nodeBalance
                 }],
                 ["nodeExists", async (nodeId) => {
-                    if(!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
-                    
+                    if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
+
                     let bool = false
-                    
+
                     await contracts.AC_TKN.methods.tokenExists(nodeId)
-                    .call((error, result) => {
-                        if (!error && result === "170") {
-                            return bool = true
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error && result === "170") {
+                                return bool = true
+                            }
+                        })
 
                     return bool
                 }],
@@ -14281,68 +14282,68 @@ class PRUF {
                     if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
 
                     let nodeId = "Not Found"
-                    
+
                     await contracts.AC_TKN.methods.tokenOfOwnerByIndex(address, index)
-                    .call((error, result) => {
-                        if (!error) {
-                            return nodeId = result
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return nodeId = result
+                            }
+                        })
 
                     return nodeId
                 }],
                 ["nodeAtIndex", async (index) => {
-                    if(!index) return console.error(`PRUF_ERR: Invalid input: ${index}`);
-                    
+                    if (!index) return console.error(`PRUF_ERR: Invalid input: ${index}`);
+
                     let nodeId = "Not Found"
-                    
+
                     await contracts.AC_TKN.methods.tokenByIndex(index)
-                    .call((error, result) => {
-                        if (!error) {
-                            return nodeId = result
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return nodeId = result
+                            }
+                        })
 
                     return nodeId
                 }],
                 ["howManyNodes", async () => {
-                    
+
                     let totalNodeSupply = "Not Found"
-                    
+
                     await contracts.AC_TKN.methods.totalSupply()
-                    .call((error, result) => {
-                        if (!error) {
-                            return totalNodeSupply = result
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return totalNodeSupply = result
+                            }
+                        })
 
                     return totalNodeSupply
                 }],
                 ["ownerOfNode", async (nodeId) => {
-                    if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);    
-                    
+                    if (!nodeId) return console.error(`PRUF_ERR: Invalid input: ${nodeId}`);
+
                     let ownerOfNode = "Not Found"
 
                     await contracts.AC_TKN.methods.ownerOf(nodeId)
-                    .call((error, result) => {
-                        if (!error) {
-                            return ownerOfNode = result
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error) {
+                                return ownerOfNode = result
+                            }
+                        })
 
                     return ownerOfNode
                 }],
                 ["holdsId", async (address) => {
                     if (!address) return console.error(`PRUF_ERR: Invalid input: ${address}`);
-                    
+
                     let bool = false
-                    
+
                     await contracts.ID_TKN.methods.balanceOf(address)
-                    .call((error, result) => {
-                        if (!error && result === "1") {
-                            return bool = true
-                        }
-                    })
+                        .call((error, result) => {
+                            if (!error && result === "1") {
+                                return bool = true
+                            }
+                        })
 
                     return bool
                 }],
@@ -14489,9 +14490,11 @@ class PRUF {
 
                 }],
 
-                ["generateSecureRgt", async (assetId, { first, middle, last, id, password }) => { //JBS:Examine, needs to be compliable for middle name not being neccesary.
+                ["generateSecureRgt", async (assetId, { first, middle, last, id, password }) => {
                     if (!assetId) return console.error(`Invalid input: ${assetId}`);
-                    if (!first || !middle || !last || !id || !password) return console.error(`PRUF_ERR: One of the input fields returned undefined`);
+                    if (!first || !last || !id || !password) return console.error(`PRUF_ERR: One of the input fields returned undefined`);
+                    if (!middle) middle = ""
+
                     let rgtRaw = await hashAlgo(
                         String(first).replace(/\s/g, ""),
                         String(middle).replace(/\s/g, ""),
@@ -14544,26 +14547,15 @@ class PRUF {
 
         else {
             try {
-                web3Provider.eth.net.getNetworkType().then((e) => {
-                    if (!e) throw "Unidentified network. Initialization falied"
-                    else if (e !== "kovan") throw "Web3 provider must be connected to a kovan test network node"
+                resolveContracts(web3Provider).then((f) => {
+                    if (!f) throw "Contracts returned undefined"
                     else {
                         try {
-                            resolveContracts(web3Provider).then((f) => {
-                                if (!f) throw "Contracts returned undefined"
-                                else {
-                                    try {
-                                        assembleInterface(f).then((g) => {
-                                            if (!g) throw "Interface returned undefined"
-                                            this.get = g.get
-                                            this.utils = g.utils
-                                            this.do = g.do
-                                        })
-                                    }
-                                    catch (err) {
-                                        console.error("PRUF_ERR:", err)
-                                    }
-                                }
+                            assembleInterface(f).then((g) => {
+                                if (!g) throw "Interface returned undefined"
+                                this.get = g.get
+                                this.utils = g.utils
+                                this.do = g.do
                             })
                         }
                         catch (err) {
@@ -14575,8 +14567,8 @@ class PRUF {
             catch (err) {
                 console.error("PRUF_ERR:", err)
             }
-        }
 
+        }
     }
 }
 
