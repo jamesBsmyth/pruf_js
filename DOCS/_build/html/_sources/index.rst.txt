@@ -4,7 +4,6 @@
    contain the root `toctree` directive.
 
 
-.. image:: /image/prufLogo.png
 
 **pruf-js**
 ===================================

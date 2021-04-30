@@ -1,4 +1,3 @@
-.. image:: /image/prufLogo.png
 
 .get
 ============
