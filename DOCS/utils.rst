@@ -32,7 +32,7 @@ Example usage
 
    let unhashedId = {
       type: "bike,
-      manufacturer: "mongoose",
+      make: "mongoose",
       model: "trail",
       serial: "12345678"
    }

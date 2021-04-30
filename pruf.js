@@ -14476,7 +14476,7 @@ class PRUF {
                 },
 
                 generateAssetID: async ({ type, make, model, serial }) => {
-                    if (!make || !model || !series || !serial) return console.error(`PRUF_ERR: One of the input fields returned undefined`);
+                    if (!type ||!make || !model || !serial) return console.error(`PRUF_ERR: One of the input fields returned undefined`);
 
                     let id = await hashAlgo(
                         String(type).replace(/\s/g, ""),
