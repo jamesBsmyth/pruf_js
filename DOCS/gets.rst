@@ -654,7 +654,7 @@ Returns
          * The current status number of an asset, acting as a layer of permissions for the network.
       * forceModCount
          * Uint8
-         * The number of times an asset has been modified forcefully by a node manager. JBS:Examine
+         * Deprecated, application TBD
       * nodeId
          * Uint32
          * ID used to reference a node, in most cases used to classify assets by type or producer.
@@ -727,9 +727,9 @@ Parameters
 Returns
 """""""""""
 
-   1. Uint256
+   1. Bytes32|String
       
-      * Hash built from individual inputs which is used to identify the asset on the network. JBS: Examine (uint256? tokenID is idx?)
+      * Hash built from individual inputs which is used to identify the asset on the network.
 Example usage
 """"""""""""""
 
@@ -768,9 +768,9 @@ Parameters
 Returns
 """""""""""
 
-   1. uint256
+   1. Bytes32|String
       
-      * Hash built from individual inputs which is used to identify the asset on the network. JBS: Examine (uint256? tokenID is idx?)
+      * Hash built from individual inputs which is used to identify the asset on the network.
 Example usage
 """"""""""""""
 
