@@ -3,12 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. image:: /image/prufLogo.png
+
 **pruf-js**
 ===================================
 
-.. image:: /image/pruflogo.png
-
-!! THE DOCUMENTATION IN THIS PAGE IS INDEV. DO NOT USE IT AS A REFERENCE JUST YET. !!
+This documentation is in an alpha release. If you find any typos or issues please contact us at support@pruf.io.
 
 Interface for the PRüF network written in javascript
 

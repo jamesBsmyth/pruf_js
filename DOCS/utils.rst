@@ -1,3 +1,5 @@
+.. image:: /image/prufLogo.png
+
 .utils
 ========
 
