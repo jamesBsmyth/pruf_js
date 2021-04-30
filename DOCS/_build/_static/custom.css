@@ -1,1 +1,5 @@
 /* This file intentionally left blank. */
+@import '../alabaster.css';  for Alabaster
+body {
+    background-color: linear-gradient(0deg, rgba(0, 83, 128, 0.212), #015f9218) !important;
+}

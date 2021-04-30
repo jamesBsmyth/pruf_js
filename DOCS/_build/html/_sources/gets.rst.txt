@@ -1,3 +1,4 @@
+
 .get
 ============
 
@@ -22,7 +23,6 @@ Returns
       * True/False
       * If returned value is true, the asset exists. If false, asset does not exist.
 
-  
 Example usage
 """"""""""""""
 
@@ -46,7 +46,7 @@ Example usage
 ----------
 
 nodeNameAvailable:
-----------
+-------------------
 
 ``pruf.get.nodeNameAvailable(name)``
 
@@ -66,7 +66,6 @@ Returns
       * True/False
       * If returned value is true, the node name is available. If false, the name is already in use, therefore unavailable.
 
-  
 Example usage
 """"""""""""""
 
@@ -90,7 +89,7 @@ Example usage
 ----------
 
 nodePricing:
-----------
+-------------
 
 ``pruf.get.nodePricing()``
 
@@ -221,7 +220,6 @@ Returns
    
       * Name attatched to desired node.
 
-  
 Example usage
 """"""""""""""
 
@@ -244,7 +242,7 @@ Example usage
 ----------
 
 operationCost:
-----------
+---------------
 
 ``pruf.get.operationCost(nodeId, operationIndex)``
 
@@ -283,7 +281,6 @@ Returns
          * Address
          * Beneficiary address set by root node holder to recieve root node rewards.
 
-  
 Example usage
 """"""""""""""
 
@@ -333,7 +330,6 @@ Returns
       
       * User type for requested address for specified node.
 
-  
 Example usage
 """"""""""""""
 
@@ -378,7 +374,6 @@ Returns
       
       * NodeId attatched to given node name.
 
-  
 Example usage
 """"""""""""""
 
@@ -400,7 +395,7 @@ Example usage
 ----------
 
 isSameRoot:
-----------
+------------
 
 ``pruf.get.isSameRoot(nodeId1, nodeId2)``
 
@@ -425,7 +420,6 @@ Returns
       * True/False
       * If true, both nodes have the same root node. If false, the nodes have different root nodes.
 
-  
 Example usage
 """"""""""""""
 
@@ -448,7 +442,7 @@ Example usage
 ----------
 
 escrowData:
-----------
+------------
 
 ``pruf.get.escrowData(assetId)``
 
@@ -497,7 +491,7 @@ Example usage
 ----------
 
 escrowOwner:
-----------
+-------------
 
 ``pruf.get.escrowOwner(assetId)``
 
@@ -516,8 +510,9 @@ Returns
    1. Bytes32
       
       * Hash of an address designated as an executor for the escrow contract
+
 Example usage
-""""""""""""""
+"""""""""""""
 
 .. code-block:: javascript 
    :linenos:
@@ -537,7 +532,7 @@ Example usage
 ----------
 
 isRightsHolder:
-----------
+----------------
 
 ``pruf.get.isRightsHolder(assetId, rightsHash)``
 
@@ -561,6 +556,7 @@ Returns
    1. Boolean
       
       * True/False
+
 Example usage
 """"""""""""""
 
@@ -583,7 +579,7 @@ Example usage
 ----------
   
 assetPriceData:
-----------
+----------------
 
 ``pruf.get.assetPriceData(assetId)``
 
@@ -607,6 +603,7 @@ Returns
       * currency
          * Uint8
          * the currency set by an asset holder who sets their asset for sale(e.g. PRUF, USD, ETH)
+
 Example usage
 """"""""""""""
 
@@ -628,7 +625,7 @@ Example usage
 ----------
   
 assetRecord:
-----------
+-------------
 
 ``pruf.get.assetRecord(assetId)``
 
@@ -654,7 +651,7 @@ Returns
          * The current status number of an asset, acting as a layer of permissions for the network.
       * forceModCount
          * Uint8
-         * The number of times an asset has been modified forcefully by a node manager. JBS:Examine
+         * Deprecated, application TBD
       * nodeId
          * Uint32
          * ID used to reference a node, in most cases used to classify assets by type or producer.
@@ -676,6 +673,7 @@ Returns
       * numberOfTransfers
          * Uint16
          * A counter tracking the lifecycle movement of an asset, which increments upon each asset transfer.
+
 Example usage
 """"""""""""""
 
@@ -706,7 +704,7 @@ Example usage
 ----------
   
 heldAssetAtIndex:
-----------
+------------------
 
 ``pruf.get.heldAssetAtIndex(address, index)``
 
@@ -727,9 +725,10 @@ Parameters
 Returns
 """""""""""
 
-   1. Uint256
+   1. Bytes32|String
       
-      * Hash built from individual inputs which is used to identify the asset on the network. JBS: Examine (uint256? tokenID is idx?)
+      * Hash built from individual inputs which is used to identify the asset on the network.
+
 Example usage
 """"""""""""""
 
@@ -752,7 +751,7 @@ Example usage
 ----------
   
 assetAtIndex:
-----------
+--------------
 
 ``pruf.get.assetAtIndex(address, index)``
 
@@ -768,9 +767,10 @@ Parameters
 Returns
 """""""""""
 
-   1. uint256
+   1. Bytes32|String
       
-      * Hash built from individual inputs which is used to identify the asset on the network. JBS: Examine (uint256? tokenID is idx?)
+      * Hash built from individual inputs which is used to identify the asset on the network.
+
 Example usage
 """"""""""""""
 
@@ -792,7 +792,7 @@ Example usage
 ----------
   
 assetTokenExists:
-----------
+------------------
 
 ``pruf.get.assetTokenExists(tokenId)``
 
@@ -811,6 +811,7 @@ Returns
    1. Boolean
       
       * True/False
+
 Example usage
 """"""""""""""
 
@@ -832,7 +833,7 @@ Example usage
 ----------
   
 assetBalance:
-----------
+--------------
    
 ``pruf.get.assetBalance(address)``
    
@@ -851,6 +852,7 @@ Returns
    1. Uint256
          
       * Number of asset tokens held by address
+
 Example usage
 """"""""""""""
    
@@ -871,7 +873,7 @@ Example usage
 ----------
 
 howManyAssets:
-----------
+---------------
    
 ``pruf.get.howManyAssets()``
    
@@ -887,6 +889,7 @@ Returns
    1. Uint256
          
       * Number of asset tokens minted throughout the network
+
 Example usage
 """"""""""""""
    
@@ -905,7 +908,7 @@ Example usage
 ----------
 
 ownerOfAsset:
-----------
+--------------
    
 ``pruf.get.ownerOfAsset(assetId)``
    
@@ -924,6 +927,7 @@ Returns
    1. Address
          
       * Owner address of given assetId
+
 Example usage
 """"""""""""""
    
@@ -945,7 +949,7 @@ Example usage
 ----------
   
 prufBalance:
-----------
+-------------
    
 ``pruf.get.prufBalance(address)``
    
@@ -964,6 +968,7 @@ Returns
    1. Uint256
          
       * Number of PRUF tokens held by address
+
 Example usage
 """"""""""""""
    
@@ -985,7 +990,7 @@ Example usage
 ----------
   
 isColdWallet:
-----------
+--------------
 
 ``pruf.get.isColdWallet(address)``
 
@@ -1004,6 +1009,7 @@ Returns
    1. Boolean
       
       * True/False
+
 Example usage
 """"""""""""""
 
@@ -1024,7 +1030,7 @@ Example usage
 ----------
 
 howManyPruf:
-----------
+-------------
    
 ``pruf.get.howManyPruf()``
    
@@ -1040,6 +1046,7 @@ Returns
    1. Uint256
          
       * Number of PRUF tokens minted throughout the network.
+
 Example usage
 """"""""""""""
    
@@ -1059,7 +1066,7 @@ Example usage
 ----------
   
 nodeBalance:
-----------
+-------------
    
 ``pruf.get.nodeBalance(address)``
    
@@ -1078,6 +1085,7 @@ Returns
    1. Uint256
          
       * Number of nodes held by address
+
 Example usage
 """"""""""""""
    
@@ -1099,7 +1107,7 @@ Example usage
 ----------
   
 assetTokenExists:
-----------
+------------------
 
 ``pruf.get.assetTokenExists(tokenId)``
 
@@ -1118,6 +1126,7 @@ Returns
    1. Boolean
       
       * True/False
+
 Example usage
 """"""""""""""
 
@@ -1139,7 +1148,7 @@ Example usage
 ----------
   
 nodeExists:
-----------
+------------
 
 ``pruf.get.nodeExists(nodeId)``
 
@@ -1159,6 +1168,7 @@ Returns
    1. Boolean
       
       * True/False
+
 Example usage
 """"""""""""""
 
@@ -1180,7 +1190,7 @@ Example usage
 ----------
   
 heldNodeAtIndex:
-----------
+-----------------
 
 ``pruf.get.heldNodeAtIndex(address, index)``
 
@@ -1204,6 +1214,7 @@ Returns
    1. Uint256
       
       * nodeId used to identify unique node from one another.
+
 Example usage
 """"""""""""""
 
@@ -1226,7 +1237,7 @@ Example usage
 ----------
   
 nodeAtIndex:
-----------
+-------------
 
 ``pruf.get.nodeAtIndex(address, index)``
 
@@ -1245,6 +1256,7 @@ Returns
    1. uint256
       
       * NodeId which is used to identify the node on the network.
+
 Example usage
 """"""""""""""
 
@@ -1265,7 +1277,7 @@ Example usage
 ----------
 
 howManyNodes:
-----------
+--------------
    
 ``pruf.get.howManyNodes()``
    
@@ -1281,6 +1293,7 @@ Returns
    1. Uint256
          
       * Number of nodes minted throughout the network
+
 Example usage
 """"""""""""""
    
@@ -1299,7 +1312,7 @@ Example usage
 ----------
 
 ownerOfNode:
-----------
+-------------
    
 ``pruf.get.ownerOfNode(nodeId)``
    
@@ -1319,6 +1332,7 @@ Returns
    1. Address
          
       * Owner address of given nodeId
+
 Example usage
 """"""""""""""
    
@@ -1340,7 +1354,7 @@ Example usage
 ----------
   
 holdsId:
-----------
+---------
 
 ``pruf.get.holdsId(address)``
 
@@ -1359,6 +1373,7 @@ Returns
    1. Boolean
       
       * True/False
+
 Example usage
 """"""""""""""
 
