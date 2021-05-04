@@ -13640,8 +13640,8 @@ class PRUF {
 
         const resolveContracts = async (_web3) => {
 
-            const STOR_Address = "0x53Fe23cC52C68307928797436aB081D48C09B340";
-            const PARTY_Address = "0xacb584F434615327acf372607C41EeA57EB277aa";
+            const STOR_Address = "0x5ab04B13729245F7023f76d0FEDEed482e3e60bd";
+            const PARTY_Address = "0x5Ca05ADD0CB707511ed627E0344504B150e7c337";
 
             const STOR = new _web3.eth.Contract(_STOR, STOR_Address);
             const PARTY = new _web3.eth.Contract(_PARTY, PARTY_Address);
