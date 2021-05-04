@@ -13640,6 +13640,8 @@ class PRUF {
 
         const resolveContracts = async (_web3) => {
 
+            const defaultNet = true;
+
             const STOR_Address = "0x53Fe23cC52C68307928797436aB081D48C09B340";
             const PARTY_Address = "0xacb584F434615327acf372607C41EeA57EB277aa";
 
@@ -13648,7 +13650,8 @@ class PRUF {
 
             let _contracts = { STOR: STOR, PARTY: PARTY };
 
-            await STOR.methods
+            if(!defaultNet){
+                await STOR.methods
                 .resolveContractAddress("NP")
                 .call(function (error, result) {
                     if (error) {
@@ -13659,6 +13662,55 @@ class PRUF {
                     }
                 }
                 )
+
+                await STOR.methods
+                .resolveContractAddress("APP")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.APP = new _web3.eth.Contract(_APP, result);
+                    }
+                }
+                );
+
+                await STOR.methods
+                .resolveContractAddress("ECR")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.ECR = new _web3.eth.Contract(_ECR, result);
+                    }
+                }
+                );
+
+                await STOR.methods
+                .resolveContractAddress("PIP")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.PIP = new _web3.eth.Contract(_PIP, result);
+                    }
+                }
+                );
+
+                await STOR.methods
+                .resolveContractAddress("VERIFY")
+                .call(function (error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //console.log(result);
+                        _contracts.VERIFY = new _web3.eth.Contract(_VERIFY, result);
+                    }
+                }
+                );
+            }
 
             await STOR.methods
                 .resolveContractAddress("NP_NC")
@@ -13671,17 +13723,6 @@ class PRUF {
                     }
                 });
 
-            await STOR.methods
-                .resolveContractAddress("APP")
-                .call(function (error, result) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        //console.log(result);
-                        _contracts.APP = new _web3.eth.Contract(_APP, result);
-                    }
-                }
-                );
 
             await STOR.methods
                 .resolveContractAddress("PURCHASE")
@@ -13755,17 +13796,6 @@ class PRUF {
                 }
                 );
 
-            await STOR.methods
-                .resolveContractAddress("ECR")
-                .call(function (error, result) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        //console.log(result);
-                        _contracts.ECR = new _web3.eth.Contract(_ECR, result);
-                    }
-                }
-                );
 
             await STOR.methods
                 .resolveContractAddress("ECR_NC")
@@ -13835,30 +13865,6 @@ class PRUF {
                     } else {
                         //console.log(result);
                         _contracts.UTIL_TKN = new _web3.eth.Contract(_UTIL_TKN, result);
-                    }
-                }
-                );
-
-            await STOR.methods
-                .resolveContractAddress("PIP")
-                .call(function (error, result) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        //console.log(result);
-                        _contracts.PIP = new _web3.eth.Contract(_PIP, result);
-                    }
-                }
-                );
-
-            await STOR.methods
-                .resolveContractAddress("VERIFY")
-                .call(function (error, result) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        //console.log(result);
-                        _contracts.VERIFY = new _web3.eth.Contract(_VERIFY, result);
                     }
                 }
                 );
@@ -14365,8 +14371,8 @@ class PRUF {
                 modifyAssetExtData: contracts.NP_NC.methods._modIpfs1,
                 modifyAssetStatus: contracts.NP_NC.methods._modStatus,
                 markAssetLostOrStolen: contracts.NP_NC.methods._setLostOrStolen,
-                redeemPipAsset: contracts.PIP.methods.claimPipAsset,
-                mintPip: contracts.PIP.methods.mintPipAsset,
+                /* redeemPipAsset: contracts.PIP.methods.claimPipAsset,
+                mintPip: contracts.PIP.methods.mintPipAsset, */
                 setForSale: contracts.PURCHASE.methods._setPrice,
                 unSetForSale: contracts.PURCHASE.methods._clearPrice,
                 buyAsset: contracts.PURCHASE.methods.purchaseWithPRUF,
