@@ -2749,6 +2749,19 @@ class PRUF {
             },
             {
                 "inputs": [],
+                "name": "AC_Price",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
                 "name": "ASSET_TXFR_ROLE",
                 "outputs": [
                     {
@@ -2887,7 +2900,7 @@ class PRUF {
                 "inputs": [
                     {
                         "internalType": "uint256",
-                        "name": "_L1",
+                        "name": "newACprice",
                         "type": "uint256"
                     }
                 ],
@@ -2942,19 +2955,6 @@ class PRUF {
                         "internalType": "bytes32",
                         "name": "",
                         "type": "bytes32"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "acPrice_L1",
-                "outputs": [
-                    {
-                        "internalType": "uint256",
-                        "name": "",
-                        "type": "uint256"
                     }
                 ],
                 "stateMutability": "view",
@@ -3053,11 +3053,6 @@ class PRUF {
                 "inputs": [],
                 "name": "currentACpricingInfo",
                 "outputs": [
-                    {
-                        "internalType": "uint256",
-                        "name": "",
-                        "type": "uint256"
-                    },
                     {
                         "internalType": "uint256",
                         "name": "",
