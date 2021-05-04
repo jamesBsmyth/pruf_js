@@ -13743,6 +13743,7 @@ class PRUF {
                         console.log(error);
                     } else {
                         //console.log(result);
+                        if (result !== "0x0000000000000000000000000000000000000000")
                         _contracts.WRAP = new _web3.eth.Contract(_WRAP, result);
                     }
                 }
@@ -13755,6 +13756,7 @@ class PRUF {
                         console.log(error);
                     } else {
                         //console.log(result);
+                        if (result !== "0x0000000000000000000000000000000000000000")
                         _contracts.DECORATE = new _web3.eth.Contract(_DECORATE, result);
                     }
                 }
@@ -13804,6 +13806,7 @@ class PRUF {
                         console.log(error);
                     } else {
                         //console.log(result);
+                        if (result !== "0x0000000000000000000000000000000000000000")
                         _contracts.ECR_NC = new _web3.eth.Contract(_ECR_NC, result);
                     }
                 }
@@ -13816,6 +13819,7 @@ class PRUF {
                         console.log(error);
                     } else {
                         //console.log(result);
+                        if (result !== "0x0000000000000000000000000000000000000000")
                         _contracts.ECR_MGR = new _web3.eth.Contract(_ECR_MGR, result);
                     }
                 }
@@ -14032,7 +14036,7 @@ class PRUF {
 
                     return bool
                 },
-                escrowData: async (assetId) => {
+/*                 escrowData: async (assetId) => {
                     if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
 
                     let escrowData = {}
@@ -14050,8 +14054,8 @@ class PRUF {
 
                     return escrowData
 
-                },
-                escrowOwner: async (assetId) => {
+                }, */
+/*                 escrowOwner: async (assetId) => {
                     if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
 
                     let ownerHash = "Not Found"
@@ -14064,7 +14068,7 @@ class PRUF {
                         })
 
                     return ownerHash
-                },
+                }, */
                 isRightsHolder: async (assetId, rightsHash) => {
                     if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
                     if (!rightsHash) return console.error(`PRUF_ERR: Invalid input: ${rightsHash}`);
@@ -14363,8 +14367,8 @@ class PRUF {
                 importAsset: contracts.APP_NC.methods.importAsset,
                 mintAsset: contracts.APP_NC.methods.newRecordWithNote,
                 mintAssetBare: contracts.APP_NC.methods.newRecord,
-                initEscrow: contracts.ECR_NC.methods.setEscrow,
-                terminateEscrow: contracts.ECR_NC.methods.endEscrow,
+/*                 initEscrow: contracts.ECR_NC.methods.setEscrow,
+                terminateEscrow: contracts.ECR_NC.methods.endEscrow, */
                 modifyRightsHash: contracts.NP_NC.methods._changeRgt,
                 decrementLifeCycle: contracts.NP_NC.methods._decCounter,
                 exportAsset: contracts.NP_NC.methods._exportNC,
