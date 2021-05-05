@@ -13638,7 +13638,7 @@ class PRUF {
             const defaultNet = true;
 
             const STOR_Address = "0x5ab04B13729245F7023f76d0FEDEed482e3e60bd";
-            const PARTY_Address = "0x5Ca05ADD0CB707511ed627E0344504B150e7c337";
+            const PARTY_Address = "0x50c09a55a18Bb2474bB6025b24B5A8de6aB16468";
 
             const STOR = new _web3.eth.Contract(_STOR, STOR_Address);
             const PARTY = new _web3.eth.Contract(_PARTY, PARTY_Address);
