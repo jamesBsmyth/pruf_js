@@ -47,7 +47,14 @@ Example Initialization
    const PRUF = require('pruf-js');
 
    const web3 = new Web3("https://kovan.infura.io/v3/yourInfuraKeyHere");
-   const pruf = new PRUF(web3);
+   const pruf = new PRUF(
+      web3, 
+      {
+      storageAddress: "0x5ab04B13729245F7023f76d0FEDEed482e3e60bd", 
+      partyAddress: "0x50c09a55a18Bb2474bB6025b24B5A8de6aB16468", 
+      defaultNetwork: true
+      }
+   );
 
    console.log("Here is the client interface:", pruf);
 

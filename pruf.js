@@ -3,7 +3,7 @@
 import bs58 from "bs58";
 
 class PRUF {
-    constructor(web3Provider) {
+    constructor(web3Provider, {storageAddress, partyAddress, defaultNetwork}) {
 
         const _STOR = [
             {
@@ -13635,12 +13635,11 @@ class PRUF {
 
         const resolveContracts = async (_web3) => {
 
-            const defaultNet = true;
+            if (!storageAddress) return console.error("PRUF_ERR: Storage contract address not specified.")
 
-            const STOR_Address = "0x5ab04B13729245F7023f76d0FEDEed482e3e60bd";
-            const PARTY_Address = "0x50c09a55a18Bb2474bB6025b24B5A8de6aB16468";
-
-            const STOR = new _web3.eth.Contract(_STOR, STOR_Address);
+            const defaultNet = defaultNetwork || true;
+            const PARTY_Address = partyAddress || "0x0000000000000000000000000000000000000000";
+            const STOR = new _web3.eth.Contract(_STOR, storageAddress);
             const PARTY = new _web3.eth.Contract(_PARTY, PARTY_Address);
 
             let _contracts = { STOR: STOR, PARTY: PARTY };
@@ -14031,7 +14030,7 @@ class PRUF {
 
                     return bool
                 },
-/*                 escrowData: async (assetId) => {
+                escrowData: async (assetId) => {
                     if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
 
                     let escrowData = {}
@@ -14049,8 +14048,8 @@ class PRUF {
 
                     return escrowData
 
-                }, */
-/*                 escrowOwner: async (assetId) => {
+                },
+                escrowOwner: async (assetId) => {
                     if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
 
                     let ownerHash = "Not Found"
@@ -14063,7 +14062,7 @@ class PRUF {
                         })
 
                     return ownerHash
-                }, */
+                },
                 isRightsHolder: async (assetId, rightsHash) => {
                     if (!assetId) return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
                     if (!rightsHash) return console.error(`PRUF_ERR: Invalid input: ${rightsHash}`);
