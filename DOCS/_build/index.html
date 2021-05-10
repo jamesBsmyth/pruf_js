@@ -31,8 +31,7 @@
 
           <div class="body" role="main">
             
-  <img alt="_images/prufLogo.png" src="_images/prufLogo.png" />
-<div class="section" id="pruf-js">
+  <div class="section" id="pruf-js">
 <h1><strong>pruf-js</strong><a class="headerlink" href="#pruf-js" title="Permalink to this headline">¶</a></h1>
 <p>This documentation is in an alpha release. If you find any typos or issues please contact us at <a class="reference external" href="mailto:support&#37;&#52;&#48;pruf&#46;io">support<span>&#64;</span>pruf<span>&#46;</span>io</a>.</p>
 <p>Interface for the PRüF network written in javascript</p>
@@ -133,21 +132,35 @@
 </div></blockquote>
 <div class="section" id="example-initialization">
 <h2>Example Initialization<a class="headerlink" href="#example-initialization" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js initialization code</span>
+<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js initialization code</span>
 
 <span class="kd">const</span> <span class="nx">Web3</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;web3&#39;</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">PRUF</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;pruf-js&#39;</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">web3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Web3</span><span class="p">(</span><span class="s2">&quot;https://kovan.infura.io/v3/yourInfuraKeyHere&quot;</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">pruf</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PRUF</span><span class="p">(</span><span class="nx">web3</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">pruf</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PRUF</span><span class="p">(</span>
+   <span class="nx">web3</span><span class="p">,</span>
+   <span class="p">{</span>
+   <span class="nx">storageAddress</span><span class="o">:</span> <span class="s2">&quot;0x5ab04B13729245F7023f76d0FEDEed482e3e60bd&quot;</span><span class="p">,</span>
+   <span class="nx">partyAddress</span><span class="o">:</span> <span class="s2">&quot;0x50c09a55a18Bb2474bB6025b24B5A8de6aB16468&quot;</span><span class="p">,</span>
+   <span class="nx">defaultNetwork</span><span class="o">:</span> <span class="kc">true</span>
+   <span class="p">}</span>
+<span class="p">);</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Here is the client interface:&quot;</span><span class="p">,</span> <span class="nx">pruf</span><span class="p">);</span>
 </pre></div>
@@ -236,7 +249,7 @@ Contact us at: <a class="reference external" href="mailto:support&#37;&#52;&#48;
       &copy;2021, jamesbsmyth.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

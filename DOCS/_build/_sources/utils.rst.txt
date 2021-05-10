@@ -1,4 +1,3 @@
-.. image:: /image/prufLogo.png
 
 .utils
 ========
@@ -25,26 +24,25 @@ Returns
       * True/False
 
 Example usage 
-"""""""""""""
+""""""""""""""
+.. code-block:: javascript 
+   :linenos:
 
-   .. code-block:: javascript
-      :linenos:
+   //Example pruf-js code
 
-      //Example pruf-js code
+   let unhashedId = {
+      type: "bike,
+      make: "mongoose",
+      model: "trail",
+      serial: "12345678"
+   }
+   let _id = await pruf.utils.generateAssetID(unhashedId)
 
-      let unhashedId = {
-         type: "bike,
-         manufacturer: "mongoose",
-         model: "trail",
-         serial: "12345678"
-      }
-      let _id = await pruf.utils.generateAssetID(unhashedId)
-
-      pruf.utils.isValidId(_id)
-      .then(e => {
-         console.log(e)
-         //Expected output: True/False
-      }
+   pruf.utils.isValidId(_id)
+   .then(e => {
+      console.log(e)
+      //Expected output: True
+   }
 
 
 
@@ -74,7 +72,6 @@ Returns
   
 Example usage
 """"""""""""""
-
 .. code-block:: javascript 
    :linenos:
 
