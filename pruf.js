@@ -626,16 +626,28 @@ module.exports = class PRUF {
 
           record: async (assetId) => {
             if (!assetId)
-              return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
+            
+            return console.error(`PRUF_ERR: Invalid input: ${assetId}`);
             let record = {};
 
             await contracts.STOR.methods
-              .retrieveRecord(assetId)
+              .retrieveShortRecord(assetId)
               .call((error, result) => {
                 if (!error && result.nodeId !== "0") {
-                  return (record = result);
+                  return (record = {
+                    status: result[0],
+                    modCount: result[1],
+                    nodeId: result[2],
+                    countDown: result[3],
+                    mutableStorage1: result[5],
+                    mutableStorage2: result[6],
+                    nonMutableStorage1: result[7],
+                    nonMutableStorage2: result[8],
+                    numberOfTransfers: result[9]
+                  });
                 }
               });
+
             return record;
           },
 
