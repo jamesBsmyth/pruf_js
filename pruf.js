@@ -1312,31 +1312,27 @@ module.exports = class PRUF {
 
           return tempHash;
         },
-        generateAssetID: async ({ nodeId, type, make, model, serial }) => {
-          if (!type || !make || !model || !serial || !nodeId)
+        generateAssetID: async ({ nodeId, model, serial }) => {
+          if (!model || !serial || !nodeId)
             return console.error(
               `PRUF_ERR: One of the input fields returned undefined`
             );
 
           let id = await hashAlgo(
             String(nodeId).replace(/\s/g, ""),
-            String(type).replace(/\s/g, ""),
-            String(make).replace(/\s/g, ""),
             String(model).replace(/\s/g, ""),
             String(serial).replace(/\s/g, "")
           );
 
           return id;
         },
-        generateRawAssetID: async ({ type, make, model, serial }) => {
-          if (!type || !make || !model || !serial)
+        generateRawAssetID: async ({model, serial }) => {
+          if (!model || !serial)
             return console.error(
               `PRUF_ERR: One of the input fields returned undefined`
             );
 
           let id = await hashAlgo(
-            String(type).replace(/\s/g, ""),
-            String(make).replace(/\s/g, ""),
             String(model).replace(/\s/g, ""),
             String(serial).replace(/\s/g, "")
           );
