@@ -1,3 +1,4 @@
+
 .. pruf-js documentation master file, created by
    sphinx-quickstart on Fri Mar 26 11:02:50 2021.
    You can adapt this file completely to your liking, but it should at least
@@ -8,15 +9,13 @@
 **pruf-js**
 ===================================
 
-This documentation is in an alpha release. If you find any typos or issues please contact us at support@pruf.io.
-
-Interface for the PRüF network written in javascript
+An interface for the PRüF Protocol written in javascript.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   dos 
+   dos
    gets
    utils
    glossary
@@ -24,19 +23,20 @@ Interface for the PRüF network written in javascript
 Installation
 =================
 
-Install using node package manager:
+Install using npm:
 
-   ``npm i --s pruf-js``
-
-   *note: pruf-js requires an instance of web3.js to initialize.*
-
-   *To learn more about web3.js, click here:* 
-   
-   https://web3js.readthedocs.io
+   ``npm i --s pruf-js@latest``
 
 
 Example Initialization
------------------------
+==================================
+
+*note: pruf-js requires an instance of web3.js to initialize.*
+
+*To learn more about web3.js, check it out here:* 
+   
+https://web3js.readthedocs.io
+
 
 .. code-block:: javascript 
    :linenos:
@@ -47,9 +47,18 @@ Example Initialization
    const PRUF = require('pruf-js');
 
    const web3 = new Web3("https://kovan.infura.io/v3/yourInfuraKeyHere");
-   const pruf = new PRUF(web3);
+   let chainId = 42;
+   async () => {
+   const pruf = new PRUF(
+      web3, // Web3 instance
+      chainId, // ChainId of Web3 instance
+      false, // Fetch contract addresses?
+      true // Enable debug logs?
+   );
 
-   console.log("Here is the client interface:", pruf);
+   pruf.init().then(console.log)
+   }
+   
 
 
 
@@ -57,26 +66,26 @@ Example Initialization
 
 
 
-Contribute to the project
---------------------------------
+Contribute to the Project
+==================================
 
-- Issue Tracker: github.com/jamesBsmyth/pruf_js/issues
-- Source Code: github.com/jamesBsmyth/pruf_js
+- Issue Tracker: https://github.com/jamesBsmyth/pruf_js/issues
+- Source Code: https://github.com/jamesBsmyth/pruf_js
 
-Developer support
-------------------------
+Developer Support
+==================================
 
 If you are having issues, please let us know.
 Contact us at: support@pruf.io
 
-Or on Telegram: t.me/pruftalk
+Or on Telegram: https://t.me/pruftalk
 
 Project Resources
-------------------
+==================================
 
 Website: https://pruf.io
 
 License
---------
+=================
 
 The project is licensed under the MIT license.

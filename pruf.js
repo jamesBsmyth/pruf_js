@@ -1,27 +1,45 @@
 // Class which constructs a full suite of functions that interact with the PRüF network.
 
 //
+import bs58 from "bs58";
+import abis from "./ABIs.js";
 
-module.exports = class PRUF {
+export default class PRUF {
   constructor(web3Provider, chainId, fetch = false, logs = false) {
-    var bs58 = require("bs58");
-    var _abis = require("./ABIs");
-    var abis = _abis.default;
+    
+    //var abis = _abis.default;
     const addressTable = {
+      m1tn: {
+        CLOCK: "0x15C6E67cD0577f117E3784d0104AF21AD230E13a",
+        DAO_A: "0x45f7c1eC0F0e19674A699577F9d89fB5424Acf1F",
+        DAO_B: "0x0d67bCF2Ff3C8971E3b44B94d4812AB5Cacf4E1c",
+        DAO_STOR: "0x2b3b6BCAa49e6d37866f7bc5B6C4d73b53108c03",
+        DAO: "0x2eF59f1De2264643Dac4E92dCC9865510D11F966",
+        STOR: "0xE1916dA4CFB57D5d725D9c310cD63ce1310F4694",
+        NODE_STOR: "0x2C2e741543670E97BaEDf7a4467e8Ed35f44c11f",
+        NODE_BLDR: "0x5993802ae8d5f5285728a41B3e9A3Af0c45301bD",
+        UTIL_TKN: "0x03240a23d3BBEF0253A2935F61591c83EeCE4429",
+        A_TKN: "0xd8D8D1e8e42e823d4E62Ed65870E76ec35956D6A",
+        NODE_TKN: "0x2F2068a5162657842bf82aB4B868129A24B233Df",
+        NODE_MGR: "0x045a323B95Cc3a8cB0497fa8e0Aeca1500DdD7A1",
+        APP_NC: "0x45f7c1eC0F0e19674A699577F9d89fB5424Acf1F",
+        RAVE: "0x7D43c4d4aF2476004f1326C99F3437033142514E",
+      },
       kovan: {
-        STOR: "0xE069223001Ee532Ea9DD6190bddFEF7a07c511C0",
-        NODE_STOR: "0x1C1Bc607b318b70A9cdff0a3466fd6Bc015A2dbA",
+        STOR: "0x4371451A68321CD48b189c2dB802970740F128d3",
+        CLOCK: "0xd3f4f38C4f31E40E73fb983a13D02932DC7594f0",
+        DAO_A: "0xC77aB54F7408395934527F693e09559e9257215c",
+        DAO_B: "0x2C23333de3E46Db8613E6bF445454f9a656AEe5A",
+        DAO_STOR: "0xF42523e2CfC47aF0ec07B8Fb366203e7D8b129f9",
+        DAO: "0x83011a37b5d25143d33Fe28e2E22F07D00c9074f",
+        NODE_STOR: "0xc56Af938B5489411AeB40f88CE692Aec6b84F4Ae",
         NODE_BLDR: "0x9796D3CdE91916341568fF165a1507725186FC30",
-        UTIL_TKN: "0xaAa5a0D9dfC5B21A8100f608D12924dEfDd90E43",
-        STAKE_TKN: "0xF58F2B320a95a75fd1Ec252D3018636bDD5c49a4",
-        A_TKN: "0x04C9298f296D3C09120950D71842b6B363A566f8",
-        NODE_TKN: "0xc32eba52066F6Ed176Eb0a9299bE9291D1cF378F",
-        STAKE_VAULT: "0x4198c8Df170cdFeF9ed8A808B5c8244525dC8C2d",
-        REWARDS_VAULT: "0x3972a53956B380a82177735905e50FeA298a47DD",
-        NODE_MGR: "0x989D1d0582Fc55a336C388227ADF49B15910132B",
-        EO_STAKING: "0x4f4B4652AaB870C21697fedC8aAB2189e63CB049",
-        APP_NC: "0x5e85274F375CcD87ABAb7B5F51E5bB5D943b8524",
-        RAVE: "0x20720c65ab4BADaea30Ea6E9B3095b2e60914f1D",
+        UTIL_TKN: "0x36e0FdEADC24D2f5FdDe1026e413c30949D2eA68",
+        A_TKN: "0x0846b075766F1C561EcFeA2419e790362715497B",
+        NODE_TKN: "0x840E7eBa06BD5316Be4a88624402739B9a0dCCbA",
+        NODE_MGR: "0xfA82df4faaCa4EFCcAf81E8432ebfc2bB8f1522a",
+        APP_NC: "0x52578a2BEe485652690271a7b7E66ae4F1E7F421",
+        RAVE: "0xA050BfecfBA9ac7D613d63Dd5C413fcf06d359Fc",
       },
       mumbai: {
         UTIL_TKN: "0x45f7c1eC0F0e19674A699577F9d89fB5424Acf1F",
@@ -176,8 +194,15 @@ module.exports = class PRUF {
       let faucet = {};
 
       if (contracts.RAVE) {
-        faucet.getPRUF = contracts.RAVE.methods.bumpMe;
-        faucet.getNode = contracts.RAVE.methods.purchaseNode;
+        faucet = {
+          getPRUF : contracts.RAVE.methods.bumpMe,
+          getNode : contracts.RAVE.methods.purchaseNode,
+          finalize : contracts.RAVE.methods.setNonMutableData,
+          setOperationCost: contracts.RAVE.methods.setOperationCosts,
+          updateImportStatus: contracts.RAVE.methods.updateImportStatus,
+          updateCAS: contracts.RAVE.methods.updateNodeCAS,
+          authorizeUser: contracts.RAVE.methods.addUser,
+        }
       }
 
       const call = {
@@ -208,11 +233,10 @@ module.exports = class PRUF {
               .currentNodePricingInfo()
               .call((error, result) => {
                 if (!error) {
+                  console.log(result)
                   return (priceData = {
                     currentNodeIndex: result["0"],
-                    currentNodePrice: web3Provider.utils.fromWei(
-                      String(result["1"])
-                    ),
+                    currentNodePrice: String(Number(web3Provider.utils.fromWei(result["1"])) + Number(web3Provider.utils.fromWei(result["2"]))),
                   });
                 }
               });
@@ -595,9 +619,9 @@ module.exports = class PRUF {
             let bool = false;
 
             await contracts.STOR.methods
-              .retrieveRecord(assetId)
+              .retrieveShortRecord(assetId)
               .call((error, result) => {
-                if (!error && result.nodeId !== "0") {
+                if (!error && result[2] !== "0") {
                   return (bool = true);
                 }
               });
@@ -639,10 +663,10 @@ module.exports = class PRUF {
                     modCount: result[1],
                     nodeId: result[2],
                     countDown: result[3],
-                    mutableStorage1: result[5],
-                    mutableStorage2: result[6],
-                    nonMutableStorage1: result[7],
-                    nonMutableStorage2: result[8],
+                    softData1: result[5],
+                    softData2: result[6],
+                    hardData1: result[7],
+                    hardData2: result[8],
                     numberOfTransfers: result[9]
                   });
                 }
@@ -1099,53 +1123,51 @@ module.exports = class PRUF {
 
       const tx = {
         node: {
-          transfer: contracts.NODE_TKN.methods.safeTransferFrom,
-          setOperationCost: contracts.NODE_MGR.methods.setOperationCosts,
-          updateImportStatus: contracts.NODE_MGR.methods.updateImportStatus,
-          updateCAS: contracts.NODE_MGR.methods.updateNodeCAS,
-          setApprovalForAll: contracts.NODE_TKN.methods.setApprovalForAll,
-          approve: contracts.NODE_TKN.methods.approve,
-          enableContract: contracts.STOR.methods.enableContractForNode,
-          enableDefaultContracts:
-            contracts.STOR.methods.enableDefaultContractsForNode,
-          authorizeUser: contracts.NODE_MGR.methods.addUser,
-          finalize: contracts.NODE_MGR.methods.setNonMutableData,
+          transfer: contracts.NODE_TKN ? contracts.NODE_TKN.methods.safeTransferFrom : null, 
+          setOperationCost: contracts.NODE_MGR ? contracts.NODE_MGR.methods.setOperationCosts : null,
+          updateImportStatus: contracts.NODE_MGR ? contracts.NODE_MGR.methods.updateImportStatus : null,
+          updateCAS: contracts.NODE_MGR ? contracts.NODE_MGR.methods.updateNodeCAS : null,
+          setApprovalForAll: contracts.NODE_TKN ? contracts.NODE_TKN.methods.setApprovalForAll : null,
+          approve: contracts.NODE_TKN ? contracts.NODE_TKN.methods.approve : null,
+          enableContract: contracts.STOR ?contracts.STOR.methods.enableContractForNode : null,
+          enableDefaultContracts: contracts.STOR ? contracts.STOR.methods.enableDefaultContractsForNode : null,
+          authorizeUser: contracts.NODE_MGR ? contracts.NODE_MGR.methods.addUser : null,
+          finalize: contracts.NODE_MGR ? contracts.NODE_MGR.methods.setNonMutableData : null,
         },
         asset: {
-          verifyRightsHash: contracts.STOR.methods.blockchainVerifyRightsHolder,
-          approve: contracts.A_TKN.methods.approve,
-          setApprovalForAll: contracts.A_TKN.methods.setApprovalForAll,
-          setColdWallet: contracts.A_TKN.methods.setColdWallet,
-          unSetColdWallet: contracts.A_TKN.methods.unSetColdWallet,
-          permissiveSetURI: contracts.A_TKN.methods.setURI,
-          transfer: contracts.A_TKN.methods.safeTransferFrom,
-          mint: contracts.APP_NC.methods.newRecordWithNote,
-          mintBare: contracts.APP_NC.methods.newRecord,
-          addNonMutableStorage: contracts.APP_NC.methods.addNonMutableStorage,
-          permissiveModifyNonMutableStorage:
-            contracts.APP_NC.methods.updateNonMutableStorage,
-          modifyMutableStorage: contracts.APP_NC.methods.modifyMutableStorage,
-          modifyRightsHash: contracts.APP_NC.methods.changeRgt,
-          decrementLifeCycle: contracts.APP_NC.methods.decrementCounter,
-          modifyStatus: contracts.APP_NC.methods.modifyStatus,
-          markLostOrStolen: contracts.APP_NC.methods.setLostOrStolen,
+          verifyRightsHash: contracts.STOR ? contracts.STOR.methods.blockchainVerifyRightsHolder : null,
+          approve: contracts.A_TKN ? contracts.A_TKN.methods.approve : null,
+          setApprovalForAll: contracts.A_TKN ? contracts.A_TKN.methods.setApprovalForAll : null,
+          setColdWallet: contracts.A_TKN ? contracts.A_TKN.methods.setColdWallet : null,
+          unSetColdWallet: contracts.A_TKN ? contracts.A_TKN.methods.unSetColdWallet : null,
+          permissiveSetURI: contracts.A_TKN ? contracts.A_TKN.methods.setURI : null,
+          transfer: contracts.A_TKN ? contracts.A_TKN.methods.safeTransferFrom : null,
+          mint: contracts.APP_NC ? contracts.APP_NC.methods.newRecordWithNote : null,
+          mintBare: contracts.APP_NC ? contracts.APP_NC.methods.newRecord : null,
+          addHardData: contracts.APP_NC ? contracts.APP_NC.methods.addNonMutableStorage : null,
+          updateHardData: contracts.APP_NC ? contracts.APP_NC.methods.updateNonMutableStorage : null,
+          modifySoftData: contracts.APP_NC ? contracts.APP_NC.methods.modifyMutableStorage : null,
+          modifyRightsHash: contracts.APP_NC ? contracts.APP_NC.methods.changeRgt : null,
+          decrementLifeCycle: contracts.APP_NC ? contracts.APP_NC.methods.decrementCounter : null,
+          modifyStatus: contracts.APP_NC ? contracts.APP_NC.methods.modifyStatus : null,
+          markLostOrStolen: contracts.APP_NC ? contracts.APP_NC.methods.setLostOrStolen : null,
         },
         pruf: {
-          setColdWallet: contracts.UTIL_TKN.methods.setColdWallet,
-          unSetColdWallet: contracts.UTIL_TKN.methods.unSetColdWallet,
-          transfer: contracts.UTIL_TKN.methods.transferFrom,
-          approve: contracts.UTIL_TKN.methods.approve,
-          decreaseAllowance: contracts.UTIL_TKN.methods.decreaseAllowance,
-          increaseAllowance: contracts.UTIL_TKN.methods.increaseAllowance,
+          setColdWallet: contracts.UTIL_TKN ? contracts.UTIL_TKN.methods.setColdWallet : null,
+          unSetColdWallet: contracts.UTIL_TKN ? contracts.UTIL_TKN.methods.unSetColdWallet : null,
+          transfer: contracts.UTIL_TKN ? contracts.UTIL_TKN.methods.transferFrom : null,
+          approve: contracts.UTIL_TKN ? contracts.UTIL_TKN.methods.approve : null,
+          decreaseAllowance: contracts.UTIL_TKN ? contracts.UTIL_TKN.methods.decreaseAllowance : null,
+          increaseAllowance: contracts.UTIL_TKN ? contracts.UTIL_TKN.methods.increaseAllowance : null,
         },
         stake: {
-          approve: contracts.STAKE_TKN.methods.approve,
-          transfer: contracts.STAKE_TKN.methods.safeTransferFrom,
-          setApprovalForAll: contracts.STAKE_TKN.methods.setApprovalForAll,
-          break: contracts.EO_STAKING.methods.breakStake,
-          claim: contracts.EO_STAKING.methods.claimBonus,
-          increase: contracts.EO_STAKING.methods.increaseMyStake,
-          stakePRUF: contracts.EO_STAKING.methods.stakeMyTokens,
+          approve: contracts.STAKE_TKN ? contracts.STAKE_TKN.methods.approve : null,
+          transfer: contracts.STAKE_TKN ? contracts.STAKE_TKN.methods.safeTransferFrom : null,
+          setApprovalForAll: contracts.STAKE_TKN ? contracts.STAKE_TKN.methods.setApprovalForAll : null,
+          break: contracts.EO_STAKING ? contracts.EO_STAKING.methods.breakStake : null,
+          claim: contracts.EO_STAKING ? contracts.EO_STAKING.methods.claimBonus : null,
+          increase: contracts.EO_STAKING ? contracts.EO_STAKING.methods.increaseMyStake : null,
+          stakePRUF: contracts.EO_STAKING ? contracts.EO_STAKING.methods.stakeMyTokens : null,
         },
         //PARTY -- TEST RELEASE ONLY
       };
@@ -1341,28 +1363,16 @@ module.exports = class PRUF {
         },
         generateSecureRgt: async (
           assetId,
-          { first, middle, last, id, password }
+          secret
         ) => {
-          if (!assetId) return console.error(`Invalid input: ${assetId}`);
-          if (!first || !last || !id || !password)
-            return console.error(
-              `PRUF_ERR: One of the input fields returned undefined`
-            );
-          if (!middle) middle = "";
+          if (!assetId) return console.error(`PRUF_ERR: Invalid input for asset ID: ${assetId}`);
+          if (!secret) return console.error(`Invalid input for secret: ${secret}`);
 
           let rgtRaw = await hashAlgo(
-            String(first).replace(/\s/g, ""),
-            String(middle).replace(/\s/g, ""),
-            String(last).replace(/\s/g, ""),
-            String(id).replace(/\s/g, ""),
-            String(password).replace(/\s/g, "")
+            String(secret).replace(/\s/g, "")
           );
 
           let rgt = await hashAlgo(assetId, rgtRaw);
-
-          for (let i = 0; i < 10000; i++) {
-            rgt = hashAlgo(rgt);
-          }
 
           return rgt;
         },
@@ -1382,6 +1392,9 @@ module.exports = class PRUF {
           case 1:
             net = "ethereum";
             break;
+          case 200101:
+              net = "m1tn";
+              break;
           case 42:
             net = "kovan";
             break;
@@ -1392,7 +1405,7 @@ module.exports = class PRUF {
             net = "mumbai";
             break;
           default:
-            throw "Provided chainId is not supported. Supported network IDs are: 1 || 42 || 137 || 80001";
+            throw "Provided chainId is not supported. Supported network IDs are: 1 || 42 || 137 || 80001 || 200101";
         }
         try {
           if (logs) console.time("Time spent initializing: ");
@@ -1411,7 +1424,7 @@ module.exports = class PRUF {
                   provider: web3Provider,
                   contracts: f,
                 };
-                if (net === "kovan" || net === "mumbai") this.faucet = g.faucet;
+                if (net === "kovan" || net === "mumbai" || net === "m1tn") this.faucet = g.faucet;
                 if (logs) console.log({ this: this });
                 if (logs) console.timeEnd("Time spent initializing: ");
                 resolve(this);

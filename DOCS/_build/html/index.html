@@ -1,109 +1,66 @@
 
-<!DOCTYPE html>
+
+<!doctype html>
 
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>pruf-js &#8212; pruf-js 0.1.2 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title=".do" href="dos.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dos.html" title=".do"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pruf-js 0.1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><strong>pruf-js</strong></a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
-  <div class="section" id="pruf-js">
+  <section id="pruf-js">
 <h1><strong>pruf-js</strong><a class="headerlink" href="#pruf-js" title="Permalink to this headline">¶</a></h1>
-<p>This documentation is in an alpha release. If you find any typos or issues please contact us at <a class="reference external" href="mailto:support&#37;&#52;&#48;pruf&#46;io">support<span>&#64;</span>pruf<span>&#46;</span>io</a>.</p>
-<p>Interface for the PRüF network written in javascript</p>
+<p>An interface for the PRüF Protocol written in javascript.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dos.html">.do</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#mintasset">mintAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#verifyrightshash">verifyRightsHash:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#transferasset">transferAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#setasseturi">setAssetURI:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#discardasset">discardAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#engraveasset">engraveAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#importasset">importAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#modifyrightshash">modifyRightsHash:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#decrementlifecycle">decrementLifeCycle:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#exportasset">exportAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#modifyassetextdata">modifyAssetExtData:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#modifyassetstatus">modifyAssetStatus:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#markassetlostorstolen">markAssetLostOrStolen:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#redeempipasset">redeemPipAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#mintpip">mintPip:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#setforsale">setForSale:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#unsetforsale">unSetForSale:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#buyasset">buyAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#recycleasset">recycleAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#setcoldwallet">setColdWallet:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#unsetcoldwallet">unSetColdWallet:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#transferpruf">transferPruf:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#transfernode">transferNode:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#setoperationcost">setOperationCost:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#purchasenode">purchaseNode:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#modifyextendedconfig">modifyExtendedConfig:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#authorizeuser">authorizeUser:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#modifynodename">modifyNodeName:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#finalizenode">finalizeNode:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#getid-test-network-only">getId: (!!TEST NETWORK ONLY!!)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dos.html#getpruf-test-network-only">getPruf: (!!TEST NETWORK ONLY!!)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html">.do.asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html">.do.node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prufDo.html">.do.pruf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stakeDo.html">.do.stake</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gets.html">.get</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#assetrecordexists">assetRecordExists:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#nodenameavailable">nodeNameAvailable:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#nodepricing">nodePricing:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#nodedata">nodeData:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#nodename">nodeName:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#operationcost">operationCost:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#usertype">userType:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#nodeid">nodeId:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#issameroot">isSameRoot:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#escrowdata">escrowData:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#escrowowner">escrowOwner:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#isrightsholder">isRightsHolder:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#assetpricedata">assetPriceData:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#assetrecord">assetRecord:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#heldassetatindex">heldAssetAtIndex:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#assetatindex">assetAtIndex:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#assettokenexists">assetTokenExists:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#assetbalance">assetBalance:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#howmanyassets">howManyAssets:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#ownerofasset">ownerOfAsset:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#prufbalance">prufBalance:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#iscoldwallet">isColdWallet:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#howmanypruf">howManyPruf:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#nodebalance">nodeBalance:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#id64">assetTokenExists:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#nodeexists">nodeExists:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#heldnodeatindex">heldNodeAtIndex:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#nodeatindex">nodeAtIndex:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#howmanynodes">howManyNodes:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#ownerofnode">ownerOfNode:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gets.html#holdsid">holdsId:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html">.get.asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html">.get.node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prufGet.html">.get.pruf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stakeGet.html">.get.stake</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">.utils</a><ul>
@@ -120,131 +77,124 @@
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="installation">
+</section>
+<section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>Install using node package manager:</p>
+<p>Install using npm:</p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">i</span> <span class="pre">--s</span> <span class="pre">pruf-js</span></code></p>
-<p><em>note: pruf-js requires an instance of web3.js to initialize.</em></p>
-<p><em>To learn more about web3.js, click here:</em></p>
-<p><a class="reference external" href="https://web3js.readthedocs.io">https://web3js.readthedocs.io</a></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">i</span> <span class="pre">--s</span> <span class="pre">pruf-js&#64;latest</span></code></p>
 </div></blockquote>
-<div class="section" id="example-initialization">
-<h2>Example Initialization<a class="headerlink" href="#example-initialization" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">//Example pruf-js initialization code</span>
-
-<span class="kd">const</span> <span class="nx">Web3</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;web3&#39;</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">PRUF</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;pruf-js&#39;</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">web3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Web3</span><span class="p">(</span><span class="s2">&quot;https://kovan.infura.io/v3/yourInfuraKeyHere&quot;</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">pruf</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PRUF</span><span class="p">(</span><span class="nx">web3</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Here is the client interface:&quot;</span><span class="p">,</span> <span class="nx">pruf</span><span class="p">);</span>
+</section>
+<section id="example-initialization">
+<h1>Example Initialization<a class="headerlink" href="#example-initialization" title="Permalink to this headline">¶</a></h1>
+<p><em>note: pruf-js requires an instance of web3.js to initialize.</em></p>
+<p><em>To learn more about web3.js, check it out here:</em></p>
+<p><a class="reference external" href="https://web3js.readthedocs.io">https://web3js.readthedocs.io</a></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js initialization code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">const</span> <span class="nx">Web3</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;web3&#39;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="kd">const</span> <span class="nx">PRUF</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;pruf-js&#39;</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kd">const</span> <span class="nx">web3</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Web3</span><span class="p">(</span><span class="s2">&quot;https://kovan.infura.io/v3/yourInfuraKeyHere&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="kd">let</span> <span class="nx">chainId</span> <span class="o">=</span> <span class="mf">42</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="linenos"> 9</span><span class="kd">const</span> <span class="nx">pruf</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">PRUF</span><span class="p">(</span>
+<span class="linenos">10</span>   <span class="nx">web3</span><span class="p">,</span> <span class="c1">// Web3 instance</span>
+<span class="linenos">11</span>   <span class="nx">chainId</span><span class="p">,</span> <span class="c1">// ChainId of Web3 instance</span>
+<span class="linenos">12</span>   <span class="kc">false</span><span class="p">,</span> <span class="c1">// Fetch contract addresses?</span>
+<span class="linenos">13</span>   <span class="kc">true</span> <span class="c1">// Enable debug logs?</span>
+<span class="linenos">14</span><span class="p">);</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">init</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+<span class="linenos">17</span><span class="p">}</span>
 </pre></div>
-</td></tr></table></div>
 </div>
+</section>
 <hr class="docutils" />
-<div class="section" id="contribute-to-the-project">
-<h2>Contribute to the project<a class="headerlink" href="#contribute-to-the-project" title="Permalink to this headline">¶</a></h2>
+<section id="contribute-to-the-project">
+<h1>Contribute to the Project<a class="headerlink" href="#contribute-to-the-project" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p>Issue Tracker: github.com/jamesBsmyth/pruf_js/issues</p></li>
-<li><p>Source Code: github.com/jamesBsmyth/pruf_js</p></li>
+<li><p>Issue Tracker: <a class="reference external" href="https://github.com/jamesBsmyth/pruf_js/issues">https://github.com/jamesBsmyth/pruf_js/issues</a></p></li>
+<li><p>Source Code: <a class="reference external" href="https://github.com/jamesBsmyth/pruf_js">https://github.com/jamesBsmyth/pruf_js</a></p></li>
 </ul>
-</div>
-<div class="section" id="developer-support">
-<h2>Developer support<a class="headerlink" href="#developer-support" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="developer-support">
+<h1>Developer Support<a class="headerlink" href="#developer-support" title="Permalink to this headline">¶</a></h1>
 <p>If you are having issues, please let us know.
 Contact us at: <a class="reference external" href="mailto:support&#37;&#52;&#48;pruf&#46;io">support<span>&#64;</span>pruf<span>&#46;</span>io</a></p>
-<p>Or on Telegram: t.me/pruftalk</p>
-</div>
-<div class="section" id="project-resources">
-<h2>Project Resources<a class="headerlink" href="#project-resources" title="Permalink to this headline">¶</a></h2>
+<p>Or on Telegram: <a class="reference external" href="https://t.me/pruftalk">https://t.me/pruftalk</a></p>
+</section>
+<section id="project-resources">
+<h1>Project Resources<a class="headerlink" href="#project-resources" title="Permalink to this headline">¶</a></h1>
 <p>Website: <a class="reference external" href="https://pruf.io">https://pruf.io</a></p>
-</div>
-<div class="section" id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="license">
+<h1>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h1>
 <p>The project is licensed under the MIT license.</p>
-</div>
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">pruf-js</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dos.html">.do</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gets.html">.get</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils.html">.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><strong>pruf-js</strong></a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#example-initialization">Example Initialization</a></li>
+<li><a class="reference internal" href="#contribute-to-the-project">Contribute to the Project</a></li>
+<li><a class="reference internal" href="#developer-support">Developer Support</a></li>
+<li><a class="reference internal" href="#project-resources">Project Resources</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="dos.html" title="next chapter">.do</a></li>
-  </ul></li>
-</ul>
-</div>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="dos.html"
+                          title="next chapter">.do</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2021, jamesbsmyth.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/index.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dos.html" title=".do"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pruf-js 0.1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><strong>pruf-js</strong></a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, jamesbsmyth.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
   </body>
 </html>

@@ -1,0 +1,1008 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>.do.asset &#8212; pruf-js 0.1.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title=".do.node" href="nodeDo.html" />
+    <link rel="prev" title=".do" href="dos.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="nodeDo.html" title=".do.node"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dos.html" title=".do"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pruf-js 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="dos.html" accesskey="U">.do</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">.do.asset</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="do-asset">
+<h1>.do.asset<a class="headerlink" href="#do-asset" title="Permalink to this headline">¶</a></h1>
+<section id="mint">
+<h2>.mint<a class="headerlink" href="#mint" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.mint(assetId,</span> <span class="pre">rightsHash,</span> <span class="pre">nodeId,</span> <span class="pre">lifeCycleLimit,</span> <span class="pre">hardData1,</span> <span class="pre">hardData2,</span> <span class="pre">URISuffix)</span></code></p>
+<p>Mints an asset on PRüF.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+<li><p>rightsHash</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from a secret, can be used to verify in-person ownership.</p></li>
+</ul>
+</li>
+<li><p>nodeId</p>
+<ul class="simple">
+<li><p>String | Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
+</ul>
+</li>
+<li><p>lifeCycleLimit</p>
+<ul class="simple">
+<li><p>String | Uint32</p></li>
+<li><p>(experimental) Used for applications which are concerned with service iteration</p></li>
+</ul>
+</li>
+<li><p>hardData(1/2)</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Key used to link asset to off-chain storage, hardData2 must be set to bytes32(0) if it is not required.</p></li>
+</ul>
+</li>
+<li><p>URISuffix</p>
+<ul class="simple">
+<li><p>String</p></li>
+<li><p>Hash of external CAS network suffix</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="example-usage">
+<h3>Example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">generateRawAssetID</span><span class="p">(</span><span class="s2">&quot;input1&quot;</span><span class="p">,</span> <span class="s2">&quot;input2&quot;</span><span class="p">,</span> <span class="s2">&quot;input3&quot;</span><span class="p">,</span> <span class="s2">&quot;input4&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_rightsHash</span> <span class="o">=</span> <span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">generateSecureRgt</span><span class="p">(</span><span class="nx">_assetId</span><span class="p">,</span> <span class="s2">&quot;Secret&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="kd">let</span> <span class="nx">_nodeId</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="kd">let</span> <span class="nx">_lifeCycleLimit</span> <span class="o">=</span> <span class="s2">&quot;100000&quot;</span>
+<span class="linenos"> 7</span><span class="kd">let</span> <span class="nx">_hardData1</span> <span class="o">=</span> <span class="s2">&quot;0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd&quot;</span>
+<span class="linenos"> 8</span><span class="kd">let</span> <span class="nx">_hardData2</span> <span class="o">=</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">mint</span>
+<span class="linenos">11</span><span class="p">(</span>
+<span class="linenos">12</span>   <span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos">13</span>   <span class="nx">_rightHolderHash</span><span class="p">,</span>
+<span class="linenos">14</span>   <span class="nx">_nodeId</span><span class="p">,</span>
+<span class="linenos">15</span>   <span class="nx">_lifeCycleLimit</span><span class="p">,</span>
+<span class="linenos">16</span>   <span class="nx">_hardData1</span><span class="p">,</span>
+<span class="linenos">17</span>   <span class="nx">_hardData2</span><span class="p">,</span>
+<span class="linenos">18</span>   <span class="nx">URISuffix</span>
+<span class="linenos">19</span><span class="p">)</span>
+<span class="linenos">20</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">21</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">22</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">23</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="mintbare">
+<h2>.mintBare<a class="headerlink" href="#mintbare" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.mintBare(assetId,</span> <span class="pre">rightsHash,</span> <span class="pre">nodeId,</span> <span class="pre">lifeCycleLimit,</span> <span class="pre">hardData1,</span> <span class="pre">hardData2,</span> <span class="pre">URISuffix)</span></code></p>
+<p>Mints an asset on PRüF, with no attatched hardData.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+<li><p>rightsHash</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from secrets, can be used to verify in-person ownership.</p></li>
+</ul>
+</li>
+<li><p>nodeId</p>
+<ul class="simple">
+<li><p>String | Uint32</p></li>
+<li><p>ID used to reference a node, in most cases used to classify assets by type or producer.</p></li>
+</ul>
+</li>
+<li><p>lifeCycleLimit</p>
+<ul class="simple">
+<li><p>String | Uint32</p></li>
+<li><p>(experimental) Used for applications which are concerned with service iteration</p></li>
+</ul>
+</li>
+<li><p>URISuffix</p>
+<ul class="simple">
+<li><p>String</p></li>
+<li><p>Hash of external CAS network suffix</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Example usage<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">generateRawAssetID</span><span class="p">(</span><span class="s2">&quot;input1&quot;</span><span class="p">,</span> <span class="s2">&quot;input2&quot;</span><span class="p">,</span> <span class="s2">&quot;input3&quot;</span><span class="p">,</span> <span class="s2">&quot;input4&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_rightsHash</span> <span class="o">=</span> <span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">generateSecureRgt</span><span class="p">(</span><span class="nx">_assetId</span><span class="p">,</span> <span class="s2">&quot;Secret&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="kd">let</span> <span class="nx">_nodeId</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="kd">let</span> <span class="nx">_lifeCycleLimit</span> <span class="o">=</span> <span class="s2">&quot;100000&quot;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">mintBare</span>
+<span class="linenos"> 9</span><span class="p">(</span>
+<span class="linenos">10</span>   <span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos">11</span>   <span class="nx">_rightHolderHash</span><span class="p">,</span>
+<span class="linenos">12</span>   <span class="nx">_nodeId</span><span class="p">,</span>
+<span class="linenos">13</span>   <span class="nx">_lifeCycleLimit</span><span class="p">,</span>
+<span class="linenos">14</span>   <span class="nx">URISuffix</span>
+<span class="linenos">15</span><span class="p">)</span>
+<span class="linenos">16</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">17</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">18</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">19</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modifysoftdata">
+<h2>.modifySoftData:<a class="headerlink" href="#modifysoftdata" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.modifySoftData(assetId,</span> <span class="pre">softData1,</span> <span class="pre">softData2)</span></code></p>
+<p>Changes an asset’s mutable off-chain data key.</p>
+<section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+<li><p>softData(1/2)</p>
+<ul class="simple">
+<li><p>String | Uint32</p></li>
+<li><p>New parsed CID used to link asset to off-chain storage</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3>Example usage<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_softData1</span> <span class="o">=</span> <span class="s2">&quot;0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd&quot;</span>
+<span class="linenos"> 5</span><span class="kd">let</span> <span class="nx">_softData2</span> <span class="o">=</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">modifySoftData</span>
+<span class="linenos"> 8</span><span class="p">(</span>
+<span class="linenos"> 9</span>        <span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos">10</span>        <span class="nx">_softData1</span><span class="p">,</span>
+<span class="linenos">11</span>        <span class="nx">_softData2</span>
+<span class="linenos">12</span><span class="p">)</span>
+<span class="linenos">13</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">14</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">15</span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">16</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="addharddata">
+<h2>.addHardData:<a class="headerlink" href="#addharddata" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.addHardData(assetId,</span> <span class="pre">hardData1,</span> <span class="pre">hardData2)</span></code></p>
+<p>Permanently inscribes an asset with an off-chain storage reference key</p>
+</div></blockquote>
+<section id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+<li><p>hardData(1/2)</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Key used to link asset to off-chain storage, hardData2 must be set to bytes32(0) if it is not required.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id6">
+<h3>Example usage<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_hardData1</span> <span class="o">=</span> <span class="s2">&quot;0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd&quot;</span>
+<span class="linenos"> 5</span>                  <span class="kd">let</span> <span class="nx">_hardData2</span> <span class="o">=</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>                  <span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">addHardData</span><span class="p">(</span>
+<span class="linenos"> 8</span><span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="nx">_inscription</span>
+<span class="linenos">10</span><span class="p">)</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">12</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">13</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">14</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="updateharddata">
+<h2>.updateHardData<a class="headerlink" href="#updateharddata" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.updateHardData(assetId,</span> <span class="pre">hardData1,</span> <span class="pre">hardData2)</span></code></p>
+<p>Update the hard data of an asset.</p>
+<p>Note: This is a restricted operation, and can only go through if it matches the upgrade data set by
+the node administrator.</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+<li><p>hardData(1/2)</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Field(s) for updated asset hardData, hardData2 must be set to bytes32(0) if it is not required.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id8">
+<h3>Example usage<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modifyassetstatus">
+<h2>.modifyAssetStatus:<a class="headerlink" href="#modifyassetstatus" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.modifyAssetStatus(assetId,</span> <span class="pre">newStatus)</span></code></p>
+<p>Changes an asset’s active status.</p>
+</div></blockquote>
+<section id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+<li><p>newStatus</p>
+<ul class="simple">
+<li><p>String | Uint8</p></li>
+<li><p>Indicator of Asset Status to determine eligibility for ops using the PRÃ¼F protocol</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id10">
+<h3>Example usage<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_newStatus</span> <span class="o">=</span> <span class="s2">&quot;51&quot;</span><span class="p">;</span> <span class="c1">//&#39;51&#39; is the transferable status</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">modifyAssetExtData</span><span class="p">(</span>
+<span class="linenos"> 7</span>   <span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos"> 8</span>   <span class="nx">_newStatus</span>
+<span class="linenos"> 9</span><span class="p">)</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">12</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">13</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="markassetlostorstolen">
+<h2>.markAssetLostOrStolen:<a class="headerlink" href="#markassetlostorstolen" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.markAssetLostOrStolen(assetId,</span> <span class="pre">newStatus)</span></code></p>
+<p>Changes an asset’s active status to lost or stolen.</p>
+</div></blockquote>
+<section id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+<li><p>newStatus</p>
+<ul class="simple">
+<li><p>String | Uint8</p></li>
+<li><p>Indicator of Asset Status to determine eligibility for ops using the PRÃ¼F protocol</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id12">
+<h3>Example usage<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_newStatus</span> <span class="o">=</span> <span class="s2">&quot;53&quot;</span><span class="p">;</span> <span class="c1">//&#39;53&#39; is the lost status</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">markAssetLostOrStolen</span><span class="p">(</span>
+<span class="linenos"> 7</span>   <span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos"> 8</span>   <span class="nx">_newStatus</span>
+<span class="linenos"> 9</span><span class="p">)</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">12</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">13</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="decrementlifecycle">
+<h2>.decrementLifeCycle:<a class="headerlink" href="#decrementlifecycle" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.decrementLifeCycle(assetId,</span> <span class="pre">amount)</span></code></p>
+<p>Decrements the LifeCycle of an asset by a specified amount.</p>
+</div></blockquote>
+<section id="id13">
+<h3>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+<li><p>amount</p>
+<ul class="simple">
+<li><p>String | Uint32</p></li>
+<li><p>Amount to decrement from the asset LifeCycle</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id14">
+<h3>Example usage<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_amount</span> <span class="o">=</span> <span class="s2">&quot;25&quot;</span><span class="p">;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">decrementLifeCycle</span><span class="p">(</span>
+<span class="linenos"> 7</span><span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="nx">_amount</span>
+<span class="linenos"> 9</span><span class="p">)</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">12</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">13</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="verifyrightshash">
+<h2>.verifyRightsHash:<a class="headerlink" href="#verifyrightshash" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.verifyRightsHash(assetId,</span> <span class="pre">rightsHash)</span></code></p>
+<p>Creates transaction which compares a submitted rightsHash to the rightsHash stored in asset record.</p>
+</div></blockquote>
+<section id="id15">
+<h3>Parameters<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+<li><p>rightsHash</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from a secret which is used to verify asset ownership</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id16">
+<h3>Example usage<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">generateIndex</span><span class="p">(</span><span class="s2">&quot;input1&quot;</span><span class="p">,</span> <span class="s2">&quot;input2&quot;</span><span class="p">,</span> <span class="s2">&quot;input3&quot;</span><span class="p">,</span> <span class="s2">&quot;input4&quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_rightsHash</span> <span class="o">=</span> <span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">generateSecureRgt</span><span class="p">(</span><span class="nx">assetId</span><span class="p">,</span> <span class="s2">&quot;Secret&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">verifyRightsHash</span><span class="p">(</span>
+<span class="linenos"> 7</span><span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="nx">_rightsHash</span>
+<span class="linenos"> 9</span><span class="p">)</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">12</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">REPORT</span><span class="p">.</span><span class="nx">returnValues</span><span class="p">.</span><span class="nx">_msg</span><span class="p">);</span>
+<span class="linenos">13</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modifyrightshash">
+<h2>.modifyRightsHash:<a class="headerlink" href="#modifyrightshash" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.modifyRightsHash(assetId,</span> <span class="pre">newRightsHash)</span></code></p>
+<p>Changes the rightshash of the asset to reflect new data.</p>
+</div></blockquote>
+<section id="id17">
+<h3>Parameters<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+<li><p>newRightsHash</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash which will replace the current entry</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id18">
+<h3>Example usage<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_newHash</span> <span class="o">=</span> <span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">generateSecureRgt</span><span class="p">(</span><span class="nx">_assetId</span><span class="p">,</span> <span class="s2">&quot;Secret&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">modifyRightsHash</span><span class="p">(</span>
+<span class="linenos"> 7</span><span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="nx">_newHash</span>
+<span class="linenos"> 9</span><span class="p">)</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">12</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">13</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="approve">
+<h2>.approve<a class="headerlink" href="#approve" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.approve(to,</span> <span class="pre">tokenId)</span></code></p>
+<p>Approves an address to access ERC-721 functionality of all.</p>
+<section id="id19">
+<h3>Parameters<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>to</p>
+<ul class="simple">
+<li><p>String | Address</p></li>
+<li><p>Address to which user would like to grant approval</p></li>
+</ul>
+</li>
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id20">
+<h3>Example usage<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_to</span> <span class="o">=</span> <span class="s2">&quot;0x0D15833D60F448487f157578F3e8c208AFCBa537&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos"> 5</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">approve</span>
+<span class="linenos"> 6</span><span class="p">(</span>
+<span class="linenos"> 7</span>   <span class="nx">_to</span><span class="p">,</span>
+<span class="linenos"> 8</span>   <span class="nx">_assetId</span>
+<span class="linenos"> 9</span><span class="p">)</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">12</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">13</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="setapprovalforall">
+<h2>.setApprovalForAll<a class="headerlink" href="#setapprovalforall" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.setApprovalForAll(to,</span> <span class="pre">approved)</span></code></p>
+<p>Approves an address to access ERC-721 functionality of all assets.</p>
+<section id="id21">
+<h3>Parameters<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>to</p>
+<ul class="simple">
+<li><p>String | Address</p></li>
+<li><p>Address to which user would like to grant approval</p></li>
+</ul>
+</li>
+<li><p>approved</p>
+<ul class="simple">
+<li><p>Bool</p></li>
+<li><p>Desired setting for approval</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id22">
+<h3>Example usage<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_to</span> <span class="o">=</span> <span class="s2">&quot;0x0D15833D60F448487f157578F3e8c208AFCBa537&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_approval</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="linenos"> 5</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">approve</span>
+<span class="linenos"> 6</span><span class="p">(</span>
+<span class="linenos"> 7</span>   <span class="nx">_to</span><span class="p">,</span>
+<span class="linenos"> 8</span>   <span class="nx">_approval</span>
+<span class="linenos"> 9</span><span class="p">)</span>
+<span class="linenos">10</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">12</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">13</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="setcoldwallet">
+<h2>.setColdWallet<a class="headerlink" href="#setcoldwallet" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.setColdWallet()</span></code></p>
+<p>Sets sender’s wallet to cold, revoking protocol’s ERC-721 priveleges.</p>
+<section id="id23">
+<h3>Parameters<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id24">
+<h3>Example usage<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">setColdWallet</span><span class="p">()</span>
+<span class="linenos">4</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">5</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">6</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">7</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="unsetcoldwallet">
+<h2>.unSetColdWallet<a class="headerlink" href="#unsetcoldwallet" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.unSetColdWallet()</span></code></p>
+<p>Sets sender’s wallet to hot, giving protocol ERC-721 priveleges.</p>
+<section id="id25">
+<h3>Parameters<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id26">
+<h3>Example usage<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">unSetColdWallet</span><span class="p">()</span>
+<span class="linenos">4</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">5</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">6</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">7</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="permissiveseturi">
+<h2>.permissiveSetURI<a class="headerlink" href="#permissiveseturi" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.permissiveSetURI(assetId,</span> <span class="pre">newUriSuffix)</span></code></p>
+<p>Set new token URI String, under special circumstances.</p>
+<section id="id27">
+<h3>Parameters<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+<li><p>newUriSuffix</p>
+<ul class="simple">
+<li><p>String</p></li>
+<li><p>URI String for asset content routing</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id28">
+<h3>Example usage<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_newUriSuffix</span> <span class="o">=</span> <span class="s2">&quot;/assets/images/prufcircle-1200x1200.png&quot;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">permissiveSetURI</span>
+<span class="linenos"> 7</span><span class="p">(</span>
+<span class="linenos"> 8</span>   <span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos"> 9</span>   <span class="nx">_newURI</span>
+<span class="linenos">10</span><span class="p">)</span>
+<span class="linenos">11</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">12</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">13</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">14</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="transfer">
+<h2>.transfer<a class="headerlink" href="#transfer" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.transfer(from,</span> <span class="pre">to,</span> <span class="pre">assetId)</span></code></p>
+<p>Transfers an asset from the current holder’s wallet to a specified receiving address.</p>
+<section id="id29">
+<h3>Parameters<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>from</p>
+<ul class="simple">
+<li><p>String | Address</p></li>
+<li><p>Address currently holding the asset</p></li>
+</ul>
+</li>
+<li><p>to</p>
+<ul class="simple">
+<li><p>String | Address</p></li>
+<li><p>Address which will receive the asset</p></li>
+</ul>
+</li>
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id30">
+<h3>Example usage<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_from</span> <span class="o">=</span> <span class="s2">&quot;0x0D15833D60F448487f157578F3e8c208AFCBa537&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_to</span> <span class="o">=</span> <span class="s2">&quot;0x31b396CAc41e65bFC520050Fa7c7882409CBbF48&quot;</span>
+<span class="linenos"> 5</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">transfer</span>
+<span class="linenos"> 8</span><span class="p">(</span>
+<span class="linenos"> 9</span>   <span class="nx">_from</span><span class="p">,</span>
+<span class="linenos">10</span>   <span class="nx">_to</span><span class="p">,</span>
+<span class="linenos">11</span>   <span class="nx">_assetId</span>
+<span class="linenos">12</span><span class="p">)</span>
+<span class="linenos">13</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">14</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">15</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">16</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id31">
+<h2>.addHardData<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.do.asset.addHardData(assetId,</span> <span class="pre">hardData1,</span> <span class="pre">hardData2)</span></code></p>
+<p>Sets sender’s wallet to hot, giving protocol ERC-721 priveleges.</p>
+<section id="id32">
+<h3>Parameters<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Unique value which refers to an asset</p></li>
+</ul>
+</li>
+<li><p>hardData(1/2)</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Field(s) for asset hardData, hardData2 must be set to bytes32(0) if it is not required.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id33">
+<h3>Example usage<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos"> 4</span><span class="kd">let</span> <span class="nx">_hardData1</span> <span class="o">=</span> <span class="s2">&quot;0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd&quot;</span>
+<span class="linenos"> 5</span><span class="kd">let</span> <span class="nx">_hardData2</span> <span class="o">=</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="nx">pruf</span><span class="p">.</span><span class="k">do</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">addHardData</span>
+<span class="linenos"> 8</span><span class="p">(</span>
+<span class="linenos"> 9</span>   <span class="nx">_assetId</span><span class="p">,</span>
+<span class="linenos">10</span>   <span class="nx">_hardData1</span><span class="p">,</span>
+<span class="linenos">11</span>   <span class="nx">_hardData2</span>
+<span class="linenos">12</span><span class="p">)</span>
+<span class="linenos">13</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="kr">from</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">addr</span> <span class="p">})</span>
+<span class="linenos">14</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;receipt&quot;</span><span class="p">()=&gt;{</span>
+<span class="linenos">15</span>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">receipt</span><span class="p">.</span><span class="nx">transactionHash</span><span class="p">);</span>
+<span class="linenos">16</span><span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">.do.asset</a><ul>
+<li><a class="reference internal" href="#mint">.mint</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#example-usage">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mintbare">.mintBare</a><ul>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
+<li><a class="reference internal" href="#id2">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modifysoftdata">.modifySoftData:</a><ul>
+<li><a class="reference internal" href="#id3">Parameters</a></li>
+<li><a class="reference internal" href="#id4">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#addharddata">.addHardData:</a><ul>
+<li><a class="reference internal" href="#id5">Parameters</a></li>
+<li><a class="reference internal" href="#id6">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#updateharddata">.updateHardData</a><ul>
+<li><a class="reference internal" href="#id7">Parameters</a></li>
+<li><a class="reference internal" href="#id8">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modifyassetstatus">.modifyAssetStatus:</a><ul>
+<li><a class="reference internal" href="#id9">Parameters</a></li>
+<li><a class="reference internal" href="#id10">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#markassetlostorstolen">.markAssetLostOrStolen:</a><ul>
+<li><a class="reference internal" href="#id11">Parameters</a></li>
+<li><a class="reference internal" href="#id12">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#decrementlifecycle">.decrementLifeCycle:</a><ul>
+<li><a class="reference internal" href="#id13">Parameters</a></li>
+<li><a class="reference internal" href="#id14">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verifyrightshash">.verifyRightsHash:</a><ul>
+<li><a class="reference internal" href="#id15">Parameters</a></li>
+<li><a class="reference internal" href="#id16">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modifyrightshash">.modifyRightsHash:</a><ul>
+<li><a class="reference internal" href="#id17">Parameters</a></li>
+<li><a class="reference internal" href="#id18">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#approve">.approve</a><ul>
+<li><a class="reference internal" href="#id19">Parameters</a></li>
+<li><a class="reference internal" href="#id20">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setapprovalforall">.setApprovalForAll</a><ul>
+<li><a class="reference internal" href="#id21">Parameters</a></li>
+<li><a class="reference internal" href="#id22">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setcoldwallet">.setColdWallet</a><ul>
+<li><a class="reference internal" href="#id23">Parameters</a></li>
+<li><a class="reference internal" href="#id24">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unsetcoldwallet">.unSetColdWallet</a><ul>
+<li><a class="reference internal" href="#id25">Parameters</a></li>
+<li><a class="reference internal" href="#id26">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#permissiveseturi">.permissiveSetURI</a><ul>
+<li><a class="reference internal" href="#id27">Parameters</a></li>
+<li><a class="reference internal" href="#id28">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#transfer">.transfer</a><ul>
+<li><a class="reference internal" href="#id29">Parameters</a></li>
+<li><a class="reference internal" href="#id30">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id31">.addHardData</a><ul>
+<li><a class="reference internal" href="#id32">Parameters</a></li>
+<li><a class="reference internal" href="#id33">Example usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="dos.html"
+                          title="previous chapter">.do</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="nodeDo.html"
+                          title="next chapter">.do.node</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/assetDo.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="nodeDo.html" title=".do.node"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dos.html" title=".do"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pruf-js 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="dos.html" >.do</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">.do.asset</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, jamesbsmyth.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

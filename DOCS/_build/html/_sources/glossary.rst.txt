@@ -3,4 +3,4 @@
 Glossary
 =========
 
-Placeholder
+Section in development.

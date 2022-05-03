@@ -1,0 +1,777 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>.get.asset &#8212; pruf-js 0.1.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title=".get.node" href="nodeGet.html" />
+    <link rel="prev" title=".get" href="gets.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="nodeGet.html" title=".get.node"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gets.html" title=".get"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pruf-js 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="gets.html" accesskey="U">.get</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">.get.asset</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="get-asset">
+<h1>.get.asset<a class="headerlink" href="#get-asset" title="Permalink to this headline">¶</a></h1>
+<section id="recordexists">
+<h2>.recordExists<a class="headerlink" href="#recordexists" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.recordExists(assetId)</span></code></p>
+<p>Check to see if an asset exists.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Bool</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="example-usage">
+<h3>Example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">recordExists</span><span class="p">(</span><span class="nx">_assetId</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="isrightsholder">
+<h2>.isRightsHolder<a class="headerlink" href="#isrightsholder" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.isRightsHolder(assetId,</span> <span class="pre">rightsHash)</span></code></p>
+<p>Check to see if hash matches the one on file.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+<li><p>rightsHash</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from a secret which is used to verify asset ownership</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Bool</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id3">
+<h3>Example usage<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos">4</span><span class="kd">let</span> <span class="nx">_rightsHash</span> <span class="o">=</span> <span class="nx">pruf</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">generateSecureRgt</span><span class="p">(</span><span class="nx">assetId</span><span class="p">,</span> <span class="s2">&quot;Secret&quot;</span><span class="p">);</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">isRightsHolder</span><span class="p">(</span><span class="nx">_assetId</span><span class="p">,</span> <span class="nx">_rightsHash</span><span class="p">)</span>
+<span class="linenos">7</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="record">
+<h2>.record<a class="headerlink" href="#record" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.record(assetId)</span></code></p>
+<p>Get asset record.</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>Returns<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Object | Record</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id6">
+<h3>Example usage<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">record</span><span class="p">(</span><span class="nx">_assetId</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="heldassetatindex">
+<h2>.heldAssetAtIndex<a class="headerlink" href="#heldassetatindex" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.heldAssetAtIndex(address,</span> <span class="pre">index)</span></code></p>
+<p>Get the asset ID at index from a holding wallet.</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>address</p>
+<ul class="simple">
+<li><p>String | Address</p></li>
+<li><p>Address of token holder</p></li>
+</ul>
+</li>
+<li><p>index
+* String | Uint256
+* Index of asset in wallet</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Bytes32 | assetId</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id9">
+<h3>Example usage<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_address</span> <span class="o">=</span> <span class="s2">&quot;0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049&quot;</span>
+<span class="linenos">4</span><span class="kd">let</span> <span class="nx">_index</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">heldAssetAtIndex</span><span class="p">(</span><span class="nx">_address</span><span class="p">,</span> <span class="nx">_index</span><span class="p">)</span>
+<span class="linenos">7</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="assetatindex">
+<h2>.assetAtIndex<a class="headerlink" href="#assetatindex" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.assetAtIndex(index)</span></code></p>
+<p>Get asset ID at specified index.</p>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>index</p>
+<ul class="simple">
+<li><p>String | Uint256</p></li>
+<li><p>Index of asset</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id11">
+<h3>Returns<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Bytes32 | assetId</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id12">
+<h3>Example usage<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_index</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">assetAtIndex</span><span class="p">(</span><span class="nx">_index</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="balanceof">
+<h2>.balanceOf<a class="headerlink" href="#balanceof" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.balanceOf(address)</span></code></p>
+<p>Get the asset balance of a wallet.</p>
+<section id="id13">
+<h3>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>address</p>
+<ul class="simple">
+<li><p>String | Address</p></li>
+<li><p>Asset holder address</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id14">
+<h3>Returns<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Uint256 | balance</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id15">
+<h3>Example usage<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_address</span> <span class="o">=</span> <span class="s2">&quot;0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">balanceOf</span><span class="p">(</span><span class="nx">_address</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="totalsupply">
+<h2>.totalSupply<a class="headerlink" href="#totalsupply" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.totalSupply()</span></code></p>
+<p>Get the total supply of assets.</p>
+<section id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id17">
+<h3>Returns<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Uint256 | totalSupply</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id18">
+<h3>Example usage<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">totalSupply</span><span class="p">()</span>
+<span class="linenos">4</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ownerof">
+<h2>.ownerOf<a class="headerlink" href="#ownerof" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.ownerOf(assetId)</span></code></p>
+<p>Get the owner of a specified asset.</p>
+<section id="id19">
+<h3>Parameters<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id20">
+<h3>Returns<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Address | tokenHolder</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id21">
+<h3>Example usage<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">ownerOf</span><span class="p">(</span><span class="nx">_assetId</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="uri">
+<h2>.URI<a class="headerlink" href="#uri" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.URI(assetId)</span></code></p>
+<p>Get the full URI of a specified asset.</p>
+<section id="id22">
+<h3>Parameters<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id23">
+<h3>Returns<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>String | URI</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id24">
+<h3>Example usage<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">URI</span><span class="p">(</span><span class="nx">_assetId</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="iscoldwallet">
+<h2>.isColdWallet<a class="headerlink" href="#iscoldwallet" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.isColdWallet(address)</span></code></p>
+<p>Check to see if an address is set to “cold”.</p>
+<section id="id25">
+<h3>Parameters<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>address</p>
+<ul class="simple">
+<li><p>String | Address</p></li>
+<li><p>Address to check</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id26">
+<h3>Returns<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Bool</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id27">
+<h3>Example usage<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_address</span> <span class="o">=</span> <span class="s2">&quot;0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">isColdWallet</span><span class="p">(</span><span class="nx">_address</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="isapprovedforall">
+<h2>.isApprovedForAll<a class="headerlink" href="#isapprovedforall" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.isApprovedForAll(owner,</span> <span class="pre">operator)</span></code></p>
+<p>Check to see if an operator is approved for all ERC-721 asset functionality in a wallet.</p>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>owner</p>
+<ul class="simple">
+<li><p>String | Address</p></li>
+<li><p>Owner address of assets</p></li>
+</ul>
+</li>
+<li><p>operator</p>
+<ul class="simple">
+<li><p>String | Address</p></li>
+<li><p>Address of operator to investigate for eligibility</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id29">
+<h3>Returns<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Bool</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id30">
+<h3>Example usage<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_owner</span> <span class="o">=</span> <span class="s2">&quot;0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049&quot;</span>
+<span class="linenos">4</span><span class="kd">let</span> <span class="nx">_operator</span> <span class="o">=</span> <span class="s2">&quot;0x0D15833D60F448487f157578F3e8c208AFCBa537&quot;</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">isApprovedForAll</span><span class="p">(</span><span class="nx">_owner</span><span class="p">,</span> <span class="nx">_operator</span><span class="p">)</span>
+<span class="linenos">7</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="baseurifromstorageprovider">
+<h2>.baseURIFromStorageProvider<a class="headerlink" href="#baseurifromstorageprovider" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.baseURIFromStorageProvider(storageProviderId)</span></code></p>
+<p>Determine the baseURI given the storage provider ID.</p>
+<section id="id31">
+<h3>Parameters<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>storageProviderId</p>
+<ul class="simple">
+<li><p>String | Uint8</p></li>
+<li><p>ID of storage provider recognized by the PRüF protocol</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id32">
+<h3>Returns<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>String | baseUri</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id33">
+<h3>Example usage<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_storageProviderId</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">baseURIFromStorageProvider</span><span class="p">(</span><span class="nx">_storageProviderId</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="baseurifromnode">
+<h2>.baseURIFromNode<a class="headerlink" href="#baseurifromnode" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.baseURIFromNode(nodeId)</span></code></p>
+<p>Determine the baseURI given the node ID.</p>
+<section id="id34">
+<h3>Parameters<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>nodeId</p>
+<ul class="simple">
+<li><p>String | Uint32</p></li>
+<li><p>ID of node within the PRüF protocol</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id35">
+<h3>Returns<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>String | baseUri</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id36">
+<h3>Example usage<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_nodeId</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">baseURIFromNode</span><span class="p">(</span><span class="nx">_nodeId</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="approvedoperator">
+<h2>.approvedOperator<a class="headerlink" href="#approvedoperator" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pruf.get.asset.approvedOperator(assetId)</span></code></p>
+<p>Get approved operator of an asset, if there is one.</p>
+<section id="id37">
+<h3>Parameters<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>assetId</p>
+<ul class="simple">
+<li><p>String | Bytes32</p></li>
+<li><p>Hash built from individual inputs which is used to identify the asset on the network</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id38">
+<h3>Returns<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Array | operator</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id39">
+<h3>Example usage<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Example pruf-js code</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kd">let</span> <span class="nx">_assetId</span> <span class="o">=</span> <span class="s2">&quot;0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">pruf</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">asset</span><span class="p">.</span><span class="nx">approvedOperator</span><span class="p">(</span><span class="nx">_assetId</span><span class="p">)</span>
+<span class="linenos">6</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">.get.asset</a><ul>
+<li><a class="reference internal" href="#recordexists">.recordExists</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#returns">Returns</a></li>
+<li><a class="reference internal" href="#example-usage">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#isrightsholder">.isRightsHolder</a><ul>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
+<li><a class="reference internal" href="#id2">Returns</a></li>
+<li><a class="reference internal" href="#id3">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#record">.record</a><ul>
+<li><a class="reference internal" href="#id4">Parameters</a></li>
+<li><a class="reference internal" href="#id5">Returns</a></li>
+<li><a class="reference internal" href="#id6">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#heldassetatindex">.heldAssetAtIndex</a><ul>
+<li><a class="reference internal" href="#id7">Parameters</a></li>
+<li><a class="reference internal" href="#id8">Returns</a></li>
+<li><a class="reference internal" href="#id9">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#assetatindex">.assetAtIndex</a><ul>
+<li><a class="reference internal" href="#id10">Parameters</a></li>
+<li><a class="reference internal" href="#id11">Returns</a></li>
+<li><a class="reference internal" href="#id12">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#balanceof">.balanceOf</a><ul>
+<li><a class="reference internal" href="#id13">Parameters</a></li>
+<li><a class="reference internal" href="#id14">Returns</a></li>
+<li><a class="reference internal" href="#id15">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#totalsupply">.totalSupply</a><ul>
+<li><a class="reference internal" href="#id16">Parameters</a></li>
+<li><a class="reference internal" href="#id17">Returns</a></li>
+<li><a class="reference internal" href="#id18">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ownerof">.ownerOf</a><ul>
+<li><a class="reference internal" href="#id19">Parameters</a></li>
+<li><a class="reference internal" href="#id20">Returns</a></li>
+<li><a class="reference internal" href="#id21">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uri">.URI</a><ul>
+<li><a class="reference internal" href="#id22">Parameters</a></li>
+<li><a class="reference internal" href="#id23">Returns</a></li>
+<li><a class="reference internal" href="#id24">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iscoldwallet">.isColdWallet</a><ul>
+<li><a class="reference internal" href="#id25">Parameters</a></li>
+<li><a class="reference internal" href="#id26">Returns</a></li>
+<li><a class="reference internal" href="#id27">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#isapprovedforall">.isApprovedForAll</a><ul>
+<li><a class="reference internal" href="#id28">Parameters</a></li>
+<li><a class="reference internal" href="#id29">Returns</a></li>
+<li><a class="reference internal" href="#id30">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#baseurifromstorageprovider">.baseURIFromStorageProvider</a><ul>
+<li><a class="reference internal" href="#id31">Parameters</a></li>
+<li><a class="reference internal" href="#id32">Returns</a></li>
+<li><a class="reference internal" href="#id33">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#baseurifromnode">.baseURIFromNode</a><ul>
+<li><a class="reference internal" href="#id34">Parameters</a></li>
+<li><a class="reference internal" href="#id35">Returns</a></li>
+<li><a class="reference internal" href="#id36">Example usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#approvedoperator">.approvedOperator</a><ul>
+<li><a class="reference internal" href="#id37">Parameters</a></li>
+<li><a class="reference internal" href="#id38">Returns</a></li>
+<li><a class="reference internal" href="#id39">Example usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="gets.html"
+                          title="previous chapter">.get</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="nodeGet.html"
+                          title="next chapter">.get.node</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/assetGet.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="nodeGet.html" title=".get.node"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gets.html" title=".get"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pruf-js 0.1.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="gets.html" >.get</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">.get.asset</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, jamesbsmyth.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>
