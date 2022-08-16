@@ -1,7 +1,7 @@
 {
   "name": "pruf-js",
-  "version": "0.4.8",
-  "description": "An interface to the pruf network for JavaScript developers",
+  "version": "0.5.2",
+  "description": "An interface to the pruf network written in javascript",
   "type": "module",
   "main": "pruf.js",
   "scripts": {

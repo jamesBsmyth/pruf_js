@@ -25,6 +25,22 @@ export default class PRUF {
         APP_NC: "0x45f7c1eC0F0e19674A699577F9d89fB5424Acf1F",
         RAVE: "0x7D43c4d4aF2476004f1326C99F3437033142514E",
       },
+      liberty: {
+        STOR: "0xD293EcfFEF05174F566c7F997160F71461504FCC",
+        CLOCK: "0x76c7d98D74c29B5c6f42A8Db78a3b12D36432a1E",
+        DAO_A: "0xB9e66f90d026CA3246772C18c441175e78eC5Dfb",
+        DAO_B: "0x239142569790B9c6896F37DA7fffaaA3123Df2db",
+        DAO_STOR: "0xfA82df4faaCa4EFCcAf81E8432ebfc2bB8f1522a",
+        DAO: "0x626983f13ED43a3FdF7593A89e939611b2366833",
+        NODE_STOR: "0xC352F23257e24c6d02832b9634aBb26099A7a4F1",
+        NODE_BLDR: "0xcd2dCEE0EaB1405d6e411cF2b8C6361a8d9493d5",
+        UTIL_TKN: "0x0e1a5ba637ACD0c1A9B9CFd3ECc49be19df03073",
+        A_TKN: "0xbD8d84d94C8951f44eE861850295E7eC3D913e9f",
+        NODE_TKN: "0x1cE63E9af61Eb40db08d4748C61d8c08364F4F8e",
+        NODE_MGR: "0x411a16e906Fd899cD88775f0ea8127Ff406d0b05",
+        APP_NC: "0x25a91D21842f5CcCD175E5342F944d3B768397cF",
+        RAVE: "0x29D45584BAccA5a3853C337974c6dbd3b3F81DAB",
+      },
       kovan: {
         STOR: "0x4371451A68321CD48b189c2dB802970740F128d3",
         CLOCK: "0xd3f4f38C4f31E40E73fb983a13D02932DC7594f0",
@@ -47,6 +63,7 @@ export default class PRUF {
         STAKE_VAULT: "0xC367fA343B0FA2960cd77eaF50B5F5448b68d460",
         REWARDS_VAULT: "0x25feAe7B52E5a4373D8EA340Ad30699a60BF0BBB",
         EO_STAKING: "0xB30c01fC29f97339E1eb6890a56CA1a907ca961D",
+        
       },
       ethereum: {
         UTIL_TKN: "0xa49811140e1d6f653dec28037be0924c811c4538",
@@ -56,11 +73,40 @@ export default class PRUF {
         EO_STAKING: "0x8B7e69886b944BC7456b4CAB471BFe99e61Dd1Be",
       },
       polygon: {
+        STOR: "0x2E327c6c45E40a20D236AB79D1eb38cBc9bB0527",
+        UD_NB: "0x172aF765E59e8D7e955C017D183f59Ba3a791669",
+        CLOCK: "0xD747d80300c997b416aA148A84491B5A9644bc86",
+        DAO_A: "0xD9F4d0a76a4Ed63E2934Fc413240aa0A0179Bc00",
+        DAO_B: "0x238E50DC4Bdd7586657CC36865c103A156DA1E8C",
+        DAO_STOR: "0x8613B56fd7fcC78Bb2EceA84c61ecd6F5a8Bc3f4",
+        DAO: "0xB35FC428ddB258f237367969A4845088B25BB5d9",
+        NODE_STOR: "0xd0e236C131DBAa030650201FAc9284345EA62789",
+        NODE_BLDR: "0x9796D3CdE91916341568fF165a1507725186FC30",
+        A_TKN: "0xd076f69BC9f8452CE54711ff2A7662Ed8Df8A74b",
+        NODE_TKN: "0xCB389069098bfA8f5bfF97be1DDaa8a5a1F7B9c6",
+        NODE_MGR: "0xbFB5798F4825b4f3792Ef80742533D967D1771D4",
+        APP_NC: "0x473430229710F45e845A7C28c53B8043B16cd94C",
         UTIL_TKN: "0xAdf72D32E511eE00c6E0FF5D62Cd5C7C40A6aDEA",
         STAKE_TKN: "0xd68bc9a69343dde6ebef1546bd09f3f43fe308c8",
         STAKE_VAULT: "0x7c0823f1c216b80dc3a07d5896640bca64013613",
         REWARDS_VAULT: "0x9f700203681b15c5618a6f51e01e9620b591208d",
         EO_STAKING: "0x388878e143b0c4ae2637d81bec6e173cace9b1ed",
+      },
+      m1c1: {
+        STOR: "0x25a91D21842f5CcCD175E5342F944d3B768397cF",
+        // UD_NB: "0x172aF765E59e8D7e955C017D183f59Ba3a791669",
+        CLOCK: "0x29D45584BAccA5a3853C337974c6dbd3b3F81DAB",
+        DAO_A: "0x239142569790B9c6896F37DA7fffaaA3123Df2db",
+        DAO_B: "0x626983f13ED43a3FdF7593A89e939611b2366833",
+        DAO_STOR: "0x76c7d98D74c29B5c6f42A8Db78a3b12D36432a1E",
+        DAO: "0xfA82df4faaCa4EFCcAf81E8432ebfc2bB8f1522a",
+        NODE_STOR: "0x1cE63E9af61Eb40db08d4748C61d8c08364F4F8e",
+        NODE_BLDR: "0x0e1a5ba637ACD0c1A9B9CFd3ECc49be19df03073",
+        A_TKN: "0xC352F23257e24c6d02832b9634aBb26099A7a4F1",
+        NODE_TKN: "0xbD8d84d94C8951f44eE861850295E7eC3D913e9f",
+        NODE_MGR: "0xD293EcfFEF05174F566c7F997160F71461504FCC",
+        APP_NC: "0x411a16e906Fd899cD88775f0ea8127Ff406d0b05",
+        UTIL_TKN: "0xcd2dCEE0EaB1405d6e411cF2b8C6361a8d9493d5",
       },
     };
 
@@ -83,99 +129,100 @@ export default class PRUF {
       }
 
       if (fetch) {
-        const STOR = _contracts.STOR;
+        console.log("Network fetching is currently unavailable, and will be re-incorporated in a future release.")
+        // const STOR = _contracts.STOR;
 
-        await STOR.methods
-          .resolveContractAddress("NODE_STOR")
-          .call(function (error, result) {
-            if (error) {
-              console.log(error);
-            } else {
-              //console.log(result);
-              _contracts.NODE_STOR = new _web3.eth.Contract(
-                abis.NODE_STOR,
-                result
-              );
-            }
-          });
+        // await STOR.methods
+        //   .resolveContractAddress("NODE_STOR")
+        //   .call(function (error, result) {
+        //     if (error) {
+        //       console.log(error);
+        //     } else {
+        //       //console.log(result);
+        //       _contracts.NODE_STOR = new _web3.eth.Contract(
+        //         abis.NODE_STOR,
+        //         result
+        //       );
+        //     }
+        //   });
 
-        await STOR.methods
-          .resolveContractAddress("NODE_BLDR")
-          .call(function (error, result) {
-            if (error) {
-              console.log(error);
-            } else {
-              //console.log(result);
-              _contracts.NODE_BLDR = new _web3.eth.Contract(
-                abis.NODE_BLDR,
-                result
-              );
-            }
-          });
+        // await STOR.methods
+        //   .resolveContractAddress("NODE_BLDR")
+        //   .call(function (error, result) {
+        //     if (error) {
+        //       console.log(error);
+        //     } else {
+        //       //console.log(result);
+        //       _contracts.NODE_BLDR = new _web3.eth.Contract(
+        //         abis.NODE_BLDR,
+        //         result
+        //       );
+        //     }
+        //   });
 
-        await STOR.methods
-          .resolveContractAddress("APP_NC")
-          .call(function (error, result) {
-            if (error) {
-              console.log(error);
-            } else {
-              //console.log(result);
-              _contracts.APP_NC = new _web3.eth.Contract(abis.APP_NC, result);
-            }
-          });
+        // await STOR.methods
+        //   .resolveContractAddress("APP_NC")
+        //   .call(function (error, result) {
+        //     if (error) {
+        //       console.log(error);
+        //     } else {
+        //       //console.log(result);
+        //       _contracts.APP_NC = new _web3.eth.Contract(abis.APP_NC, result);
+        //     }
+        //   });
 
-        await STOR.methods
-          .resolveContractAddress("NODE_MGR")
-          .call(function (error, result) {
-            if (error) {
-              console.log(error);
-            } else {
-              //console.log(result)
-              _contracts.NODE_MGR = new _web3.eth.Contract(
-                abis.NODE_MGR,
-                result
-              );
-            }
-          });
+        // await STOR.methods
+        //   .resolveContractAddress("NODE_MGR")
+        //   .call(function (error, result) {
+        //     if (error) {
+        //       console.log(error);
+        //     } else {
+        //       //console.log(result)
+        //       _contracts.NODE_MGR = new _web3.eth.Contract(
+        //         abis.NODE_MGR,
+        //         result
+        //       );
+        //     }
+        //   });
 
-        await STOR.methods
-          .resolveContractAddress("NODE_TKN")
-          .call(function (error, result) {
-            if (error) {
-              console.log(error);
-            } else {
-              //console.log(result);
-              _contracts.NODE_TKN = new _web3.eth.Contract(
-                abis.NODE_TKN,
-                result
-              );
-            }
-          });
+        // await STOR.methods
+        //   .resolveContractAddress("NODE_TKN")
+        //   .call(function (error, result) {
+        //     if (error) {
+        //       console.log(error);
+        //     } else {
+        //       //console.log(result);
+        //       _contracts.NODE_TKN = new _web3.eth.Contract(
+        //         abis.NODE_TKN,
+        //         result
+        //       );
+        //     }
+        //   });
 
-        await STOR.methods
-          .resolveContractAddress("A_TKN")
-          .call(function (error, result) {
-            if (error) {
-              console.log(error);
-            } else {
-              //console.log(result);
-              _contracts.A_TKN = new _web3.eth.Contract(abis.A_TKN, result);
-            }
-          });
+        // await STOR.methods
+        //   .resolveContractAddress("A_TKN")
+        //   .call(function (error, result) {
+        //     if (error) {
+        //       console.log(error);
+        //     } else {
+        //       //console.log(result);
+        //       _contracts.A_TKN = new _web3.eth.Contract(abis.A_TKN, result);
+        //     }
+        //   });
 
-        await STOR.methods
-          .resolveContractAddress("UTIL_TKN")
-          .call(function (error, result) {
-            if (error) {
-              console.log(error);
-            } else {
-              //console.log(result);
-              _contracts.UTIL_TKN = new _web3.eth.Contract(
-                abis.UTIL_TKN,
-                result
-              );
-            }
-          });
+        // await STOR.methods
+        //   .resolveContractAddress("UTIL_TKN")
+        //   .call(function (error, result) {
+        //     if (error) {
+        //       console.log(error);
+        //     } else {
+        //       //console.log(result);
+        //       _contracts.UTIL_TKN = new _web3.eth.Contract(
+        //         abis.UTIL_TKN,
+        //         result
+        //       );
+        //     }
+        //   });
       }
 
       return _contracts;
@@ -195,9 +242,9 @@ export default class PRUF {
 
       if (contracts.RAVE) {
         faucet = {
-          getPRUF : contracts.RAVE.methods.bumpMe,
-          getNode : contracts.RAVE.methods.purchaseNode,
-          finalize : contracts.RAVE.methods.setNonMutableData,
+          getPRUF: contracts.RAVE.methods.bumpMe,
+          getNode: contracts.RAVE.methods.purchaseNode,
+          finalize: contracts.RAVE.methods.setNonMutableData,
           setOperationCost: contracts.RAVE.methods.setOperationCosts,
           updateImportStatus: contracts.RAVE.methods.updateImportStatus,
           updateCAS: contracts.RAVE.methods.updateNodeCAS,
@@ -207,6 +254,24 @@ export default class PRUF {
 
       const call = {
         node: {
+          getUdIdFromDomain: contracts.UD_NB ? 
+          async (domain, tld) => {
+            if (!domain) return console.error(`PRUF_ERR: Invalid input: ${domain}`);
+            if (!tld) return console.error(`PRUF_ERR: Invalid input: ${tld}`);
+            let id = null;
+
+            await contracts.NODE_STOR.methods
+              .getTokenIdFromDomain(domain, tld)
+              .call((error, result) => {
+                if (error) {
+                  console.log(error);
+                } else {
+                  return id = result;
+                }
+              });
+
+            return result;
+          } : null,
           isNameAvailable: async (name) => {
             if (!name) return console.error(`PRUF_ERR: Invalid input: ${name}`);
 
@@ -1122,7 +1187,20 @@ export default class PRUF {
       };
 
       const tx = {
-        node: {
+        node: contracts.UD_NB ? {
+          mint: contracts.UD_NB.methods.purchaseNode,
+          setExtData: contracts.UD_NB.methods.setExtendedNodeData,
+          transfer: contracts.NODE_TKN ? contracts.NODE_TKN.methods.safeTransferFrom : null, 
+          setOperationCost: contracts.UD_NB.methods.setOperationCosts,
+          updateImportStatus: contracts.UD_NB.methods.updateImportStatus,
+          updateCAS: contracts.UD_NB.methods.updateNodeCAS,
+          setApprovalForAll: contracts.NODE_TKN ? contracts.NODE_TKN.methods.setApprovalForAll : null,
+          approve: contracts.NODE_TKN ? contracts.NODE_TKN.methods.approve : null,
+          enableContract: contracts.STOR ? contracts.STOR.methods.enableContractForNode : null,
+          enableDefaultContracts: contracts.STOR ? contracts.STOR.methods.enableDefaultContractsForNode : null,
+          authorizeUser: contracts.UD_NB.methods.addUser,
+          finalize: contracts.UD_NB.methods.setNonMutableData,
+        } : {
           transfer: contracts.NODE_TKN ? contracts.NODE_TKN.methods.safeTransferFrom : null, 
           setOperationCost: contracts.NODE_MGR ? contracts.NODE_MGR.methods.setOperationCosts : null,
           updateImportStatus: contracts.NODE_MGR ? contracts.NODE_MGR.methods.updateImportStatus : null,
@@ -1168,8 +1246,7 @@ export default class PRUF {
           claim: contracts.EO_STAKING ? contracts.EO_STAKING.methods.claimBonus : null,
           increase: contracts.EO_STAKING ? contracts.EO_STAKING.methods.increaseMyStake : null,
           stakePRUF: contracts.EO_STAKING ? contracts.EO_STAKING.methods.stakeMyTokens : null,
-        },
-        //PARTY -- TEST RELEASE ONLY
+        }
       };
 
       const util = {
@@ -1395,8 +1472,14 @@ export default class PRUF {
           case 200101:
               net = "m1tn";
               break;
+          case 2001:
+              net = "m1c1";
+              break;
           case 42:
             net = "kovan";
+            break;
+          case 8080:
+            net = "liberty";
             break;
           case 137:
             net = "polygon";
@@ -1405,7 +1488,7 @@ export default class PRUF {
             net = "mumbai";
             break;
           default:
-            throw "Provided chainId is not supported. Supported network IDs are: 1 || 42 || 137 || 80001 || 200101";
+            throw "Provided chainId is not supported. Supported network IDs are: 1 || 42 || 137 || 80001 || 200101 || 8080 || 2001";
         }
         try {
           if (logs) console.time("Time spent initializing: ");
@@ -1424,7 +1507,7 @@ export default class PRUF {
                   provider: web3Provider,
                   contracts: f,
                 };
-                if (net === "kovan" || net === "mumbai" || net === "m1tn") this.faucet = g.faucet;
+                if (net === "liberty" || net === "kovan" || net === "mumbai" || net === "m1tn") this.faucet = g.faucet;
                 if (logs) console.log({ this: this });
                 if (logs) console.timeEnd("Time spent initializing: ");
                 resolve(this);

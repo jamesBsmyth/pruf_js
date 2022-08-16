@@ -17,11 +17,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'pruf-js'
-copyright = '2022, jamesbsmyth'
-author = 'jamesbsmyth'
+copyright = '2022, James S'
+author = 'James S'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.2'
+release = '0.5.2'
 
 
 # -- General configuration ---------------------------------------------------

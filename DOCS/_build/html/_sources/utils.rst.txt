@@ -2,7 +2,7 @@
 .utils
 ========
 
-isValidId:
+isValidId
 ----------
 
 ``pruf.utils.isValidId(id)``
@@ -49,7 +49,7 @@ Example usage
 
 ----------
   
-ipfsFromB32:
+ipfsFromB32
 -------------
 
 ``pruf.utils.ipfsFromB32(bytes32Hex)``
@@ -90,7 +90,7 @@ Example usage
    
 ----------
   
-ipfsToB32:
+ipfsToB32
 -----------
 
 ``pruf.utils.ipfsToB32(cid)``
@@ -132,7 +132,7 @@ Example usage
    
 ----------
   
-stringifyStatus:
+stringifyStatus
 -----------------
 
 ``pruf.utils.stringifyStatus(status)``
@@ -174,7 +174,7 @@ Example usage
    
 ----------
   
-convertEscrowTime:
+convertEscrowTime
 -------------------
 
 ``pruf.utils.convertEscrowTime(rawTime, to)``
@@ -222,7 +222,7 @@ Example usage
    
 ----------
   
-tenThousandHashesOf: 
+tenThousandHashesOf
 ---------------------
 
 ``pruf.utils.tenThousandHashesOf(toBeHashed)``
@@ -264,7 +264,7 @@ Example usage
  
 ----------
   
-generateAssetID:
+generateAssetID
 -----------------
 
 ``pruf.utils.generateAssetID({ type, make, model, serial })``
@@ -320,7 +320,7 @@ Example usage
  
 ----------
   
-generateSecureRgt:
+generateSecureRgt
 -------------------
 
 ``pruf.utils.generateSecureRgt(assetId, { first, middle, last, id, password })``
@@ -381,3 +381,5 @@ Example usage
       console.log(e)
       //Expected output: "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
    }
+
+----------

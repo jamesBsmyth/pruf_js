@@ -1,2 +1,876 @@
 .get.node
 ============
+
+.isNameAvailable
+----------------------
+
+``pruf.get.node.isNameAvailable(name)``
+
+Checks to see if a proposed node name is available.
+
+Parameters
+"""""""""""
+
+   1. name
+   
+      * String
+      * Name to check for availability
+   
+Returns
+""""""""""""
+
+    1. Bool
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _name = "NEW_NODE"
+
+         pruf.get.node.isNameAvailable(_name)
+         .then(console.log)
+
+
+---------------
+
+.priceData
+----------------------
+
+``pruf.get.node.priceData()``
+
+Get current node price information.
+
+Parameters
+"""""""""""
+
+   none
+   
+Returns
+""""""""""""
+
+    1. Object | priceData
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         pruf.get.node.priceData()
+         .then(console.log)
+
+
+---------------
+ 
+.switchAt
+----------------------
+
+``pruf.get.node.switchAt(nodeId, position)``
+
+Gets a switch state of a specified node at given index.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+   2. position
+   
+      * String | Uint
+      * Position in switchboard string to check
+   
+Returns
+""""""""""""
+
+    1. 0/1 | state
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+         let _position = "1"
+
+         pruf.get.node.switchAt(
+             _nodeId,
+             _position
+             )
+         .then(console.log)
+
+
+---------------
+ 
+.extendedData
+----------------------
+
+``pruf.get.node.extendedData(nodeId)``
+
+Gets the extended CAS data attatched to a node.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. Object | extendedData
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+
+         pruf.get.node.extendedData(
+             _nodeId,
+             )
+         .then(console.log)
+
+
+---------------
+ 
+.importStatus
+----------------------
+
+``pruf.get.node.importStatus(nodeId, otherNodeId)``
+
+Gets the one-way import agreement status between two nodes.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference the exporting node
+
+    1. otherNodeId
+      
+      * String | Uint32
+      * ID used to reference the importing node
+   
+Returns
+""""""""""""
+
+    1. Uint | state
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+         let _otherNodeId = "11"
+
+         pruf.get.node.importStatus(_nodeId, _otherNodeId)
+         .then(console.log)
+
+
+---------------
+ 
+.localNode
+----------------------
+
+``pruf.get.node.localNode(foreignNodeId)``
+
+Gets the approved local node ID for a specified foreign node, if one exists.
+
+Parameters
+"""""""""""
+
+   1. foreignNodeId
+   
+      * String | Uint32
+      * Id of foreign node to check
+   
+Returns
+""""""""""""
+
+    1. Uint | localNodeId
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _foreignNodeId = "11"
+
+         pruf.get.node.PLACEHOLDER(_foreignNodeId)
+         .then(console.log)
+
+
+---------------
+ 
+.record
+----------------------
+
+``pruf.get.node.record(nodeId)``
+
+Gets the record of specified node.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. Object | record
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+
+         pruf.get.node.PLACEHOLDER(_nodeId)
+         .then(console.log)
+
+
+---------------
+ 
+.name
+----------------------
+
+``pruf.get.node.name(nodeId)``
+
+Gets the name associated with the specified node ID.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. String | name
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+
+         pruf.get.node.name(_nodeId)
+         .then(console.log)
+
+
+---------------
+ 
+.discount
+----------------------
+
+``pruf.get.node.discount(nodeId)``
+
+Gets the current payment ratio for a node.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. Uint | discount
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+
+         pruf.get.node.discount(_nodeId)
+         .then(console.log)
+
+
+---------------
+  
+.numberOfUsers
+----------------------
+
+``pruf.get.node.numberOfUsers(nodeId)``
+
+gets the number of user authorized on specified node.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. Uint | numberOfUsers
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+
+         pruf.get.node.numberOfUsers(_nodeId)
+         .then(console.log)
+
+
+---------------
+  
+.invoiceForOperation
+----------------------
+
+``pruf.get.node.invoiceForOperation(nodeId, operationIndex)``
+
+Gets the current invoice for an operation at on specified node at given index.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+   2. operationIndex
+   
+      * String | Uint16
+      * Index number of operation cost to check
+
+Returns
+""""""""""""
+
+    1. Object | invoice
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+         let _operationIndex = "3"
+
+         pruf.get.node.invoiceForOperation(
+             _nodeId,
+             _operationIndex
+             )
+         .then(console.log)
+
+
+---------------
+  
+.userType
+----------------------
+
+``pruf.get.node.userType(address, nodeId)``
+
+Gets the user type of specified address on a node.
+
+Parameters
+"""""""""""
+
+   1. address
+      
+      * String | Addres
+      * Address to check user type of
+
+   2. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. Uint | userType
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+         let _address = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049"
+         let _nodeId = "10"
+
+         pruf.get.node.userType(
+             _address,
+             _nodeId
+             )
+         .then(console.log)
+
+
+---------------
+  
+.id
+----------------------
+
+``pruf.get.node.id(name)``
+
+Gets the ID of a node from the name, if it exists.
+
+Parameters
+"""""""""""
+
+   1. name
+      
+      * String
+      * Name from which to derive the ID
+   
+Returns
+""""""""""""
+
+    1. Uint | id
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _name = "NEW_NODE"
+
+         pruf.get.node.PLACEHOLDER(_name)
+         .then(console.log)
+
+
+---------------
+  
+.isSameRoot
+----------------------
+
+``pruf.get.node.isSameRoot(nodeId1, nodeId2)``
+
+Determines whether two nodes share a root.
+
+Parameters
+"""""""""""
+
+   1. nodeId (1/2)
+      
+      * String | Uint32
+      * IDs used to reference the nodes to be compared.
+   
+Returns
+""""""""""""
+
+    1. bool
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId1 = "10"
+         let _nodeId2 = "11"
+
+         pruf.get.node.PLACEHOLDER(
+             _nodeId1,
+             _nodeId2
+         )
+         .then(console.log)
+
+
+---------------
+  
+.balanceOf
+----------------------
+
+``pruf.get.node.balanceOf(address)``
+
+Gets the node balance of specified address.
+
+Parameters
+"""""""""""
+
+   1. address
+      
+      * String | Address
+      * Address to check for balance
+   
+Returns
+""""""""""""
+
+    1. Uint | balance
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _address = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049"
+
+         pruf.get.node.PLACEHOLDER(_address)
+         .then(console.log)
+
+
+---------------
+  
+.tokenExists
+----------------------
+
+``pruf.get.node.tokenExists(nodeId)``
+
+Determines whether a specified node token ID exists.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. Bool
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+
+         pruf.get.node.tokenExists(_nodeId)
+         .then(console.log)
+
+
+---------------
+  
+.heldNodeAtIndex
+----------------------
+
+``pruf.get.node.heldNodeAtIndex(address, index)``
+
+Gets the nodeId of node token in address, specified by index.
+
+Parameters
+"""""""""""
+
+   1. address
+      
+      * String | Address
+      * Address to check
+
+   2. index
+      * String | Uint32
+      * Index of token in address
+   
+Returns
+""""""""""""
+
+    1. nodeId
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _address = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049"
+         let _index = "2"
+
+         pruf.get.node.heldNodeAtIndex(
+             _address,
+             _index
+         )
+         .then(console.log)
+
+
+---------------
+  
+.nodeAtIndex
+----------------------
+
+``pruf.get.node.nodeAtIndex(index)``
+
+Gets the nodeId at index in the token contract.
+
+Parameters
+"""""""""""
+
+   1. index
+      
+      * String | Uint32
+      * Index of node token in contract
+   
+Returns
+""""""""""""
+
+    1. Uint32 | nodeId
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _index = "2"
+
+         pruf.get.node.nodeAtIndex(_index)
+         .then(console.log)
+
+
+---------------
+  
+.totalSupply
+----------------------
+
+``pruf.get.node.totalSupply()``
+
+Gets the current total supply of nodes.
+
+Parameters
+"""""""""""
+
+   None
+   
+Returns
+""""""""""""
+
+    1. Uint | totalSupply
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         pruf.get.node.PLACEHOLDER()
+         .then(console.log)
+
+
+---------------
+  
+.ownerOf
+----------------------
+
+``pruf.get.node.ownerOf(nodeId)``
+
+Gets the owner of a specified node.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. Address | owner
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+
+         pruf.get.node.ownerOf(_nodeId)
+         .then(console.log)
+
+
+---------------
+  
+.URI
+----------------------
+
+``pruf.get.node.URI(nodeId)``
+
+Gets the URI of specified node.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. String | URI
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+
+         pruf.get.node.URI(_nodeId)
+         .then(console.log)
+
+
+---------------
+  
+.approvedOperator
+----------------------
+
+``pruf.get.node.approvedOperator(nodeId)``
+
+Gets the approved operator of specified node.
+
+Parameters
+"""""""""""
+
+   1. nodeId
+      
+      * String | Uint32
+      * ID used to reference a node
+   
+Returns
+""""""""""""
+
+    1. Address | approvedOperator
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _nodeId = "10"
+
+         pruf.get.node.approvedOperator(_nodeId)
+         .then(console.log)
+
+
+---------------
+  
+.isApprovedForAll
+----------------------
+
+``pruf.get.node.isApprovedForAll(owner, operator)``
+
+PLACEHOLDER.
+
+Parameters
+"""""""""""
+
+   1. owner
+      
+      * String | Address
+      * Owner of node(s)
+
+   2. operator
+      
+      * String | Address
+      * Address to check for operator status
+   
+Returns
+""""""""""""
+
+    1. Bool
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _owner = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049"
+         let _operator = "0x9094CaDBF4d35ce5FeD92eb758909fB38F7fecb1"
+
+         pruf.get.node.PLACEHOLDER(
+             _owner,
+             _operator
+         )
+         .then(console.log)
+
+
+---------------
+ 

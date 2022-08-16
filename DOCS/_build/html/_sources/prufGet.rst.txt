@@ -1,2 +1,106 @@
 .get.pruf
 ============
+ 
+.balanceOf
+----------------------
+
+``pruf.get.pruf.balanceOf(address)``
+
+Gets the $PRUF balance of an address.
+
+Parameters
+"""""""""""
+
+   1. address
+   
+      * String
+      * Address to check balance of
+   
+Returns
+""""""""""""
+
+    1. Uint | balance
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _address = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049"
+
+         pruf.get.pruf.balanceOf(_address)
+         .then(console.log)
+
+
+---------------
+ 
+.isColdWallet
+----------------------
+
+``pruf.get.pruf.isColdWallet(address)``
+
+Determines whether associated address is set to "cold".
+
+Parameters
+"""""""""""
+
+   1. address
+   
+      * String
+      * Address to check for cold status
+   
+Returns
+""""""""""""
+
+    1. Bool
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         let _address = "0xBef3b0b67061CACD4E10968d8Ba23A1c864c8049"
+
+         pruf.get.pruf.isColdWallet(_address)
+         .then(console.log)
+
+
+---------------
+
+.totalSupply
+----------------------
+
+``pruf.get.pruf.totalSupply()``
+
+Gets the total supply of $PRUF.
+
+Parameters
+"""""""""""
+
+    None
+   
+Returns
+""""""""""""
+
+    1. Uint | totalSupply
+
+Example usage
+""""""""""""""
+
+      .. code-block:: javascript
+         :linenos:
+
+         //Example pruf-js code
+
+         pruf.get.pruf.totalSupply()
+         .then(console.log)
+
+
+---------------
+ 

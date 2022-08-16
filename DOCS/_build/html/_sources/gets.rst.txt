@@ -7,7 +7,6 @@
    assetGet
    nodeGet
    prufGet
-   stakeGet
 
 .. assetRecordExists:
 .. -------------------

@@ -7,7 +7,6 @@
    assetDo
    nodeDo
    prufDo
-   stakeDo
 
 .. mintAsset:
 .. ----------

@@ -218,7 +218,7 @@ Example usage
    
       let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
       let _hardData1 = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd"
-			let _hardData2 = "0x0000000000000000000000000000000000000000000000000000000000000000"
+		let _hardData2 = "0x0000000000000000000000000000000000000000000000000000000000000000"
       
 			pruf.do.asset.addHardData(
       _assetId,
@@ -259,25 +259,25 @@ Parameters
 Example usage
 """"""""""""""
 
-.. code-block:: javascript
-		:linenos:
+   .. code-block:: javascript
+         :linenos:
 		
-		//Example pruf-js code
+		   //Example pruf-js code
 
-      let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
-		let _hardData1 = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd"
-		let _hardData2 = "0x0000000000000000000000000000000000000000000000000000000000000000"
+         let _assetId = "0x968a4a295335fa4badbc4746a701d4407a7df7febd489a7de44959358ff5a21d"
+		   let _hardData1 = "0x88c046dc8adba2414c0cbf87f1089c9682067c739b2fc6d3a1fdfd4e61587bbd"
+		   let _hardData2 = "0x0000000000000000000000000000000000000000000000000000000000000000"
 
-		pruf.do.asset.updateHardData
-		(
-			_assetId,
-			_hardData1,
-			_hardData2,
-		)
-		.send({ from: props.addr })
-		.on("receipt"()=>{
-			console.log(receipt.transactionHash);
-		});
+		   pruf.do.asset.updateHardData
+		   (
+			   _assetId,
+			   _hardData1,
+			   _hardData2,
+		   )
+		   .send({ from: props.addr })
+		   .on("receipt"()=>{
+			   console.log(receipt.transactionHash);
+		   });
 
 
 ---------------
@@ -505,9 +505,9 @@ Example usage
 .approve
 ----------------------
 
-``pruf.do.asset.approve(to, tokenId)``
+``pruf.do.asset.approve(to, assetId)``
 
-Approves an address to access ERC-721 functionality of all.
+Approves an address to access ERC-721 functionality of an asset.
 
 Parameters
 """""""""""
@@ -575,7 +575,7 @@ Example usage
          
          let _to = "0x0D15833D60F448487f157578F3e8c208AFCBa537"
          let _approval = false
-         pruf.do.asset.approve
+         pruf.do.asset.setApprovalForAll
          (
             _to,
             _approval
@@ -696,7 +696,7 @@ Example usage
 
 ``pruf.do.asset.transfer(from, to, assetId)``
 
-Transfers an asset from the current holder's wallet to a specified receiving address.
+Transfers an asset from a controlled wallet to a specified receiving address.
 
 Parameters
 """""""""""
