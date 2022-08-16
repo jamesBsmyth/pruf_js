@@ -18,7 +18,7 @@
     <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title=".get" href="gets.html" />
+    <link rel="next" title=".do.node" href="nodeDo.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -31,7 +31,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="gets.html" title=".get"
+          <a href="nodeDo.html" title=".do.node"
              accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">pruf-js 0.5.2 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><strong>pruf-js</strong></a></li> 
@@ -49,16 +49,96 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="gets.html">.get</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="assetGet.html">.get.asset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nodeGet.html">.get.node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prufGet.html">.get.pruf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nodeDo.html">.do.node</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#transfer">.transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#setoperationcost">.setOperationCost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#updateimportstatus">.updateImportStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#updatecas">.updateCAS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#authorizeuser">.authorizeUser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#finalize">.finalize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#approve">.approve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#setapprovalforall">.setApprovalForAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#enabledefaultcontracts">.enableDefaultContracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#enablecontract">.enableContract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeDo.html#mint">.mint</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dos.html">.do</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="assetDo.html">.do.asset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nodeDo.html">.do.node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prufDo.html">.do.pruf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nodeGet.html">.get.node</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#isnameavailable">.isNameAvailable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#pricedata">.priceData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#switchat">.switchAt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#extendeddata">.extendedData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#importstatus">.importStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#localnode">.localNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#record">.record</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#name">.name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#discount">.discount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#numberofusers">.numberOfUsers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#invoiceforoperation">.invoiceForOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#usertype">.userType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#id">.id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#issameroot">.isSameRoot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#balanceof">.balanceOf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#tokenexists">.tokenExists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#heldnodeatindex">.heldNodeAtIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#nodeatindex">.nodeAtIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#totalsupply">.totalSupply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#ownerof">.ownerOf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#uri">.URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#approvedoperator">.approvedOperator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodeGet.html#isapprovedforall">.isApprovedForAll</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assetDo.html">.do.asset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#mint">.mint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#mintbare">.mintBare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#modifysoftdata">.modifySoftData:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#addharddata">.addHardData:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#updateharddata">.updateHardData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#modifyassetstatus">.modifyAssetStatus:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#markassetlostorstolen">.markAssetLostOrStolen:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#decrementlifecycle">.decrementLifeCycle:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#verifyrightshash">.verifyRightsHash:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#modifyrightshash">.modifyRightsHash:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#approve">.approve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#setapprovalforall">.setApprovalForAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#setcoldwallet">.setColdWallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#unsetcoldwallet">.unSetColdWallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#permissiveseturi">.permissiveSetURI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#transfer">.transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetDo.html#id31">.addHardData</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assetGet.html">.get.asset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#recordexists">.recordExists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#isrightsholder">.isRightsHolder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#record">.record</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#heldassetatindex">.heldAssetAtIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#assetatindex">.assetAtIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#balanceof">.balanceOf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#totalsupply">.totalSupply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#ownerof">.ownerOf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#uri">.URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#iscoldwallet">.isColdWallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#isapprovedforall">.isApprovedForAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#baseurifromstorageprovider">.baseURIFromStorageProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#baseurifromnode">.baseURIFromNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetGet.html#approvedoperator">.approvedOperator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="prufDo.html">.do.pruf</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prufDo.html#setcoldwallet">.setColdWallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prufDo.html#unsetcoldwallet">.unSetColdWallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prufDo.html#transfer">.transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prufDo.html#approve">.approve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prufDo.html#decreaseallowance">.decreaseAllowance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prufDo.html#increaseallowance">.increaseAllowance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="prufGet.html">.get.pruf</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prufGet.html#balanceof">.balanceOf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prufGet.html#iscoldwallet">.isColdWallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prufGet.html#totalsupply">.totalSupply</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">.utils</a><ul>
@@ -153,8 +233,8 @@ Contact us at: <a class="reference external" href="mailto:support&#37;&#52;&#48;
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="gets.html"
-                          title="next chapter">.get</a></p>
+    <p class="topless"><a href="nodeDo.html"
+                          title="next chapter">.do.node</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -184,7 +264,7 @@ Contact us at: <a class="reference external" href="mailto:support&#37;&#52;&#48;
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="gets.html" title=".get"
+          <a href="nodeDo.html" title=".do.node"
              >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">pruf-js 0.5.2 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><strong>pruf-js</strong></a></li> 
