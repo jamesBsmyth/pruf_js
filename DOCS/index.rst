@@ -15,12 +15,8 @@ An interface for the PRüF Protocol written in javascript.
    :maxdepth: 2
    :caption: Contents:
 
-   nodeDo
-   nodeGet
-   assetDo
-   assetGet
-   prufDo
-   prufGet
+   gets
+   dos
    utils
    glossary
 
